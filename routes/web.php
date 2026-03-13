@@ -11,3 +11,7 @@ Route::get('/about', function () {
     return view('for-us/index');
     
 });
+
+Route::get("/contact",function(){
+    return view("contact/index");
+});
