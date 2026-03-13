@@ -6,10 +6,10 @@
   <!-- Nav Links -->
   <ul class="flex items-center gap-12 list-none m-0 p-0">
     <li><a href="#" class="text-[#194077]">Почетна</a></li>
-    <li><a href="#" class="text-gray-700 hover:text-[#194077]">За нас</a></li>
+    <li><a href="{{route('about-us')}}" class="text-gray-700 hover:text-[#194077]">За нас</a></li>
     <li><a href="#" class="text-gray-700 hover:text-[#194077]">Курсеви</a></li>
     <li><a href="#" class="text-gray-700 hover:text-[#194077]">Испити</a></li>
-    <li><a href="#" class="text-gray-700 hover:text-[#194077]">Контакт</a></li>
+    <li><a href="{{route('contact')}}" class="text-gray-700 hover:text-[#194077]">Контакт</a></li>
   </ul>
 
   <!-- Login -->
