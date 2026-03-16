@@ -46,6 +46,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        if (session('from') === 'personalizacija') {
+            return redirect('/personalizacija/1');
+        }
+        return redirect('/');
     }
 }

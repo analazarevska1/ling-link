@@ -1,10 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PersonalizacijaController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 Route::get('/about', function () {
@@ -27,3 +34,35 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+
+Route::get('/about-us', [AboutController::class, 'index'])->name('about-us');
+
+
+// Route::get("/contact",function(){
+//     return view("contact/index");
+// });
+
+
+//Personalizacija ruti
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/personalizacija/1', [PersonalizacijaController::class, 'step1'])->name('personalizacija.1');
+    Route::post('/personalizacija/1', [PersonalizacijaController::class, 'saveStep1'])->name('personalizacija.save1');
+    Route::get('/personalizacija/2', [PersonalizacijaController::class, 'step2'])->name('personalizacija.2');
+    Route::post('/personalizacija/2', [PersonalizacijaController::class, 'saveStep2'])->name('personalizacija.save2');
+    Route::get('/personalizacija/3', [PersonalizacijaController::class, 'step3'])->name('personalizacija.3');
+    Route::post('/personalizacija/3', [PersonalizacijaController::class, 'saveStep3'])->name('personalizacija.save3');
+    Route::get('/personalizacija/4', [PersonalizacijaController::class, 'step4'])->name('personalizacija.4');
+    Route::post('/personalizacija/store', [PersonalizacijaController::class, 'store'])->name('personalizacija.store');
+});
+
+
+Route::post('/set-personalizacija-session', function () {
+    session(['from' => 'personalizacija']);
+    return auth()->check()
+        ? redirect('/personalizacija/1')
+        : redirect()->route('register');
+});

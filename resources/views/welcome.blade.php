@@ -108,19 +108,22 @@
     </div>
 
     <div class="flex flex-col items-center text-center py-16" style="background: #f8fbff;">
-        <p class="text-lg text-gray-700 mb-6" style="font-family: 'Montserrat', sans-serif;">
-          Сакаш ние да ти <span style="font-style: italic;">препорачаме</span> курс<br>
-          кој најмногу ке ти <a href="#" class="font-bold text-[#194077]">одговара</a>?
-        </p>
-      
-        <a href="/quiz"
+      <p class="text-lg text-gray-700 mb-6" style="font-family: 'Montserrat', sans-serif;">
+        Сакаш ние да ти <span style="font-style: italic;">препорачаме</span> курс<br>
+        кој најмногу ке ти <a href="#" class="font-bold text-[#194077]">одговара</a>?
+      </p>
+    
+      <form method="POST" action="/set-personalizacija-session">
+        @csrf
+        <button type="submit"
           class="flex items-center justify-center transition-all duration-200"
           style="width: 185px; height: 50px; border-radius: 20px; background: linear-gradient(to right, #194077, #194077); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
           onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)';"
           onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)';">
           Започни сега
-        </a>
-      </div>
+        </button>
+      </form>
+    </div>
 
       <section class="w-full py-16 px-24">
         <h2 class="font-black text-4xl uppercase mb-12 text-left" style="font-family: 'Jost', sans-serif;">Одбери испит</h2>

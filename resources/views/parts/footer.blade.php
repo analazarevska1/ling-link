@@ -1,14 +1,12 @@
 <footer class="bg-white border-t border-blue-200 pt-12 pb-8 px-6 md:px-16">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-6">
 
     {{-- Logo & Description --}}
-    
-    <div class="col-span-1">
+    <div class="col-span-1 md:col-span-1">
       <div class="mb-4">
-        {{-- Replace with your actual logo --}}
-        <img src="{{ asset('images/logo.png') }}" alt="LinguaLink" class="h-30 w-70">
+        <img src="{{ asset('images/logo.png') }}" alt="LinguaLink" class="h-20 w-auto">
       </div>
-      <p class="text-gray-600 text-sm leading-relaxed mb-5">
+      <p class="text-gray-600 text-sm leading-relaxed mb-5 mr-20">
         Повеќе од училница – Lingua Link е заедница која те води од првите зборови до самоуверена комуникација.
       </p>
       <p class="text-gray-800 font-bold text-sm mb-3">Следете не на:</p>
@@ -26,9 +24,10 @@
     </div>
 
     {{-- Компанија --}}
-    <div class="">
-      <h4 class="text-gray-900 font-extrabold text-base mb-5">Компанија</h4>
-      <ul class="space-y-10 text-gray-600 text-sm">
+    <div>
+    <h4 class="text-gray-900 font-extrabold text-base mb-5">Компанија</h4>
+      
+      <ul class="space-y-3 text-gray-600 text-sm">
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Почетна</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">За нас</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Курсеви</a></li>
@@ -38,9 +37,9 @@
     </div>
 
     {{-- Курсеви --}}
-    <div class="">
+    <div>
       <h4 class="text-gray-900 font-extrabold text-base mb-5">Курсеви</h4>
-      <ul class="space-y-10 text-gray-600 text-sm">
+      <ul class="space-y-3 text-gray-600 text-sm">
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Англиски јазик</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Македонски јазик за странци</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Италијански јазик</a></li>
@@ -49,9 +48,9 @@
     </div>
 
     {{-- Испити --}}
-    <div class="">
+    <div>
       <h4 class="text-gray-900 font-extrabold text-base mb-5">Испити</h4>
-      <ul class="space-y-10 text-gray-600 text-sm">
+      <ul class="space-y-3 text-gray-600 text-sm">
         <li><a href="#" class="hover:text-[#1e3a5f] transition">Telc</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">OnSet</a></li>
         <li><a href="#" class="hover:text-[#1e3a5f] transition">TestDaF</a></li>
