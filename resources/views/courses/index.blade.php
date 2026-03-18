@@ -14,81 +14,60 @@
         </div>
     </div>
 
-    {{-- COURSES SECTION --}}
-    <section class="mx-auto px-16 py-8 " style="max-width: 90%;">
-
-        {{-- Heading --}}
-        <h2 class="text-center font-extrabold tracking-[3px] text-gray-800 mb-8 " style="font-size: 25px; padding-top: 3rem;">
-            ЛИСТА НА КУРСЕВИ
-        </h2>
-
-        {{-- Filter Buttons --}}
-       <div class="flex flex-wrap justify-center gap-12 mb-6">
-
-    <a href="{{ route('courses.index', ['category' => 'children']) }}"
-       class="filter-btn rounded-2xl border-2 font-medium transition-all duration-200 flex items-center justify-center text-center"
-       style="font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box;
-              background-color: {{ $activeCategory === 'children' ? '#194077' : '#ffffff' }};
-              color: {{ $activeCategory === 'children' ? '#ffffff' : '#374151' }};
-              border-color: {{ $activeCategory === 'children' ? '#1a5678' : '#d1d5db' }};">
-        Курсеви за деца и средношколци
-    </a>
-
-    <a href="{{ route('courses.index', ['category' => 'adults']) }}"
-       class="filter-btn rounded-2xl border-2 font-medium transition-all duration-200 flex items-center justify-center text-center"
-       style="font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box;
-              background-color: {{ $activeCategory === 'adults' ? '#194077' : '#ffffff' }};
-              color: {{ $activeCategory === 'adults' ? '#ffffff' : '#374151' }};
-              border-color: {{ $activeCategory === 'adults' ? '#1a5678' : '#d1d5db' }};">
-        Курсеви за возрасни
-    </a>
-
-    <a href="{{ route('courses.index', ['category' => 'specialized']) }}"
-       class="filter-btn rounded-2xl border-2 font-medium transition-all duration-200 flex items-center justify-center text-center"
-       style="font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box;
-              background-color: {{ $activeCategory === 'specialized' ? '#194077' : '#ffffff' }};
-              color: {{ $activeCategory === 'specialized' ? '#ffffff' : '#374151' }};
-              border-color: {{ $activeCategory === 'specialized' ? '#1a5678' : '#d1d5db' }};">
-        Специјализирани курсеви
-    </a>
-
-</div>
-        {{-- Result Count --}}
-        <p style="font-size: 0.82rem;" class="text-gray-500 mb-4">
-            Покажување {{ $totalResults }} {{ $totalResults === 1 ? 'резултат' : 'резултати' }}
-        </p>
-
-        {{-- Carousel --}}
-<div class="flex items-center gap-2" style="padding-right: 10px;">
-
-            <button id="prevBtn" aria-label="Претходно"
-            
-                    class="flex-shrink-0 bg-transparent border-none cursor-pointer text-gray-400
-                           hover:text-gray-800 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-style="font-size: 6rem; line-height: 1; color: black;">
-                &#8249;
-            </button>
-
-<div class="flex-1" style="overflow: hidden; padding-right: 2px;">
-<div id="carouselTrack" class="flex transition-transform duration-500 ease-out" style="gap: 48px;">
-                    @forelse ($courses as $course)
-                        @include('courses.partials.course-card', ['course' => $course])
-                    @empty
-                        <p class="text-gray-400 py-16 w-full text-center">Нема курсеви во оваа категорија.</p>
-                    @endforelse
-                </div>
-            </div>
-
-            <button id="nextBtn" aria-label="Следно"
-                    class="flex-shrink-0 bg-transparent border-none cursor-pointer text-gray-400
-                           hover:text-gray-800 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
-style="font-size: 6rem; line-height: 1; color: black;">
-                &#8250;
-            </button>
-
+     <h2 class="text-center font-black text-3xl uppercase mb-4 mt-16" style="font-family: 'Jost', sans-serif;">Одбери курс</h2>
+  
+    <div class="flex justify-center gap-[60px] px-32">
+  
+      <!-- Card 1 -->
+      <a href="/courses/english" class="block" style="width: 244px; height: 110px; margin-top: 140px; position: relative;">
+        <img src="{{ asset('images/flag-en.png') }}" alt="English" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
+        <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 130px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
+          <span class="font-extrabold text-base text-center" style="font-family: 'Montserrat', sans-serif;">Англиски јазик</span>
         </div>
+      </a>
+  
+      <!-- Card 2 -->
+      <a href="/courses/german" class="block" style="width: 244px; height: 110px; margin-top: 140px; position: relative;">
+        <img src="{{ asset('images/flag-de.png') }}" alt="German" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
+        <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 130px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
+          <span class="font-bold text-base text-center" style="font-family: 'Montserrat', sans-serif;">Германски јазик</span>
+        </div>
+      </a>
+  
+      <!-- Card 3 -->
+      <a href="/courses/macedonian" class="block" style="width: 244px; height: 110px; margin-top: 140px; position: relative;">
+        <img src="{{ asset('images/flag-mk.png') }}" alt="Macedonian" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
+        <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 130px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
+          <span class="font-bold text-base text-center" style="font-family: 'Montserrat', sans-serif;">Македонски јазик за странци</span>
+        </div>
+      </a>
 
-    </section>
+      
+    </div>
+
+    <div class="flex flex-col items-center text-center py-16" style="background: #f8fbff;">
+      <p class="text-lg text-gray-700 mb-6" style="font-family: 'Montserrat', sans-serif;">
+        Сакаш ние да ти <span style="font-style: italic;">препорачаме</span> курс<br>
+        кој најмногу ке ти <a href="#" class="font-bold text-[#194077]">одговара</a>?
+      </p>
+    
+      <form method="POST" action="/set-personalizacija-session">
+        @csrf
+        <button type="submit"
+          class="flex items-center justify-center transition-all duration-200"
+          style="width: 185px; height: 50px; border-radius: 20px; background: linear-gradient(to right, #194077, #194077); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
+          onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)';"
+          onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)';">
+          Започни сега
+        </button>
+      </form>
+    </div>
+
+
+    @include('courses.partials.courses-includes')
+    @include('courses.partials.courses-benefits')
+    @include('parts.faq')
+
 
 @endsection
 

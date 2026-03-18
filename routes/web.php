@@ -41,12 +41,8 @@ Route::get('/about-us', [AboutController::class, 'index'])->name('about-us');
 use App\Http\Controllers\CourseController;
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
-
-
-// Route::get("/contact",function(){
-//     return view("contact/index");
-// });
-
+Route::get('/courses/{language}/filter', [CourseController::class, 'filter'])->name('courses.filter');
+Route::get('/courses/{language}', [CourseController::class, 'showLanguage'])->name('courses.language');
 
 //Personalizacija ruti
 

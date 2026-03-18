@@ -10,13 +10,14 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('language')->default('english');
+            $table->string('category');
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->text('description')->nullable();
-            $table->enum('category', ['children', 'adults', 'specialized']);
-            $table->string('duration')->nullable();   // e.g. "32 недели"
-            $table->string('students_count')->nullable(); // e.g. "2394" or "1000+"
-            $table->integer('hours')->nullable();     // e.g. 128
+            $table->string('duration')->nullable();
+            $table->string('students_count')->nullable();
+            $table->integer('hours')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

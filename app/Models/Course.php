@@ -15,5 +15,6 @@ class Course extends Model
         'students_count',
         'hours',
         'image',
+        "language"
     ];
 }
