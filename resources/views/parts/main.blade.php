@@ -12,6 +12,7 @@
 <body class="">
     @include('parts.navbar')
     @yield('content')
+    @stack('scripts')
     @include('parts.footer')
 </body>
 </html>

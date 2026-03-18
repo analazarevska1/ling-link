@@ -137,28 +137,25 @@
     </div>
 </div>
 
-<section class="bg-gray-100 py-10">
+<section class="bg-gray-100 py-10 min-h-[50vh]">
 
   <h2 class="text-center text-3xl font-bold mb-10">
     НАЈДЕТЕ НЕ ОВДЕ:
   </h2>
 
-  <div class="mx-auto px-20">
+  <div class="mx-auto px-20 h-[50vh]">
     
-    <div class="rounded-3xl overflow-hidden shadow-lg">
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.3422236540873!2d21.413732876666053!3d41.99293045821597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354143829866af5%3A0xd1515ebd1df9c72b!2sLinguaLink!5e0!3m2!1sen!2smk!4v1773431798143!5m2!1sen!2smk" 
-     class="w-full h-112.5 border-0"
-     style="border:0;" 
-     allowfullscreen="" 
-     loading="lazy" 
-     referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <div class="rounded-3xl overflow-hidden shadow-lg h-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.3422236540873!2d21.413732876666053!3d41.99293045821597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354143829866af5%3A0xd1515ebd1df9c72b!2sLinguaLink!5e0!3m2!1sen!2smk!4v1773431798143!5m2!1sen!2smk"
+        class="w-full h-full border-0"
+        loading="lazy">
+      </iframe>
     </div>
 
   </div>
 
 </section>
-
 
 
 @endsection

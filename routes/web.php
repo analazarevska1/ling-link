@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PersonalizacijaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -9,15 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home-page');
 });
 
 
-
-Route::get('/about', function () {
-    return view('for-us/index');
-    
-});
 
 
 
@@ -35,10 +31,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/', [HomePageController::class, 'index'])->name('home-page');
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('about-us');
+
+use App\Http\Controllers\CourseController;
+
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
 
 // Route::get("/contact",function(){
