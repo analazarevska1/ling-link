@@ -5,7 +5,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PersonalizacijaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\PrijavaController;
+use App\Http\Controllers\TestimonialController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 
 
 
@@ -38,7 +43,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::get('/about-us', [AboutController::class, 'index'])->name('about-us');
 
-use App\Http\Controllers\CourseController;
+
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('/courses/{language}/filter', [CourseController::class, 'filter'])->name('courses.filter');
@@ -64,3 +69,19 @@ Route::post('/set-personalizacija-session', function () {
         ? redirect('/personalizacija/1')
         : redirect()->route('register');
 });
+
+// Prijava ruti
+
+Route::post('/prijavi-se/{type}', [PrijavaController::class, 'store'])->name('prijava.store');
+
+//Testimonial ruta
+
+Route::post('/testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');
+
+
+//Exams ruti
+
+
+
+Route::get('/exams', [ExamController::class, 'index'])->name('exams.index');
+Route::get('/exams/{exam}', [ExamController::class, 'show'])->name('exams.show');
