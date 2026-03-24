@@ -32,9 +32,9 @@
                     id="btn-{{ $key }}"
                     class="filter-btn rounded-2xl border-2 font-medium transition-all duration-200 flex items-center justify-center text-center"
                     style="font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box;
-                           background-color: {{ $activeCategory === $key ? '#1a5678' : '#ffffff' }};
+                           background-color: {{ $activeCategory === $key ? '#194077' : '#ffffff' }};
                            color: {{ $activeCategory === $key ? '#ffffff' : '#374151' }};
-                           border-color: {{ $activeCategory === $key ? '#1a5678' : '#d1d5db' }};">
+                           border-color: {{ $activeCategory === $key ? '#194077' : '#d1d5db' }};">
                 {{ $label }}
             </button>
             @endforeach
@@ -85,9 +85,9 @@
 
 <style>
     .filter-btn:hover {
-        background-color: #1a5678 !important;
+        background-color: #194077 !important;
         color: white !important;
-        border-color: #1a5678 !important;
+        border-color: #194077 !important;
     }
 </style>
 
@@ -139,9 +139,9 @@
         Object.keys(categories).forEach(key => {
             const btn = document.getElementById('btn-' + key);
             if (key === category) {
-                btn.style.backgroundColor = '#1a5678';
+                btn.style.backgroundColor = '#194077';
                 btn.style.color = '#ffffff';
-                btn.style.borderColor = '#1a5678';
+                btn.style.borderColor = '#194077';
             } else {
                 btn.style.backgroundColor = '#ffffff';
                 btn.style.color = '#374151';
