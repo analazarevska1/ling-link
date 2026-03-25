@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-between px-16 py-2 bg-white" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; line-height: 100%;">
+<nav class="sticky top-0 z-50 flex items-center justify-between px-20 py-2 bg-white" style="font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; line-height: 100%;">
 
   <a href="{{route('home-page')}}">
     <img src="{{ asset('images/logo.png') }}" alt="LinguaLink" style="width: 130px; height: 49.77px;">
@@ -35,7 +35,7 @@
     
   </div>
   @else
-  <a href="{{ route('login') }}" class="flex items-center gap-2 text-gray-700 hover:text-[#194077] transition" style="font-family: 'Montserrat', sans-serif; font-size: 14px;">
+<a href="{{ route('login') }}" class="flex items-center gap-2 text-gray-700 hover:text-[#194077] transition" style="font-family: 'Montserrat', sans-serif; font-size: 14px;">
     <img src="{{ asset('images/user-icon.png') }}" class="h-6">
     Логирај се
   </a>

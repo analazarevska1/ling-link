@@ -5,22 +5,13 @@
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-<div class="mx-auto" style="width: 1280px; height: 150px; border-radius: 20px; overflow: hidden; position: relative;">
-    <img src="{{ asset('images/exams-header.jpg') }}" alt="Испити" class="w-full h-full object-cover" style="object-position: top;">
- 
-    <div class="absolute inset-0 flex items-center justify-center">
-        <h1 style="
-            font-family: 'Jost', sans-serif;
-            font-weight: 900;
-            font-size: 2.75rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.25);
-            margin: 0;
-        ">ИСПИТИ</h1>
+   <div class="relative w-full h-32 overflow-hidden px-16 md:px-20 hidden md:block">
+        <img src="{{ asset('images/exams-header.jpg') }}" alt="Курсеви"
+            class="w-full h-full object-cover brightness-75 rounded-3xl">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <h1 class="text-white text-3xl md:text-5xl font-extrabold tracking-widest uppercase">Испити</h1>
+        </div>
     </div>
-</div>
 <h1 class="text-center mx-auto mt-8 w-[196px] h-[40px] font-semibold text-[20px] leading-[40px] opacity-100" style="font-family: 'Jost', sans-serif;">ЛИСТА НА ИСПИТИ</h1>
 
 <section class="w-full py-8 px-24">
