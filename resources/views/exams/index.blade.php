@@ -28,13 +28,13 @@
     <div class="flex justify-center items-stretch gap-6 mb-16">
         <button onclick="switchTab('administrirani')" id="tab-administrirani"
           class="px-10 py-3 rounded-[20px] text-[17px] leading-tight transition-all duration-200 flex items-center justify-center text-center shadow-sm"
-          style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; font-weight: 700; min-width: 280px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+          style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; text-[14px] font-weight: 700; min-width: 205px; min-height: 55px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
           Администрирање<br>на испити
         </button>
         
         <button onclick="switchTab('podgotveni')" id="tab-podgotveni"
           class="px-10 py-3 rounded-[20px] text-[17px] leading-tight transition-all duration-200 flex items-center justify-center text-center shadow-sm border border-[#111827] b b-[0.33px] "
-          style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; font-weight: 500; min-width: 280px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+          style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; text-[14px] font-weight: 500; min-width: 205px; min-height: 55px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
           Подготовка на испити
         </button>
       </div>
