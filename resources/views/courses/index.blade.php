@@ -101,6 +101,8 @@
       </form>
     </div>
 
+    
+
     @include('courses.partials.courses-includes')
     @include('courses.partials.courses-benefits')
     @include('parts.faq')

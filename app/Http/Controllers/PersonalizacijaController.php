@@ -7,12 +7,13 @@ use App\Models\UserProfile;
 
 class PersonalizacijaController extends Controller
 {
-    public function step1() {
-        if (auth()->user()->profile) {
-            return redirect('/kursevi?preporachani=1');
-        }
-        return view('personalizacija.step1');
+  public function step1() {
+    if (auth()->user()->profile) {
+        $language = auth()->user()->profile->language;
+        return redirect('/courses/' . $language . '?preporachani=1');
     }
+    return view('personalizacija.step1');
+}
 
     public function step2() {
         if (!session('personalizacija.language')) {
@@ -39,11 +40,22 @@ class PersonalizacijaController extends Controller
         ]);
     }
 
-    public function saveStep1(Request $request) {
-        $request->validate(['language' => 'required']);
-        session(['personalizacija.language' => $request->language]);
-        return redirect()->route('personalizacija.2');
-    }
+public function saveStep1(Request $request) {
+    $request->validate(['language' => 'required']);
+
+    $languageMap = [
+        'Англиски јазик'              => 'english',
+        'Германски јазик'             => 'german',
+        'Македонски јазик за странци' => 'macedonian',
+    ];
+
+    // Save the original label for the DB
+    session(['personalizacija.language'     => $request->language]);
+    // Save the slug separately for the redirect
+    session(['personalizacija.language_slug' => $languageMap[$request->language] ?? 'english']);
+
+    return redirect()->route('personalizacija.2');
+}
 
     public function saveStep2(Request $request) {
         $request->validate(['age_group' => 'required']);
@@ -57,21 +69,22 @@ class PersonalizacijaController extends Controller
         return redirect()->route('personalizacija.4');
     }
 
-    public function store(Request $request) {
-        $request->validate(['level' => 'required']);
+public function store(Request $request) {
+    $request->validate(['level' => 'required']);
 
-        UserProfile::updateOrCreate(
-            ['user_id' => auth()->id()],
-            [
-                'language'   => session('personalizacija.language'),
-                'age_group'  => session('personalizacija.age_group'),
-                'motivation' => session('personalizacija.motivation'),
-                'level'      => $request->level,
-            ]
-        );
+    UserProfile::updateOrCreate(
+        ['user_id' => auth()->id()],
+        [
+            'language'   => session('personalizacija.language'),      // Macedonian label → DB
+            'age_group'  => session('personalizacija.age_group'),
+            'motivation' => session('personalizacija.motivation'),
+            'level'      => $request->level,
+        ]
+    );
 
-        session()->forget('personalizacija');
+    $slug = session('personalizacija.language_slug');  // english/german/macedonian → URL
+    session()->forget('personalizacija');
 
-        return redirect('/kursevi?preporachani=1');
-    }
+    return redirect('/courses/' . $slug . '?preporachani=1');
+}
 }
