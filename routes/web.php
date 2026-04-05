@@ -69,6 +69,7 @@ Route::post('/set-personalizacija-session', function () {
 
 Route::post('/prijavi-se/{type}', [PrijavaController::class, 'store'])->name('prijava.store');
 
+
 //Testimonial ruta
 
 Route::post('/testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');

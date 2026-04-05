@@ -49,20 +49,20 @@ class CourseController extends Controller
         }
 
         $courses = Course::where('language', $language)
-                         ->where('category', $activeCategory)
-                         ->orderBy('created_at', 'asc')
-                         ->get();
+            ->where('category', $activeCategory)
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         // ── Recommended courses ──
         $recommendedCourses = null;
         $userProfile        = null;
 
-       
+
 
         if (Auth::check()) {
             $userProfile = UserProfile::where('user_id', Auth::id())->first();
 
-if ($userProfile && $userProfile->language === $language) {
+            if ($userProfile && $userProfile->language === $language) {
 
                 $category = $this->mapAgeGroupToCategory(
                     $userProfile->age_group,
@@ -70,20 +70,24 @@ if ($userProfile && $userProfile->language === $language) {
                 );
 
                 $recommendedCourses = Course::where('language', $language)
-                    ->when($userProfile->level, fn($q) =>
-                        $q->where(function($q2) use ($userProfile) {
+                    ->when(
+                        $userProfile->level,
+                        fn($q) =>
+                        $q->where(function ($q2) use ($userProfile) {
                             $q2->where('level', $userProfile->level)
-                               ->orWhereNull('level');
+                                ->orWhereNull('level');
                         })
                     )
-                    ->when($category, fn($q) =>
+                    ->when(
+                        $category,
+                        fn($q) =>
                         $q->where('category', $category)
                     )
                     ->limit(5)
                     ->get();
             }
         }
-        
+
 
         return view('courses.language', [
             'language'           => $language,
@@ -118,9 +122,9 @@ if ($userProfile && $userProfile->language === $language) {
         }
 
         $courses = Course::where('language', $language)
-                         ->where('category', $activeCategory)
-                         ->orderBy('created_at', 'asc')
-                         ->get();
+            ->where('category', $activeCategory)
+            ->orderBy('created_at', 'asc')
+            ->get();
 
         $html = view('courses.partials.course-card-list', [
             'courses' => $courses,
