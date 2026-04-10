@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\PrijavaResource\Pages;
 
 use App\Filament\Resources\PrijavaResource;
+use App\Filament\Exports\PrijavaExporter;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

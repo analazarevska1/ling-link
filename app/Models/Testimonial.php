@@ -13,5 +13,6 @@ class Testimonial extends Model
         'role',
         'message',
         'rating',
+        'is_approved',
     ];
 }

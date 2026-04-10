@@ -45,6 +45,9 @@ class PrijavaResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->headerActions([
+                \pxlrbt\FilamentExcel\Actions\Tables\ExportAction::make(),
+            ])
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
@@ -64,13 +67,32 @@ class PrijavaResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('created_at')
+                    ->label('Датум на пријава')
+                    ->options([
+                        'today' => 'Денес',
+                        'this_week' => 'Оваа недела',
+                        'this_month' => 'Овој месец',
+                        'this_year' => 'Оваа година',
+                    ])
+                    ->query(function (Builder $query, array $data) {
+                        $value = $data['value'] ?? null;
+                        if (! $value) {
+                            return $query;
+                        }
+
+                        return $query->when($value === 'today', fn (Builder $q) => $q->whereDate('created_at', \Carbon\Carbon::today()))
+                            ->when($value === 'this_week', fn (Builder $q) => $q->whereBetween('created_at', [\Carbon\Carbon::now()->startOfWeek(), \Carbon\Carbon::now()->endOfWeek()]))
+                            ->when($value === 'this_month', fn (Builder $q) => $q->whereMonth('created_at', \Carbon\Carbon::now()->month)->whereYear('created_at', \Carbon\Carbon::now()->year))
+                            ->when($value === 'this_year', fn (Builder $q) => $q->whereYear('created_at', \Carbon\Carbon::now()->year));
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    \pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction::make(),
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Exam; // Don't forget to import your model!
+use App\Models\Exam;
+use App\Models\Testimonial;
 
 class HomePageController extends Controller
 {
@@ -15,6 +16,11 @@ class HomePageController extends Controller
             ->latest()
             ->get();
 
-        return view('home-page', compact('exams'));
+        $testimonials = Testimonial::where('is_approved', true)
+            ->latest()
+            ->get();
+
+        return view('home-page', compact('exams', 'testimonials'));
     }
 }
+

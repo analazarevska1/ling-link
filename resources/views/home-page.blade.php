@@ -1,86 +1,54 @@
 @extends('parts.main')
 
 @section('content')
-<img src="{{ asset('images/cover-image.jpg') }}" alt="LinguaLink" class="w-full object-cover" style="max-height: 350px; object-position: top;">
-<div class="flex flex-col items-center text-center pt-4 pb-2 w-full m-0">
+<!-- Hero Section -->
+<div class="w-full" style="background: url('{{ asset('images/hero-books.png') }}') center right / cover no-repeat; height: 673px; padding: 70px 80px 100px 140px; position: relative;">
 
-  <!-- Badge -->
-  <span class="px-5 py-1 rounded-full text-gray-600 text-sm mb-4" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
-    Добродојдовте на Lingua Link
-  </span>
+  <!-- Text Content - On top of background image -->
+  <div class="flex flex-col mt-16" style="max-width: 620px;">
 
-  <h1 class="text-center uppercase" style="font-family: 'Jost', sans-serif; font-size: 56px; line-height: 66px; letter-spacing: 0;">
-    <span style="font-weight: 600; font-style: normal;">ТВОЈОТ </span>
-    <span style="font-weight: 500; font-style: italic;">ЛИНК</span><br>
-    <span style="font-weight: 600; font-style: normal;">ДО </span>
-    <span style="font-weight: 600; font-style: normal; color: #194077;">СВЕТОТ</span>
-  </h1>
+    <!-- Badge -->
+    <span class="px-5 py-1 rounded-full text-gray-600 text-sm mb-6 self-start" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
+      Добродојдовте на Lingua Link
+    </span>
 
-  <p class="mt-3 text-gray-600 max-w-lg" style="font-family: 'Montserrat', sans-serif; font-size: 16px;">
-    Повеќе од училница – Lingua Link е заедница која те води од
-    првите зборови до самоуверена комуникација.
-  </p>
+    <h1 class="uppercase" style="font-family: 'Jost', sans-serif; font-size: 72px; line-height: 82px; letter-spacing: 0; font-weight: 900; color: #000;">
+      ТВОЈОТ ЛИНК<br>
+      ДО СВЕТОТ
+    </h1>
 
-  <div class="flex gap-4 mt-5">
-    <!-- Одбери курс -->
-    <a href="#" class="flex items-center justify-center transition-all duration-200"
-      style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
-      onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
-      onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
-      Одбери курс
-    </a>
+    <p class="mt-4 text-gray-600" style="font-family: 'Montserrat', sans-serif; font-size: 17px; max-width: 480px;">
+      Повеќе од училница – Lingua Link е заедница која те
+      води од првите зборови до самоуверена комуникација.
+    </p>
 
-    <!-- Одбери испит -->
-    <a href="{{route('exams.index')}}" class="flex items-center justify-center transition-all duration-200"
-      style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: linear-gradient(90deg, #194077, #194077); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
-      onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
-      onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
-      Одбери испит
-    </a>
-  </div>
-</div>
-<div class="overflow-hidden w-full py-10 mt-10">
-    <div class="animate-scroll" style="display: flex; width: max-content; align-items: center;">
-      
-      <!-- Set 1 -->
-      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+    <div class="flex gap-4 mt-8">
+      <!-- Одбери курс -->
+      <a href="#" class="flex items-center justify-center transition-all duration-200"
+        style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: rgba(229, 247, 255, 0.9); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
+        onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
+        onmouseout="this.style.background='rgba(229, 247, 255, 0.9)';">
+        Одбери курс
+      </a>
 
-      <!-- Set 2 -->
-      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-
-      <!-- Set 3 -->
-      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-
-      <!-- Set 4 -->
-      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
-  
+      <!-- Одбери испит -->
+      <a href="{{route('exams.index')}}" class="flex items-center justify-center transition-all duration-200"
+        style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
+        onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)';"
+        onmouseout="this.style.background='#194077';">
+        Одбери испит
+      </a>
     </div>
   </div>
-  
-  <style>
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-25%); }
-    }
-    .animate-scroll {
-      animation: scroll 18s linear infinite;
-    }
-    .animate-scroll:hover {
-      animation-play-state: paused;
-    }
-  </style>
+
+</div>
+
+<!-- Info Banner-->
+<div class="flex flex-col items-center justify-center mx-auto text-center" style="max-width: 620px; border-radius: 20px; background: white; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12); padding: 16px 40px; margin-top: 36px; margin-bottom: 36px; position: relative; z-index: 10;">
+  <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Административно работно време</p>
+  <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">Понеделник - четврток од 14.00 до 21.00 часот</p>
+</div> 
+
 
 <section class="w-full pt-8" style="background: #f8fbff;">
     <h2 class="text-center font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">Одбери курс</h2>
@@ -131,7 +99,48 @@
         </button>
       </form>
     </div>
+	<div class="overflow-hidden w-full py-10 mt-10">
+    <div class="animate-scroll" style="display: flex; width: max-content; align-items: center;">
+      
+      <!-- Set 1 -->
+      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
 
+      <!-- Set 2 -->
+      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+
+      <!-- Set 3 -->
+      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+
+      <!-- Set 4 -->
+      <img src="{{ asset('images/test4.png') }}" alt="telc" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test1.png') }}" alt="TestDaF" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test2.png') }}" alt="TestAS" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+      <img src="{{ asset('images/test3.png') }}" alt="onSET" style="height: 56px; width: 160px; object-fit: contain; margin-right: 96px;">
+  
+    </div>
+  </div>
+  
+  <style>
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-25%); }
+    }
+    .animate-scroll {
+      animation: scroll 18s linear infinite;
+    }
+    .animate-scroll:hover {
+      animation-play-state: paused;
+    }
+  </style>
     <section class="w-full py-16 px-24">
       <h2 class="font-black text-4xl uppercase mb-12 text-left" style="font-family: 'Jost', sans-serif;">Одбери испит</h2>
     
@@ -171,7 +180,7 @@
                   @if($exam->is_on_demand)
                     <span>Прв термин: <strong>Зависно од пријавата</strong></span>
                   @else
-                    <span>Прв термин: <strong>{{ $exam->first_exam_date ?? 'Наскоро' }}</strong></span>
+                  <span>Прв термин: <strong>{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : 'Наскоро' }}</strong></span>
                   @endif
                 </div>
                 <div class="mt-auto">
@@ -450,7 +459,7 @@
   </div>
 
 </section>
-  <section class="w-full py-24 flex items-center gap-16 px-24" style="background: #194077; min-height: 700px;">
+  <section class="w-full py-16 flex items-center gap-16 px-24" style="background: #194077; min-height: 625px;">
     <!-- Left: Title -->
     <div class="flex-shrink-0" style="width: 320px;">
       <h2 class="font-black text-5xl uppercase leading-tight text-white mb-6" style="font-family: 'Jost', sans-serif;">
@@ -467,50 +476,19 @@
     <div class="flex-1 relative" style="overflow: hidden;">
       <div id="testimonialCarousel" class="flex gap-6" style="scroll-behavior: smooth; overflow-x: hidden; padding-top: 60px; width: calc(2.5 * 340px + 2 * 24px);">
   
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4 relative" style="width: 340px; min-height: 380px; padding-top: 70px;">
-          <img src="{{ asset('images/user1.png') }}" alt="Avatar" class="absolute rounded-full object-cover" style="width: 100px; height: 100px; top: -50px; left: 50%; transform: translateX(-50%);">
-          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Марија Петковска</p>
-          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">студент</p>
-          <p class="text-gray-700 text-base text-center flex-1" style="font-family: 'Montserrat', sans-serif;">„Во LinguaLink за првпат стекнав самодоверба да зборувам англиски. Наставниците се супер и резултатите се веднаш видливи."</p>
-          <div class="flex justify-center gap-1 text-yellow-400 text-xl">★ ★ ★ ★ ★</div>
+        @foreach($testimonials as $testimonial)
+        <!-- Card -->
+        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4" style="width: 340px; min-height: 280px; justify-content: center;">
+          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">{{ $testimonial->name }}</p>
+          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">{{ $testimonial->role }}</p>
+          <p class="text-gray-700 text-base text-center flex-1 flex items-center justify-center mt-2" style="font-family: 'Montserrat', sans-serif;">„{{ $testimonial->message }}“</p>
+          <div class="flex justify-center gap-1 text-yellow-400 text-xl">
+            @for ($i = 0; $i < $testimonial->rating; $i++)
+              ★ 
+            @endfor
+          </div>
         </div>
-  
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4 relative" style="width: 340px; min-height: 380px; padding-top: 70px;">
-          <img src="{{ asset('images/user2.png') }}" alt="Avatar" class="absolute rounded-full object-cover" style="width: 100px; height: 100px; top: -50px; left: 50%; transform: translateX(-50%);">
-          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Иван Јовановски</p>
-          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">родител</p>
-          <p class="text-gray-700 text-base text-center flex-1" style="font-family: 'Montserrat', sans-serif;">„Моето дете со задоволство оди на часови во Lingua Link. За кратко време напредуваше многу и сега со самодоверба зборува на јазикот."</p>
-          <div class="flex justify-center gap-1 text-yellow-400 text-xl">★ ★ ★ ★ ★</div>
-        </div>
-  
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4 relative" style="width: 340px; min-height: 380px; padding-top: 70px;">
-          <img src="{{ asset('images/user3.png') }}" alt="Avatar" class="absolute rounded-full object-cover" style="width: 100px; height: 100px; top: -50px; left: 50%; transform: translateX(-50%);">
-          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Маја Иванова</p>
-          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">родител</p>
-          <p class="text-gray-700 text-base text-center flex-1" style="font-family: 'Montserrat', sans-serif;">„Мојата ќерка многу брзо почна да зборува со самодоверба благодарение на професорите во Lingua Link. Часовите се забавни и секогаш чека со радост."</p>
-          <div class="flex justify-center gap-1 text-yellow-400 text-xl">★ ★ ★ ★ ★</div>
-        </div>
-  
-        <!-- Card 4 -->
-        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4 relative" style="width: 340px; min-height: 380px; padding-top: 70px;">
-          <img src="{{ asset('images/user4.jpg') }}" alt="Avatar" class="absolute rounded-full object-cover" style="width: 100px; height: 100px; top: -50px; left: 50%; transform: translateX(-50%);">
-          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Александар Јованов</p>
-          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">ученик</p>
-          <p class="text-gray-700 text-base text-center flex-1" style="font-family: 'Montserrat', sans-serif;">„Kako тинејџер ми беше тешко да најдам мотивација за јазици, но овде часовите се динамични и интересни. Конечно чувствувам дека напредувам."</p>
-          <div class="flex justify-center gap-1 text-yellow-400 text-xl">★ ★ ★ ★ ★</div>
-        </div>
-  
-        <!-- Card 5 -->
-        <div class="bg-white rounded-2xl p-8 flex-shrink-0 flex flex-col gap-4 relative" style="width: 340px; min-height: 380px; padding-top: 70px;">
-          <img src="{{ asset('images/user5.jpg') }}" alt="Avatar" class="absolute rounded-full object-cover" style="width: 100px; height: 100px; top: -50px; left: 50%; transform: translateX(-50%);">
-          <p class="font-black text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Даниел Георгиев</p>
-          <p class="text-gray-500 text-sm text-center italic" style="font-family: 'Montserrat', sans-serif;">професионалец</p>
-          <p class="text-gray-700 text-base text-center flex-1" style="font-family: 'Montserrat', sans-serif;">„Lingua Link ми даде сигурност во деловниот англиски. Сега со самодоверба водам состаноци со странски партнери."</p>
-          <div class="flex justify-center gap-1 text-yellow-400 text-xl">★ ★ ★ ★ ★</div>
-        </div>
+        @endforeach
   
       </div>
   
