@@ -19,11 +19,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -73,6 +68,7 @@ Route::post('/set-personalizacija-session', function () {
 // Prijava ruti
 
 Route::post('/prijavi-se/{type}', [PrijavaController::class, 'store'])->name('prijava.store');
+
 
 //Testimonial ruta
 
