@@ -7,9 +7,9 @@ use App\Models\UserProfile;
 
 class PersonalizacijaController extends Controller
 {
-  public function step1() {
+public function step1() {
     if (auth()->user()->profile) {
-        $language = auth()->user()->profile->language;
+        $language = auth()->user()->profile->language; // now stored as slug
         return redirect('/courses/' . $language . '?preporachani=1');
     }
     return view('personalizacija.step1');

@@ -409,6 +409,30 @@
         document.body.style.overflow = '';
     }
 
+    function showTab(tab) {
+    const rec    = document.getElementById('panel-recommended');
+    const all    = document.getElementById('panel-all');
+    const tabRec = document.getElementById('tab-recommended');
+    const tabAll = document.getElementById('tab-all');
+    if (!rec || !all) return;
+
+    if (tab === 'recommended') {
+        rec.classList.remove('hidden');
+        all.classList.add('hidden');
+        tabRec.style.borderColor = '#194077';
+        tabRec.style.color = '#1f2937';
+        tabAll.style.borderColor = 'transparent';
+        tabAll.style.color = '#9ca3af';
+    } else {
+        all.classList.remove('hidden');
+        rec.classList.add('hidden');
+        tabAll.style.borderColor = '#194077';
+        tabAll.style.color = '#1f2937';
+        tabRec.style.borderColor = 'transparent';
+        tabRec.style.color = '#9ca3af';
+    }
+}
+
     document.getElementById('prijavaModal').addEventListener('click', function(e) {
         if (e.target === this) closePrijavaModal();
     });
