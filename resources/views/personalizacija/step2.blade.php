@@ -17,16 +17,22 @@
   <form method="POST" action="{{ route('personalizacija.save2') }}" class="w-full" style="max-width: 500px;">
     @csrf
     <div class="flex flex-col gap-4">
-      @foreach(['До 12 години', '13-17 години', '18-25 години', '26-35 години', '40+ години'] as $age)
-        <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
-          style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">
-          <span class="font-bold text-base" style="font-family: 'Montserrat', sans-serif;">{{ $age }}</span>
-          <input type="radio" name="age_group" value="{{ $age }}" class="hidden" onchange="this.closest('form').submit()">
-          <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center radio-circle" style="border-color: #d1d5db;">
-            <div class="w-3 h-3 rounded-full hidden radio-dot" style="background: white;"></div>
-          </div>
-        </label>
-      @endforeach
+  @foreach([
+    'до 12' => 'До 12 години',
+    '13-17'  => '13-17 години',
+    '18-25'  => '18-25 години',
+    '26-35'  => '26-35 години',
+    '40+'    => '40+ години',
+] as $value => $label)
+    <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
+      style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">
+      <span class="font-bold text-base" style="font-family: 'Montserrat', sans-serif;">{{ $label }}</span>
+      <input type="radio" name="age_group" value="{{ $value }}" class="hidden" onchange="this.closest('form').submit()">
+      <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center radio-circle" style="border-color: #d1d5db;">
+        <div class="w-3 h-3 rounded-full hidden radio-dot" style="background: white;"></div>
+      </div>
+    </label>
+@endforeach
     </div>
     @error('age_group')
       <p class="text-red-500 text-sm mt-4 text-center" style="font-family: 'Montserrat', sans-serif;">{{ $message }}</p>
