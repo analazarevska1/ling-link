@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<div class="w-full" style="background: url('{{ asset('images/hero-books.png') }}') center right / cover no-repeat; height: 673px; padding: 70px 80px 100px 140px; position: relative;">
+<div class="w-full hidden md:block" style="background: url('{{ asset('images/hero-books.png') }}') center right / cover no-repeat; height: 673px; padding: 70px 80px 100px 140px; position: relative;">
 
   <!-- Text Content - On top of background image -->
   <div class="flex flex-col mt-16" style="max-width: 620px;">
@@ -43,6 +43,39 @@
 
 </div>
 
+<!-- Mobile Hero Section -->
+<div class="flex flex-col md:hidden w-full bg-[#f8fbff]">
+  <img src="{{ asset('images/hero-books.png') }}" alt="LinguaLink" class="w-full h-auto">
+  
+  <div class="flex flex-col items-center text-center px-6 py-10">
+    <span class="px-5 py-1 rounded-full text-gray-600 text-xs mb-6" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
+      Добродојдовте на Lingua Link
+    </span>
+
+    <h1 class="uppercase mb-4" style="font-family: 'Jost', sans-serif; font-size: 42px; line-height: 1.1; font-weight: 900; color: #000;">
+      ТВОЈОТ ЛИНК<br>
+      ДО СВЕТОТ
+    </h1>
+
+    <p class="text-gray-600 text-sm mb-10" style="font-family: 'Montserrat', sans-serif; max-width: 320px;">
+      Повеќе од училница – Lingua Link е заедница која те 
+      води од првите зборови до самоуверена комуникација.
+    </p>
+
+    <div class="flex flex-col gap-4 w-full px-4">
+      <a href="#" class="flex items-center justify-center transition-all duration-200"
+        style="width: 100%; height: 50px; border-radius: 12px; background: rgba(229, 247, 255, 0.9); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+        Одбери курс
+      </a>
+
+      <a href="{{route('exams.index')}}" class="flex items-center justify-center transition-all duration-200"
+        style="width: 100%; height: 50px; border-radius: 12px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+        Одбери испит
+      </a>
+    </div>
+  </div>
+</div>
+
 <!-- Info Banner-->
 <div class="flex flex-col items-center justify-center mx-auto text-center" style="max-width: 620px; border-radius: 20px; background: white; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12); padding: 16px 40px; margin-top: 36px; margin-bottom: 36px; position: relative; z-index: 10;">
   <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Административно работно време</p>
@@ -53,7 +86,8 @@
 <section class="w-full pt-8" style="background: #f8fbff;">
     <h2 class="text-center font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">Одбери курс</h2>
   
-    <div class="flex justify-center gap-[60px] px-32">
+    {{-- DESKTOP LAYOUT (Perfect - Visible on MD and up) --}}
+    <div class="hidden md:flex justify-center gap-[60px] px-32 pb-12">
   
       <!-- Card 1 -->
       <a href="/courses/english" class="block" style="width: 244px; height: 88px; margin-top: 140px; position: relative;">
@@ -78,23 +112,57 @@
           <span class="font-bold text-base text-left" style="font-family: 'Montserrat', sans-serif;">Македонски јазик за странци</span>
         </div>
       </a>
-
-      
     </div>
 
-    <div class="flex flex-col items-center text-center py-10" style="background: #f8fbff;">
-      <p class="text-lg text-gray-700 mb-6" style="font-family: 'Montserrat', sans-serif;">
+    {{-- MOBILE LAYOUT: same floating flag design, stacked vertically --}}
+    <div class="flex flex-col items-center gap-16 px-8 md:hidden" style="margin-top: 100px; padding-bottom: 40px;">
+
+        <a href="/courses/english" class="block w-full" style="position: relative; max-width: 320px;">
+            <img src="{{ asset('images/flag-en.png') }}" alt="English" class="absolute object-contain z-10"
+                style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
+            <div class="bg-white rounded-2xl flex items-center justify-center"
+                style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
+                <span class="font-extrabold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Англиски
+                    јазик</span>
+            </div>
+        </a>
+
+        <a href="/courses/macedonian" class="block w-full" style="position: relative; max-width: 320px;">
+            <img src="{{ asset('images/flag-mk.png') }}" alt="Macedonian" class="absolute object-contain z-10"
+                style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
+            <div class="bg-white rounded-2xl flex items-center justify-center"
+                style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
+                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Македонски јазик
+                    за странци</span>
+            </div>
+        </a>
+
+        <a href="/courses/german" class="block w-full" style="position: relative; max-width: 320px;">
+            <img src="{{ asset('images/flag-de.png') }}" alt="German" class="absolute object-contain z-10"
+                style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
+            <div class="bg-white rounded-2xl flex items-center justify-center"
+                style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
+                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Германски
+                    јазик</span>
+            </div>
+        </a>
+
+    </div>
+
+    {{-- Common Recommendation Footer --}}
+    <div class="flex flex-col items-center text-center py-10 px-6" style="background: #f8fbff;">
+      <p class="text-base md:text-lg text-gray-700 mb-8" style="font-family: 'Montserrat', sans-serif;">
         Сакаш ние да ти <span style="font-style: italic;">препорачаме</span> курс<br>
         кој најмногу ке ти <a href="#" class="font-bold text-[#194077]">одговара</a>?
       </p>
     
-      <form method="POST" action="/set-personalizacija-session">
+      <form method="POST" action="/set-personalizacija-session" class="w-full flex justify-center">
         @csrf
         <button type="submit"
-          class="flex items-center justify-center transition-all duration-200"
-          style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded; "
-          onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
-          onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
+          class="flex items-center justify-center transition-all duration-200 w-full max-w-[340px] md:max-w-[160px]"
+          style="height: 52px; md:height: 40px; border-radius: 12px; md:border-radius: 10px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 16px; md:font-size: 14px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: none;"
+          onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)';"
+          onmouseout="this.style.background='#194077';">
           Започни сега
         </button>
       </form>
@@ -141,75 +209,158 @@
       animation-play-state: paused;
     }
   </style>
-    <section class="w-full py-16 px-24">
-      <h2 class="font-black text-4xl uppercase mb-12 text-left" style="font-family: 'Jost', sans-serif;">Одбери испит</h2>
-    
-      <div class="relative flex items-center justify-center">
-    
-        <button onclick="scrollExamCarousel(-1)" class="flex-shrink-0 hover:opacity-60 transition-opacity duration-200" style="margin-right: 40px;">
-          <svg width="30" height="52" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26 4L4 26L26 48" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-    
-        <div id="homeExamCarousel" class="flex overflow-hidden items-stretch" style="scroll-behavior: smooth; gap: 44px; width: calc(3 * 310px + 2 * 44px);">
-          @foreach($exams as $exam)
-            @php
-              $bgColor = $exam->is_featured ? '#194077' : 'white';
-              $textColor = $exam->is_featured ? 'text-white' : 'text-black';
-              $subtitleColor = $exam->is_featured ? 'opacity-90' : 'text-gray-600 italic';
-              $imageUrl = $exam->image && str_starts_with($exam->image, 'http')
-                ? $exam->image
-                : asset('images/default-exam.jpg');
-            @endphp
-            <a href="{{ route('exams.show', $exam) }}" class="flex flex-col rounded-2xl overflow-hidden flex-shrink-0 hover:shadow-xl transition-shadow duration-200" style="width: 310px; min-height: 458px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-              <img src="{{ $imageUrl }}" alt="{{ $exam->title }}" class="w-full object-cover" style="height: 240px;">
-              <div class="p-5 flex-1 flex flex-col {{ $textColor }}" style="background: {{ $bgColor }};">
-                <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->title }}</p>
-                <p class="text-sm mb-4 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->subtitle }}</p>
-                <div class="flex items-center gap-2 text-sm mb-2" style="font-family: 'Montserrat', sans-serif;">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                  </svg>
-                  <span>{{ $exam->what_for ?? 'Повеќе информации' }}</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm mb-4" style="font-family: 'Montserrat', sans-serif;">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                  </svg>
-                  @if($exam->is_on_demand)
-                    <span>Прв термин: <strong>Зависно од пријавата</strong></span>
-                  @else
-                  <span>Прв термин: <strong>{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : 'Наскоро' }}</strong></span>
-                  @endif
-                </div>
-                <div class="mt-auto">
-                  <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">Прочитај повеќе.</span>
-                </div>
-              </div>
-            </a>
-          @endforeach
+    <section class="w-full py-16 px-6 md:px-24">
+  <h2 class="font-black text-4xl uppercase mb-12 text-center md:text-left" style="font-family: 'Jost', sans-serif;">Одбери испит</h2>
+
+  {{-- DESKTOP CAROUSEL (Visible on MD and up) --}}
+  <div class="hidden md:flex relative items-center justify-center">
+
+    <button onclick="scrollExamCarousel(-1)" class="flex-shrink-0 hover:opacity-60 transition-opacity duration-200" style="margin-right: 40px;">
+      <svg width="30" height="52" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 4L4 26L26 48" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div id="homeExamCarousel" class="flex overflow-hidden items-stretch" style="scroll-behavior: smooth; gap: 44px; width: calc(3 * 310px + 2 * 44px);">
+      @foreach($exams as $exam)
+        @php
+          $bgColor = $exam->is_featured ? '#194077' : 'white';
+          $textColor = $exam->is_featured ? 'text-white' : 'text-black';
+          $subtitleColor = $exam->is_featured ? 'opacity-90' : 'text-gray-600 italic';
+          $imageUrl = $exam->image && str_starts_with($exam->image, 'http')
+            ? $exam->image
+            : asset('images/default-exam.jpg');
+        @endphp
+        <a href="{{ route('exams.show', $exam) }}" class="flex flex-col rounded-2xl overflow-hidden flex-shrink-0 hover:shadow-xl transition-shadow duration-200" style="width: 310px; min-height: 458px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+          <img src="{{ $imageUrl }}" alt="{{ $exam->title }}" class="w-full object-cover" style="height: 240px;">
+          <div class="p-5 flex-1 flex flex-col {{ $textColor }}" style="background: {{ $bgColor }};">
+            <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->title }}</p>
+            <p class="text-sm mb-4 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->subtitle }}</p>
+            <div class="flex items-center gap-2 text-sm mb-2" style="font-family: 'Montserrat', sans-serif;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+              <span>{{ $exam->what_for ?? 'Повеќе информации' }}</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm mb-4" style="font-family: 'Montserrat', sans-serif;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              @php
+                $soonestDateObj = $exam->examDates->where('exam_date', '>=', now())->sortBy('exam_date')->first();
+                if ($soonestDateObj) {
+                    $examDateFormatted = \Carbon\Carbon::parse($soonestDateObj->exam_date)->format('d.m.Y');
+                } elseif ($exam->first_exam_date && $exam->first_exam_date >= now()) {
+                    $examDateFormatted = \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y');
+                } else {
+                    $examDateFormatted = 'Наскоро';
+                }
+              @endphp
+
+              @if($exam->is_on_demand)
+                <span>Прв термин: <strong>Зависно од пријавата</strong></span>
+              @else
+              <span>Прв термин: <strong>{{ $examDateFormatted }}</strong></span>
+              @endif
+            </div>
+            <div class="mt-auto">
+              <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">Прочитај повеќе.</span>
+            </div>
+          </div>
+        </a>
+      @endforeach
+    </div>
+
+    <button onclick="scrollExamCarousel(1)" class="flex-shrink-0 hover:opacity-60 transition-opacity duration-200" style="margin-left: 40px;">
+      <svg width="30" height="52" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4L26 26L4 48" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+  </div>
+
+  {{-- MOBILE STACK (Visible only on Mobile - Below MD) --}}
+  <div class="md:hidden flex flex-col gap-6">
+    @foreach($exams->take(3) as $exam)
+      @php
+        $isFeatured = $exam->is_featured;
+        $bgColor = $isFeatured ? '#194077' : 'white';
+        $textColor = $isFeatured ? 'text-white' : 'text-black';
+        $subtitleColor = $isFeatured ? 'text-white opacity-80' : 'text-gray-500 font-medium';
+        
+        // Robust Level Range Logic
+        $levels = $exam->levels->pluck('level')->filter()->values();
+        if ($levels->count() > 1) {
+            $levelText = $levels->first() . '-' . $levels->last();
+        } elseif ($levels->count() === 1) {
+            $levelText = $levels->first();
+        } else {
+            $levelText = 'А1-Ц2';
+        }
+        
+        // Format Dynamic Date
+        $soonestMobileDateObj = $exam->examDates->where('exam_date', '>=', now())->sortBy('exam_date')->first();
+        if ($soonestMobileDateObj) {
+            $examDate = \Carbon\Carbon::parse($soonestMobileDateObj->exam_date)->format('d.m.Y');
+        } elseif ($exam->first_exam_date && $exam->first_exam_date >= now()) {
+            $examDate = \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y');
+        } else {
+            $examDate = 'Наскоро';
+        }
+
+        if ($exam->is_on_demand) {
+            $examDate = 'По договор';
+        }
+@endphp
+      <a href="{{ route('exams.show', $exam) }}" class="flex flex-col p-8 rounded-[32px] shadow-sm border border-gray-100 {{ $textColor }}" style="background: {{ $bgColor }};">
+        <p class="font-black text-xl mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->title }}</p>
+        <p class="text-sm mb-6 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->subtitle }}</p>
+        
+        <div class="flex flex-col gap-3">
+          <!-- Info Row: Levels or Tasks -->
+          <div class="flex items-center gap-3">
+            @if($exam->title === 'OnSET')
+              <span class="text-xl">?</span>
+              <span class="text-sm font-bold">20 задачи</span>
+            @else
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+              <span class="text-sm">Нивоа: <strong>{{ $levelText }}</strong></span>
+            @endif
+          </div>
+          
+          <!-- Info Row: Date -->
+          <div class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            <span class="text-sm">Прв термин за испит:<br><strong>{{ $examDate }}</strong></span>
+          </div>
         </div>
-    
-        <button onclick="scrollExamCarousel(1)" class="flex-shrink-0 hover:opacity-60 transition-opacity duration-200" style="margin-left: 40px;">
-          <svg width="30" height="52" viewBox="0 0 30 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4L26 26L4 48" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-    
-      </div>
-    </section>
-    
-    <script>
-      function scrollExamCarousel(direction) {
-        const carousel = document.getElementById('homeExamCarousel');
-        carousel.scrollBy({ left: direction * 354, behavior: 'smooth' });
-      }
-    </script>
+      </a>
+    @endforeach
+
+    <!-- "Види ги сите" Button -->
+    <a href="{{ route('exams.index') }}" class="mt-4 flex items-center justify-center py-5 rounded-[20px] font-bold text-[#194077] transition-all hover:bg-[#d6effa]" style="background: #e5f7ff; font-family: 'Montserrat', sans-serif;">
+      Види ги сите
+    </a>
+  </div>
+
+</section>
+
+<script>
+  function scrollExamCarousel(direction) {
+    const carousel = document.getElementById('homeExamCarousel');
+    if (carousel) {
+      carousel.scrollBy({ left: direction * 354, behavior: 'smooth' });
+    }
+  }
+</script>
 
 
 
-<div class="flex items-center justify-between px-8 mx-auto" style="width: 900px; height: 80px; border-radius: 20px; background: white; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); gap: 116px; margin-top: 32px; margin-bottom: 32px;">
+<div class="hidden md:flex items-center justify-between px-8 mx-auto" style="width: 900px; height: 80px; border-radius: 20px; background: white; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); gap: 116px; margin-top: 32px; margin-bottom: 32px;">
   <div class="text-left">
     <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Дали си подготвен да го докажеш своето знаење?</p>
     <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">Избери некој од нашите испити!</p>
@@ -227,15 +378,17 @@
 <section class="w-full py-16 px-16" style="background: white;">
   <h2 class="text-center font-black text-4xl uppercase mb-12" style="font-family: 'Jost', sans-serif;">Други услуги</h2>
 
-  <div class="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
     <!-- Card 1 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-aktivno-pasivno').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Потврди за активно и пасивно</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">За вработување или запишување на постдипломски студии</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Потврди за активно и пасивно</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">За вработување или запишување на постдипломски студии</p>
       <a href="#" onclick="document.getElementById('modal-aktivno-pasivno').classList.remove('hidden'); return false;"
-        class="flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
+        class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
@@ -249,17 +402,20 @@
     'description' => '
         <p class="mb-4"><strong>Потврдите за активно или пасивно</strong> познавање на јазик може да послужат за вработување, запишување на постдипломски студии, учество на семинари и сл.</p>
         <p class="mb-4">Тестирањето се закажува во <strong>ЛингваЛинк</strong> и по положениот тест, потврдата се издава на македонски јазик.</p>
-        <p><strong>На барање на кандидатот, потврдата може да се издаде и на странскиот јазик на кој се полага.</strong></p>
-    '
-])
+        <p><strong>На барање на кандидатот, потврда може да се издаде и на странскиот јазик на кој се полага.</strong></p>
+    ',
+    'description_mobile' => 'Потврдите за активно или пасивно познавање на јазик може да послужат за вработување, запишување на постдипломски студии, учество на семинари и сл.'
+    ])
 
     <!-- Card 2 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-cefr').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Потврда за ниво според CEFR</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">Заедничката европска референтна рамка за јазици</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Потврда за ниво според CEFR</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Заедничката европска референтна рамка за јазици.</p>
       <a href="#" onclick="document.getElementById('modal-cefr').classList.remove('hidden'); return false;"
-      class="flex items-center justify-center text-sm font-medium transition-all duration-200"
+      class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
@@ -273,15 +429,18 @@
           <p class="mb-4">LinguaLink издава потврди за јазично ниво според <strong>Заедничката европска референтна рамка (CEFR)</strong> — од А1 до С2.</p>
           <p class="mb-4">Оваа потврда е објективен доказ за степенот на познавање на јазикот и е често потребна при аплицирање за работа во странство, визи, студии или меѓународни програми.</p>
           <p><strong>Тестирањето опфаќа слушање, читање, пишување и говор, со детална проценка по секоја вештина.</strong></p>
-      '
+      ',
+      'description_mobile' => 'LinguaLink издава потврди за јазично ниво според Заедничката европска референтна рамка (CEFR) — од А1 до С2.'
   ])
     <!-- Card 3 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-institucii').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Тестирања потребни на институции</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">Тестирање според потребите на вашата организација</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Тестирања потребни на институции</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">За вработување или запишување на постдипломски студии</p>
       <a href="#" onclick="document.getElementById('modal-institucii').classList.remove('hidden'); return false;"
-      class="flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
+      class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
@@ -296,16 +455,19 @@
         <p class="mb-4">Нудиме прилагодени тестирања според потребите на компании, образовни установи и организации.</p>
         <p class="mb-4">Тестовите можат да бидат групни или индивидуални, на различни јазици, и се дизајнирани според специфичните цели на институцијата — вработување, интерна евалуација или професионален развој.</p>
         <p><strong>Резултатите се презентираат во детален извештај со препораки за понатамошна обука или сертификација.</strong></p>
-    '
-])
+    ',
+    'description_mobile' => 'Нудиме прилагодени тестирања според потребите на компании, институции и организации.'
+    ])
 
     <!-- Card 4 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-probni-testovi').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Пробни тестови (англиски и германски)</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">Запознавање со тежината, нивото и форматот на испитот.</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Пробни тестови (англиски и германски)</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Запознавање со тежината, нивото и форматот на испитот.</p>
       <a href="#" onclick="document.getElementById('modal-probni-testovi').classList.remove('hidden'); return false;"
-      class="flex items-center justify-center text-sm font-medium transition-all duration-200"
+      class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
@@ -319,16 +481,19 @@
         <p class="mb-4">Подгответ се самоуверено за полагање на официјални испити преку нашите <strong>пробни тестови</strong>.</p>
         <p class="mb-4">Тестовите се базирани на форматите на telc, TestDaF, LanguageCert и други меѓународни стандарди.</p>
         <p>Со нив ќе можеш да го процениш своето тековно ниво, да се запознаеш со типичните задачи и да научиш стратегии за подобро управување со времето. По тестирањето, добиваш <strong>детална повратна информација</strong> и <strong>индивидуални препораки</strong> од предавач.</p>
-    '
-])
+    ',
+    'description_mobile' => 'Подгответ се самоуверено за полагање на официјални испити преку нашите пробни тестови.'
+    ])
 
     <!-- Card 5 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-iznajmuvanje').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Други услуги</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Изнајмување на простории</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">Изведување испити, одржување семинари, предавања и сл.</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Изнајмување на простории</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Изведување испити, одржување семинари, предавања и сл.</p>
       <a href="#" onclick="document.getElementById('modal-iznajmuvanje').classList.remove('hidden'); return false;"
-      class="flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
+      class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
@@ -343,16 +508,19 @@
         <p class="mb-4">LinguaLink располага со современо опремени училници и тест-сали кои можат да се изнесуваат под наем за <strong>спроведување на испити, семинари, или деловни состаноци</strong>.</p>
         <p class="mb-4">Просториите се климатизирани, имаат стабилна интернет конекција, проектор, табла и удобен распоред за различен број учесници.</p>
         <p>Нашиот персонал обезбедува логистичка поддршка, техничка асистенција и прилагодување на распоредот според вашите потреби.</p>
-    '
-])
+    ',
+    'description_mobile' => 'LinguaLink располага со опремени училници и тест-сали кои можат да се изнајмуваат.'
+    ])
 
     <!-- Card 6 -->
-    <div class="bg-white flex flex-col gap-4 p-6 rounded-xl" style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden');" 
+      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
       <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Други услуги</span>
-      <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Комуникациски обуки</p>
-      <p class="text-gray-500 text-sm flex-1" style="font-family: 'Montserrat', sans-serif;">Развој на деловните комуникациски вештини во усна и писмена форма.</p>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Комуникациски обуки</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Развој на деловните комуникациски вештини во усна и писмена форма.</p>
       <a href="#" onclick="document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden'); return false;"
-      class="flex items-center justify-center text-sm font-medium transition-all duration-200"
+      class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); "
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
@@ -367,8 +535,9 @@
         <p class="mb-4">Со нашите обуки за деловна и професионална комуникација ќе го усовршите изразувањето во <strong>писмена</strong> и <strong>усна</strong> форма.</p>
         <p class="mb-4">Програмите опфаќаат: пишување професионални мејлови, презентациски вештини, водење состаноци, аргументирање, интервјуа и јавен настап.</p>
         <p>Овие обуки се погодни за компании, јавни институции и поединци кои сакаат да го унапредат својот <strong>професионален израз</strong> и <strong>меѓународна комуникација</strong>.</p>
-    '
-])
+    ',
+    'description_mobile' => 'Развој на деловните комуникациски вештини во усна и писмена форма.'
+    ])
 
   </div>
 

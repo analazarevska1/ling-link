@@ -12,7 +12,7 @@ class HomePageController extends Controller
     {
         // Fetch only active exams (and maybe just the featured ones for the carousel)
         $exams = Exam::where('is_active', true)
-            // ->where('is_featured', true) // Un-comment this if you only want featured exams!
+            ->with(['examDates', 'levels'])
             ->latest()
             ->get();
 

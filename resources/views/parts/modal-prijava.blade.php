@@ -1,63 +1,82 @@
-<div id="modal-{{ $id }}" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background: rgba(0,0,0,0.5);">
-    <div class="flex rounded-2xl overflow-hidden" style="width: 948px; height: 500px;">
+<div id="modal-{{ $id }}" class="fixed inset-0 flex items-center justify-center z-50 hidden px-4" style="background: rgba(0,0,0,0.5);">
+    <div class="bg-white md:bg-transparent rounded-[32px] md:rounded-2xl overflow-hidden shadow-2xl md:shadow-none flex flex-col md:flex-row w-full max-w-[450px] md:max-w-[948px] relative">
   
-      <!-- Left: Info -->
-      <div class="flex flex-col justify-center p-10 text-white" style="width: 430px; background: #194077;">
+      <!-- Close Button (Mobile Primary) -->
+      <button onclick="closeModal('modal-{{ $id }}')" class="md:hidden absolute top-6 right-6 text-2xl text-black hover:text-gray-700 z-50">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <!-- Left: Info (Desktop Only) -->
+      <div class="hidden md:flex flex-col justify-center p-10 text-white" style="width: 430px; background: #194077; min-height: 500px;">
         <h2 class="font-black text-3xl uppercase mb-6" style="font-family: 'Jost', sans-serif;">{{ $title }}</h2>
         <div style="font-family: 'Montserrat', sans-serif; font-size: 14px;">
           {!! $description !!}
         </div>
       </div>
   
-      <!-- Right: Form -->
-      <div class="flex flex-col justify-center p-10 bg-white relative" style="width: 518px;">
+      <!-- Right: Content (Mobile Form) -->
+      <div class="flex flex-col justify-center p-8 md:p-10 bg-white relative w-full md:w-[518px]">
   
-        <button onclick="closeModal('modal-{{ $id }}')" class="absolute top-4 right-4 text-2xl text-gray-400 hover:text-gray-700">&times;</button>
+        <!-- Desktop Close Button -->
+        <button onclick="closeModal('modal-{{ $id }}')" class="hidden md:block absolute top-4 right-4 text-2xl text-gray-400 hover:text-gray-700">&times;</button>
   
-        <h3 class="font-black text-2xl text-center uppercase mb-6" style="font-family: 'Jost', sans-serif;">ФОРМА ЗА ПРИЈАВУВАЊЕ</h3>
+        <!-- Mobile Header (Title + Description) -->
+        <div class="md:hidden flex flex-col items-center text-center mb-8">
+            <h2 class="text-[#194077] font-black text-2xl uppercase mb-4 text-center leading-tight" style="font-family: 'Jost', sans-serif;">{{ $title }}</h2>
+            <div class="text-xs text-gray-600 leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                {!! $description_mobile ?? $description !!}
+            </div>
+        </div>
+
+        <h3 class="hidden md:block font-black text-2xl text-center uppercase mb-6" style="font-family: 'Jost', sans-serif;">ФОРМА ЗА ПРИЈАВУВАЊЕ</h3>
   
-        
-  
-        <form method="POST" action="{{ route('prijava.store', $id) }}">
+        <form method="POST" action="{{ route('prijava.store', $id) }}" class="flex flex-col gap-4">
           @csrf
   
-          <div class="flex gap-4 mb-4">
+          <!-- Field Group: Name & Phone -->
+          <div class="flex flex-col md:flex-row gap-4">
             <div class="flex-1">
-              <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашето име и презиме</label>
+              <label class="block text-xs font-bold mb-2 text-gray-700 md:text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашето име и презиме</label>
               <input type="text" name="name" placeholder="пр.Маја Иванова" required
-                class="w-full px-4 py-2 rounded-xl border text-sm outline-none"
-                style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
-                onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'">
+                class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
+                style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
+                onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
+                onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0px 2px 4px rgba(0,0,0,0.02)'">
             </div>
             <div class="flex-1">
-              <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашиот телефонски број</label>
+              <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашиот телефонски број</label>
               <input type="text" name="phone" placeholder="пр.07* *** ***" required
-                class="w-full px-4 py-2 rounded-xl border text-sm outline-none"
-                style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
-                onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'">
+                class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
+                style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
+                onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
+                onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0px 2px 4px rgba(0,0,0,0.02)'">
             </div>
           </div>
   
-          <div class="mb-4">
-            <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашата е-меил адреса</label>
+          <!-- Field: Email -->
+          <div>
+            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашата е-меил адреса</label>
             <input type="email" name="email" placeholder="пр. majaivanova@gmail.com" required
-              class="w-full px-4 py-2 rounded-xl border text-sm outline-none"
-              style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
-              onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'">
+              class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
+              style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
+              onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
+              onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0px 2px 4px rgba(0,0,0,0.02)'">
           </div>
   
-          <div class="mb-6">
-            <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Порака</label>
-            <textarea name="message" placeholder='пр. "Сакам да се пријавам за активно и пасивно."' rows="3"
-              class="w-full px-4 py-2 rounded-xl border text-sm outline-none resize-none"
-              style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
-              onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
+          <!-- Field: Message -->
+          <div>
+            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Порака</label>
+            <textarea name="message" placeholder='пр. "Сакам да се пријавам за потврда за активно и пасивно"' rows="4"
+              class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none resize-none transition-all"
+              style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
+              onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
+              onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0px 2px 4px rgba(0,0,0,0.02)'"></textarea>
           </div>
   
-          <button type="submit" class="w-full py-3 text-white font-bold rounded-xl transition-all duration-200"
-            style="background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif;"
-            onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'"
-            onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'">
+          <button type="submit" class="w-full py-4 md:py-3 text-white font-bold rounded-2xl md:rounded-xl shadow-lg transition-all duration-300 transform active:scale-[0.98]"
+            style="background: #194077; font-family: 'Montserrat', sans-serif;"
+            onmouseover="this.style.background='#0d2345'"
+            onmouseout="this.style.background='#194077'">
             Пријави се
           </button>
         </form>
