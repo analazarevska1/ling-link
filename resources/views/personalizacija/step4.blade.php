@@ -18,16 +18,21 @@
   <form method="POST" action="{{ route('personalizacija.store') }}" class="w-full" style="max-width: 500px;">
     @csrf
     <div class="flex flex-col gap-4">
-      @foreach(['Почетно ниво (А1-А2)', 'Средно ниво (Б1-Б2)', 'Напредно ниво (Ц1-Ц2)', 'Не сум сигурен/на'] as $lvl)
-        <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
-          style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">
-          <span class="font-bold text-base" style="font-family: 'Montserrat', sans-serif;">{{ $lvl }}</span>
-          <input type="radio" name="level" value="{{ $lvl }}" class="hidden" onchange="this.closest('form').submit()">
-          <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center radio-circle" style="border-color: #d1d5db;">
-            <div class="w-3 h-3 rounded-full hidden radio-dot" style="background: white;"></div>
-          </div>
-        </label>
-      @endforeach
+@foreach([
+    'A1-A2'  => 'Почетно ниво (А1-А2)',
+    'B1-B2'  => 'Средно ниво (Б1-Б2)',
+    'C1-C2'  => 'Напредно ниво (Ц1-Ц2)',
+    'unsure' => 'Не сум сигурен/на',
+] as $value => $label)
+    <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
+      style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">
+      <span class="font-bold text-base" style="font-family: 'Montserrat', sans-serif;">{{ $label }}</span>
+      <input type="radio" name="level" value="{{ $value }}" class="hidden" onchange="this.closest('form').submit()">
+      <div class="w-6 h-6 rounded-full border-2 flex items-center justify-center radio-circle" style="border-color: #d1d5db;">
+        <div class="w-3 h-3 rounded-full hidden radio-dot" style="background: white;"></div>
+      </div>
+    </label>
+@endforeach
     </div>
     @error('level')
       <p class="text-red-500 text-sm mt-4 text-center" style="font-family: 'Montserrat', sans-serif;">{{ $message }}</p>
