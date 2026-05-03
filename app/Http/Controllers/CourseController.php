@@ -139,35 +139,35 @@ class CourseController extends Controller
     /**
      * Language configuration
      */
-    private function languageConfig(): array
-    {
-        return [
-            'english' => [
-                'title'      => 'КУРСЕВИ ПО АНГЛИСКИ ЈАЗИК',
-                'categories' => [
-                    'children'    => 'Курсеви за деца и средношколци',
-                    'adults'      => 'Курсеви за возрасни',
-                    'specialized' => 'Специјализирани курсеви',
-                ],
+   private function languageConfig(): array
+{
+    return [
+        'english' => [
+            'title'      => app()->getLocale() === 'en' ? 'ENGLISH COURSES' : 'КУРСЕВИ ПО АНГЛИСКИ ЈАЗИК',
+            'categories' => [
+                'children'    => app()->getLocale() === 'en' ? 'Courses for children and teens' : 'Курсеви за деца и средношколци',
+                'adults'      => app()->getLocale() === 'en' ? 'Courses for adults'              : 'Курсеви за возрасни',
+                'specialized' => app()->getLocale() === 'en' ? 'Specialized courses'             : 'Специјализирани курсеви',
             ],
-            'german' => [
-                'title'      => 'КУРСЕВИ ПО ГЕРМАНСКИ ЈАЗИК',
-                'categories' => [
-                    'children'    => 'Курсеви за деца и средношколци',
-                    'regular'     => 'Редовни курсеви за возрасни',
-                    'intensive'   => 'Суперинтензивни курсеви за возрасни',
-                    'specialized' => 'Специјализирани курсеви',
-                ],
+        ],
+        'german' => [
+            'title'      => app()->getLocale() === 'en' ? 'GERMAN COURSES' : 'КУРСЕВИ ПО ГЕРМАНСКИ ЈАЗИК',
+            'categories' => [
+                'children'    => app()->getLocale() === 'en' ? 'Courses for children and teens'      : 'Курсеви за деца и средношколци',
+                'regular'     => app()->getLocale() === 'en' ? 'Regular courses for adults'          : 'Редовни курсеви за возрасни',
+                'intensive'   => app()->getLocale() === 'en' ? 'Super intensive courses for adults'  : 'Суперинтензивни курсеви за возрасни',
+                'specialized' => app()->getLocale() === 'en' ? 'Specialized courses'                 : 'Специјализирани курсеви',
             ],
-            'macedonian' => [
-                'title'      => 'КУРСЕВИ ПО МАКЕДОНСКИ ЈАЗИК ЗА СТРАНЦИ',
-                'categories' => [
-                    'children'   => 'Курсеви за деца и возрасни',
-                    'individual' => 'Индивидуални курсеви',
-                ],
+        ],
+        'macedonian' => [
+            'title'      => app()->getLocale() === 'en' ? 'MACEDONIAN COURSES FOR FOREIGNERS' : 'КУРСЕВИ ПО МАКЕДОНСКИ ЈАЗИК ЗА СТРАНЦИ',
+            'categories' => [
+                'children'   => app()->getLocale() === 'en' ? 'Courses for children and adults' : 'Курсеви за деца и возрасни',
+                'individual' => app()->getLocale() === 'en' ? 'Individual courses'              : 'Индивидуални курсеви',
             ],
-        ];
-    }
+        ],
+    ];
+}
 
     /**
      * Maps quiz age_group answer to a course category slug
