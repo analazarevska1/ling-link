@@ -230,6 +230,21 @@
           $imageUrl = $exam->image && str_starts_with($exam->image, 'http')
             ? $exam->image
             : asset('images/default-exam.jpg');
+            
+          $levelsDesktop = $exam->levels->pluck('level')->filter()->values();
+          if ($levelsDesktop->count() > 1) {
+              $f = $levelsDesktop->first();
+              $l = $levelsDesktop->last();
+              if (preg_match('/^([A-ZА-Шa-zа-ш][1-2])/u', $f, $fm) && preg_match('/([A-ZА-Шa-zа-ш][1-2])$/u', $l, $lm)) {
+                  $levelDesktopText = mb_strtoupper($fm[1]) . '-' . mb_strtoupper($lm[1]);
+              } else {
+                  $levelDesktopText = $f . ' до ' . $l;
+              }
+          } elseif ($levelsDesktop->count() === 1) {
+              $levelDesktopText = $levelsDesktop->first();
+          } else {
+              $levelDesktopText = $exam->what_for ?: 'Сите нивоа';
+          }
         @endphp
         <a href="{{ route('exams.show', $exam) }}" class="flex flex-col rounded-2xl overflow-hidden flex-shrink-0 hover:shadow-xl transition-shadow duration-200" style="width: 310px; min-height: 458px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
           <img src="{{ $imageUrl }}" alt="{{ $exam->title }}" class="w-full object-cover" style="height: 240px;">
@@ -240,7 +255,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
               </svg>
-              <span>{{ $exam->what_for ?? 'Повеќе информации' }}</span>
+              <span>Нивоа: <strong>{{ $levelDesktopText }}</strong></span>
             </div>
             <div class="flex items-center gap-2 text-sm mb-4" style="font-family: 'Montserrat', sans-serif;">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -291,11 +306,17 @@
         // Robust Level Range Logic
         $levels = $exam->levels->pluck('level')->filter()->values();
         if ($levels->count() > 1) {
-            $levelText = $levels->first() . '-' . $levels->last();
+            $f = $levels->first();
+            $l = $levels->last();
+            if (preg_match('/^([A-ZА-Шa-zа-ш][1-2])/u', $f, $fm) && preg_match('/([A-ZА-Шa-zа-ш][1-2])$/u', $l, $lm)) {
+                $levelText = mb_strtoupper($fm[1]) . '-' . mb_strtoupper($lm[1]);
+            } else {
+                $levelText = $f . ' до ' . $l;
+            }
         } elseif ($levels->count() === 1) {
             $levelText = $levels->first();
         } else {
-            $levelText = 'А1-Ц2';
+            $levelText = $exam->what_for ?: 'Сите нивоа';
         }
         
         // Format Dynamic Date
@@ -555,16 +576,16 @@
 </section>
 
 
-<section class="w-full py-16 px-24">
+<section class="w-full py-16 px-6 md:px-24">
 
   <!-- Title -->
-  <h2 class="text-center font-black text-5xl uppercase leading-tight mb-12" style="font-family: 'Jost', sans-serif;">
+  <h2 class="text-center font-black text-3xl md:text-5xl uppercase leading-tight mb-8 md:mb-12" style="font-family: 'Jost', sans-serif;">
     НАШАТА <span style="font-weight: 500; font-style: italic;">РАБОТА</span><br>
     ЗБОРУВА ЗА <span style="color: #194077;">НАС</span>
   </h2>
 
-  <!-- Stats - 1282px wide, gap 46px, each 240x149 -->
-  <div class="flex justify-center mb-12" style="gap: 46px;">
+  <!-- Stats - Desktop: horizontal row, Mobile: 2x2 grid -->
+  <div class="hidden md:flex justify-center mb-12" style="gap: 46px;">
     <div class="flex-shrink-0 flex flex-col items-center justify-center text-white" style="width: 240px; height: 149px; background: #194077; border-radius: 60px 16px 16px 16px;">
       <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
       <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">задоволни<br>студенти</p>
@@ -583,8 +604,28 @@
     </div>
   </div>
 
-  <!-- Image + Points -->
-  <div class="flex justify-center gap-12">
+  <!-- Stats - Mobile: 2x2 grid -->
+  <div class="grid grid-cols-2 gap-3 mb-8 md:hidden">
+    <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 40px 16px 16px 16px;">
+      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">задоволни<br>студенти</p>
+    </div>
+    <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #a8dff0;">
+      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">10+</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">години<br>искуство</p>
+    </div>
+    <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #d6eef8;">
+      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">15+</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">сертификати и<br>акредитации</p>
+    </div>
+    <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 16px 40px 16px 16px;">
+      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">20+</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">професионални<br>наставници</p>
+    </div>
+  </div>
+
+  <!-- Image + Points - Desktop: side by side, Mobile: stacked -->
+  <div class="hidden md:flex justify-center gap-12">
 
     <!-- Left: Image -->
     <div class="flex-shrink-0">
@@ -627,8 +668,53 @@
     </div>
   </div>
 
+  <!-- Mobile: Image + Points stacked -->
+  <div class="flex flex-col md:hidden">
+    
+    <!-- Image - full width -->
+    <div class="mb-8">
+      <img src="{{ asset('images/homepage-ppl.jpg') }}" alt="Class" class="rounded-2xl object-cover w-full" style="height: 220px;">
+    </div>
+
+    <!-- Points -->
+    <div class="flex flex-col gap-6">
+
+      <!-- Point 1 -->
+      <div class="flex items-start gap-4">
+        <svg class="flex-shrink-0 mt-1" width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
+          <strong>Модерно јазично училиште</strong> – со фокус на практична комуникација и реални ситуации.
+        </p>
+      </div>
+
+      <!-- Point 2 -->
+      <div class="flex items-start gap-4">
+        <svg class="flex-shrink-0 mt-1" width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#84CDF1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
+          <strong>Гаранција за квалитет</strong> – ЛингваЛинк го гарантира квалитетот во јазичното подучување преку висококвалитетни наставни и образовни стандарди
+        </p>
+      </div>
+
+      <!-- Point 3 -->
+      <div class="flex items-start gap-4">
+        <svg class="flex-shrink-0 mt-1" width="50" height="28" viewBox="0 0 50 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
+          <strong>Флексибилни формати на настава</strong> – индивидуални, групни и онлајн часови според твоите потреби.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
 </section>
-  <section class="w-full py-16 flex items-center gap-16 px-24" style="background: #194077; min-height: 625px;">
+  <!-- DESKTOP Testimonials (md and up) -->
+  <section class="w-full py-16 hidden md:flex items-center gap-16 px-24" style="background: #194077; min-height: 625px;">
     <!-- Left: Title -->
     <div class="flex-shrink-0" style="width: 320px;">
       <h2 class="font-black text-5xl uppercase leading-tight text-white mb-6" style="font-family: 'Jost', sans-serif;">
@@ -638,7 +724,6 @@
         Прочитај ги тестимониалите оставени од нашите верни клиенти. Сакаш да напишеш свој тестимониал?
       </p>
       <a href="#" onclick="document.getElementById('modal-testimonial').classList.remove('hidden'); return false;" class="text-white font-bold underline text-sm" style="font-family: 'Montserrat', sans-serif;">притисни овде.</a>
-      @include('parts.modal-testimonial')
     </div>
   
     <!-- Right: Carousel -->
@@ -662,62 +747,153 @@
       </div>
   
             <!-- Scroll bar -->
-            <!-- Scroll bar -->
       <div class="mt-6 flex justify-center">
         <div class="rounded-full" style="height: 7px; background: rgba(255,255,255,0.3); width: 40%;">
           <div id="scrollIndicator" class="rounded-full" style="height: 7px; background: white; width: 30%; transition: margin-left 0.2s;"></div>
         </div>
       </div>
-  
+    </div>
   </section>
+
+  <!-- MOBILE Testimonials (below md) -->
+  <section class="w-full md:hidden flex flex-col items-center text-center px-6 py-14" style="background: #194077;">
+    
+    <!-- Title -->
+    <h2 class="font-black text-3xl uppercase leading-tight text-white mb-4" style="font-family: 'Jost', sans-serif;">
+      СЛУШНЕТЕ ПОВЕЌЕ<br>ОД НАШИТЕ КЛИЕНТИ
+    </h2>
+    <p class="text-white text-sm mb-10" style="font-family: 'Montserrat', sans-serif; opacity: 0.85; max-width: 280px; line-height: 1.6;">
+      Прочитај ги тестимониалите оставени од нашите верни клиенти.
+    </p>
+
+    <!-- Card Carousel -->
+    <div class="relative w-full flex items-center justify-center px-2">
+
+      <!-- Prev Arrow -->
+      <button onclick="scrollMobileTestimonial(-1)" class="absolute z-10 flex items-center justify-center bg-white rounded-full shadow-md" style="left: 0px; width: 36px; height: 36px; border: none; cursor: pointer;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <!-- Next Arrow -->
+      <button onclick="scrollMobileTestimonial(1)" class="absolute z-10 flex items-center justify-center bg-white rounded-full shadow-md" style="right: 0px; width: 36px; height: 36px; border: none; cursor: pointer;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <!-- Cards Container -->
+      <div id="mobileTestimonialCarousel" class="overflow-hidden w-full max-w-[270px]">
+        <div id="mobileTestimonialTrack" class="flex transition-transform duration-300 ease-in-out">
+          @foreach($testimonials as $index => $testimonial)
+          <div class="w-full flex-shrink-0 flex justify-center px-2">
+            <div class="bg-white p-6 flex flex-col items-center gap-2 w-full" style="min-height: 220px; border-radius: 20px;">
+              <p class="font-black text-[16px] text-center text-[#194077] mt-2" style="font-family: 'Montserrat', sans-serif;">{{ $testimonial->name }}</p>
+              <p class="text-[12px] text-center italic text-[#194077] opacity-80" style="font-family: 'Montserrat', sans-serif;">{{ $testimonial->role }}</p>
+              <p class="text-[#194077] text-[13px] text-center mt-2 mb-2 flex-1 flex items-center justify-center" style="font-family: 'Montserrat', sans-serif; line-height: 1.5;">
+                „{{ $testimonial->message }}“
+              </p>
+              <div class="flex justify-center gap-1 text-[#FBBF24] text-xl">
+                @for ($i = 0; $i < $testimonial->rating; $i++)
+                  ★
+                @endfor
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+
+    <!-- "Напиши тестимониал" Button -->
+    <button type="button" onclick="document.getElementById('modal-testimonial').classList.remove('hidden');"
+      class="mt-12 flex items-center justify-center w-full font-medium transition-all duration-200"
+      style="max-width: 300px; height: 50px; border-radius: 25px; background: #E0F2FE; color: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px; border: none; cursor: pointer;">
+      Напиши тестимониал
+    </button>
+  </section>
+
+  <!-- Global Modal Include -->
+  @include('parts.modal-testimonial')
   
   <script>
+    // Desktop carousel
     const carousel = document.getElementById('testimonialCarousel');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-  
-    carousel.addEventListener('mousedown', (e) => {
-      isDown = true;
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-      carousel.style.cursor = 'grabbing';
-    });
-  
-    carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
-    carousel.addEventListener('mouseup', () => { isDown = false; carousel.style.cursor = 'grab'; });
-    carousel.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 2;
-      carousel.scrollLeft = scrollLeft - walk;
-    });
-  
-    carousel.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-    });
-    carousel.addEventListener('touchmove', (e) => {
-      const x = e.touches[0].pageX - carousel.offsetLeft;
-      carousel.scrollLeft = scrollLeft - (x - startX);
-    });
-  
-    carousel.addEventListener('scroll', () => {
-      const indicator = document.getElementById('scrollIndicator');
-      const scrollPercent = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
-      indicator.style.marginLeft = (scrollPercent * 70) + '%';
-    });
-  
-    carousel.style.cursor = 'grab';
-    carousel.style.overflowX = 'scroll';
-    carousel.style.scrollbarWidth = 'none';
+    if (carousel) {
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+    
+      carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+        carousel.style.cursor = 'grabbing';
+      });
+    
+      carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
+      carousel.addEventListener('mouseup', () => { isDown = false; carousel.style.cursor = 'grab'; });
+      carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+    
+      carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+      });
+      carousel.addEventListener('touchmove', (e) => {
+        const x = e.touches[0].pageX - carousel.offsetLeft;
+        carousel.scrollLeft = scrollLeft - (x - startX);
+      });
+    
+      carousel.addEventListener('scroll', () => {
+        const indicator = document.getElementById('scrollIndicator');
+        if (indicator) {
+            const scrollPercent = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
+            indicator.style.marginLeft = (scrollPercent * 70) + '%';
+        }
+      });
+    
+      carousel.style.cursor = 'grab';
+      carousel.style.overflowX = 'scroll';
+      carousel.style.scrollbarWidth = 'none';
+    }
+
+    // Mobile testimonial carousel
+    let mobileTestimonialIndex = 0;
+    const mobileTestimonialTrack = document.getElementById('mobileTestimonialTrack');
+    const mobileTestimonialTotal = mobileTestimonialTrack ? mobileTestimonialTrack.children.length : 0;
+
+    function scrollMobileTestimonial(direction) {
+      if (!mobileTestimonialTrack || mobileTestimonialTotal === 0) return;
+      mobileTestimonialIndex += direction;
+      
+      if (mobileTestimonialIndex < 0) mobileTestimonialIndex = mobileTestimonialTotal - 1;
+      if (mobileTestimonialIndex >= mobileTestimonialTotal) mobileTestimonialIndex = 0;
+      
+      mobileTestimonialTrack.style.transform = `translateX(-${mobileTestimonialIndex * 100}%)`;
+    }
+
+    // Touch swipe for mobile testimonials
+    if (mobileTestimonialTrack) {
+      let mtStartX = 0;
+      mobileTestimonialTrack.addEventListener('touchstart', (e) => {
+        mtStartX = e.touches[0].clientX;
+      });
+      mobileTestimonialTrack.addEventListener('touchend', (e) => {
+        const diff = mtStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          scrollMobileTestimonial(diff > 0 ? 1 : -1);
+        }
+      });
+    }
   </script>
 
 
    @include('parts.faq')
 
-   <section class="w-full py-24 relative overflow-hidden text-center" style="background: #f0f9ff; min-height: 650px;">
+   <section class="w-full hidden md:block py-24 relative overflow-hidden text-center" style="background: #f0f9ff; min-height: 650px;">
 
     <!-- LEFT SIDE -->
     <!-- Magnifier: top-left, rotated clockwise ~10deg -->

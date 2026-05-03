@@ -1,16 +1,17 @@
 @extends('parts.main')
 
 @section('content')
-<section class="w-full flex justify-center py-8 px-6 bg-white">
-    <div class="w-full flex flex-row items-center"
+<section class="w-full flex justify-center py-6 md:py-8 px-4 md:px-6 bg-[#F9FBFC] md:bg-white">
+
+    <!-- DESKTOP TOP SECTION -->
+    <div class="hidden md:flex flex-row items-center w-full bg-white"
         style="
-            width: 1280px;
+            max-width: 1280px;
             min-height: 505px;
             border-radius: 10px;
             padding: 34px 60px;
             gap: 40px;
             box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);
-            background: #fff;
         ">
 
         {{-- Left: Text Content --}}
@@ -102,8 +103,88 @@
                 class="object-cover"
                 style="width: 420px; height: 437px; border-radius: 20px;">
         </div>
-
     </div>
+
+    <!-- MOBILE TOP SECTION -->
+    <div class="md:hidden flex flex-col items-center w-full max-w-[500px] mx-auto">
+         <div class="w-full bg-white rounded-[24px] p-6 mb-8 flex flex-col gap-6" style="box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.04);">
+              <div class="flex flex-col">
+                  <h1 class="font-black text-[#194077] uppercase text-[22px] leading-tight" style="font-family: 'Montserrat', sans-serif;">
+                      {{ $exam->title }}
+                  </h1>
+                  @if($exam->subtitle)
+                  <h2 class="uppercase italic text-[#111827] text-[15px] mt-1 line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
+                      {{ $exam->subtitle }}
+                  </h2>
+                  @endif
+              </div>
+              
+              <p class="text-gray-600 text-[13px] leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  {{ $exam->description }}
+              </p>
+
+              <div class="flex flex-col gap-5">
+                  @if($exam->where_recognized)
+                  <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0 rounded-full flex items-center justify-center text-white" style="width: 42px; height: 42px; background-color: #194077;">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                      </div>
+                      <div class="flex flex-col justify-center">
+                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">Каде е признаен?</p>
+                          <p class="text-gray-600 leading-snug mt-1 text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ $exam->where_recognized }}</p>
+                      </div>
+                  </div>
+                  @endif
+
+                  @if($exam->what_for)
+                  <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0 rounded-full flex items-center justify-center text-white" style="width: 42px; height: 42px; background-color: #194077;">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/>
+                          </svg>
+                      </div>
+                      <div class="flex flex-col justify-center">
+                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">За што е потребен?</p>
+                          <p class="text-gray-600 leading-snug mt-1 text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ $exam->what_for }}</p>
+                      </div>
+                  </div>
+                  @endif
+              </div>
+
+              @php
+                  $firstDate = $exam->examDates->first();
+              @endphp
+
+              @if(!$exam->is_on_demand && $firstDate)
+              <div class="pt-2">
+                  <p class="text-[#111827] text-[13px] mb-2" style="font-family: 'Montserrat', sans-serif;">
+                      Прв термин за полагање на испит:<br>
+                      <strong>{{ \Carbon\Carbon::parse($firstDate->exam_date)->format('d.m.Y') }}</strong>
+                  </p>
+                  <a href="#termini" class="font-bold underline text-[#111827] hover:text-[#194077] transition-colors text-[13px]" style="font-family: 'Montserrat', sans-serif;">
+                      Види ги сите термини.
+                  </a>
+              </div>
+              @elseif($exam->is_on_demand)
+              <div class="pt-2">
+                  <p class="text-[#111827] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
+                      Овој испит се полага по барање.
+                  </p>
+              </div>
+              @endif
+         </div>
+
+         <button
+             class="w-full text-white font-bold transition-all duration-200 shadow-md"
+             style="height: 54px; border-radius: 40px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
+             onmouseover="this.style.background='#020C1B';"
+             onmouseout="this.style.background='#194077';">
+             Пријави се
+         </button>
+    </div>
+
 </section>
 
 {{-- Dynamic Info Cards Section --}}
@@ -159,22 +240,22 @@
     @endif
 @endif
 
-<section class="w-full py-16 bg-white">
-    <div class="mx-auto" style="width: 1280px;">
+<section class="w-full py-10 md:py-16 bg-[#F9FBFC] md:bg-white">
+    <div class="mx-auto w-full max-w-[1280px] px-6 xl:px-0">
         
         {{-- Section Header --}}
-        <div class="text-center mb-12">
-            <h2 class="font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">
-                СТРУКТУРА НА ИСПИТОТ
+        <div class="text-left md:text-center mb-8 md:mb-12 px-2 xl:px-0">
+            <h2 class="font-black text-[22px] md:text-4xl uppercase mb-3 md:mb-4 text-[#111827]" style="font-family: 'Jost', sans-serif;">
+                СТРУКТУРА<br class="block md:hidden"> НА ИСПИТОТ
             </h2>
-            <p class="text-gray-600 text-sm" style="font-family: 'Montserrat', sans-serif;">
-                Сакате да дознаете повеќе од официјалната страна на {{ $exam->title }}?<br>
-                <a href="{{ $exam->official_site_url }}" target="_blank" class="font-bold underline text-black">Кликнете овде.</a>
+            <p class="text-gray-600 text-[13px] md:text-sm leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                Сакате да дознаете повеќе од официјалната страна на {{ $exam->title }}?<br class="hidden md:block">
+                <a href="{{ $exam->official_site_url }}" target="_blank" class="font-bold underline text-[#111827]">Кликнете овде.</a>
             </p>
         </div>
 
         {{-- Centered Flex Container --}}
-        <div class="flex flex-wrap justify-center gap-6">
+        <div class="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap justify-center gap-4 md:gap-6">
             @foreach($exam->structureParts as $structure)
                 @php
                     $iconMap = [
@@ -189,30 +270,22 @@
                     $iconData = $iconMap[$key] ?? ['img' => 'Vector.png', 'bg' => '#194077'];
                 @endphp
 
-                {{-- We set a specific width (302px) so 4 cards + gaps = 1280px --}}
-                <div class="bg-white flex flex-col gap-4 shadow-sm"
-                     style="
-                        width: 302px; 
-                        border-radius: 15px;
-                        border: 1px solid #efefef;
-                        padding: 30px;
-                        box-shadow: 0px 4px 15px rgba(0,0,0,0.03);
-                     ">
+                <div class="bg-white flex flex-col gap-3 md:gap-4 shadow-[0_4px_15px_rgba(0,0,0,0.03)] border border-[#efefef] rounded-[16px] md:rounded-[15px] p-6 md:p-[30px] w-full md:w-[302px]">
 
                     {{-- Icon --}}
                     <div class="rounded-xl flex items-center justify-center"
-                         style="width: 56px; height: 56px; background-color: {{ $iconData['bg'] }};">
-                        <img src="{{ asset('images/' . $iconData['img']) }}" alt="" class="w-6 h-6 object-contain">
+                         style="width: 50px; height: 50px; background-color: {{ $iconData['bg'] }};">
+                        <img src="{{ asset('images/' . $iconData['img']) }}" alt="" class="w-5 h-5 object-contain">
                     </div>
 
                     {{-- Title --}}
-                    <h3 class="font-bold text-xl text-black" style="font-family: 'Montserrat', sans-serif;">
+                    <h3 class="font-bold text-[16px] md:text-xl text-[#111827]" style="font-family: 'Montserrat', sans-serif;">
                         {{ $structure->title }}
                     </h3>
 
                     {{-- Duration --}}
                     @if($structure->duration)
-                    <div class="flex items-center gap-2 text-gray-400 text-sm" style="font-family: 'Montserrat', sans-serif;">
+                    <div class="flex items-center gap-2 text-gray-400 text-[12px] md:text-sm -mt-2 md:-mt-1" style="font-family: 'Montserrat', sans-serif;">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -221,7 +294,7 @@
                     @endif
 
                     {{-- Description --}}
-                    <p class="text-gray-600 text-sm leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                    <p class="text-gray-600 text-[13px] md:text-sm leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
                         {{ $structure->description }}
                     </p>
                 </div>
@@ -231,30 +304,34 @@
 </section>
 
 
-<section class="w-full py-12 flex justify-center bg-white">
-    <div class="flex flex-row gap-6 items-stretch" style="width: 1280px; px-6">
+<section class="w-full py-8 md:py-12 flex justify-center bg-[#F9FBFC] md:bg-white">
+    <div class="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch w-full max-w-[1280px] px-4 md:px-6">
         
-        <div class="flex-1 rounded-2xl p-6 text-white flex flex-col justify-center" style="background: #194077; min-height: 140px;">
-            <p class="font-bold text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">Флексибилна подготовка</p>
-            <p class="text-sm opacity-90" style="font-family: 'Montserrat', sans-serif;">онлајн и во живо.</p>
-        </div>
-
-        <div class="flex-1 rounded-2xl p-6 text-black flex flex-col justify-center" style="background: #84CDF1; min-height: 140px;">
-            <p class="font-bold text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">Вкупно времетраење</p>
-            <p class="text-sm" style="font-family: 'Montserrat', sans-serif;">
-                {{ $exam->duration ?? 'Контактирајте не за информации' }}
+        <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-white flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #194077;">
+            <p class="text-[13px] md:text-sm font-medium md:font-normal" style="font-family: 'Montserrat', sans-serif;">
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">Флексибилна подготовка</strong>
+                <span class="opacity-90">онлајн и во живо.</span>
             </p>
         </div>
 
-        <div class="flex-1 rounded-2xl p-6 text-black flex flex-col justify-center" style="background: #E5F7FF; min-height: 140px;">
-            <p class="font-bold text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">Европско признавање</p>
-            <p class="text-sm" style="font-family: 'Montserrat', sans-serif;">сертификатите важат низ цела ЕУ.</p>
+        <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-[#111827] flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #E5F7FF;">
+            <p class="text-[13px] md:text-sm" style="font-family: 'Montserrat', sans-serif;">
+                Вкупно времетраење <span class="md:hidden"><br></span>
+                <strong class="text-[13px] md:text-lg block mt-0.5 md:mt-1">{{ $exam->duration ?? 'Контактирајте не' }}</strong>
+            </p>
         </div>
 
-        <div class="flex-1 rounded-2xl p-6 text-white flex flex-col justify-center" style="background: #194077; min-height: 140px;">
-            <p class="font-bold text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">Брзи резултати</p>
-            <p class="text-sm opacity-90" style="font-family: 'Montserrat', sans-serif;">
-                добиваш сертификат за {{ $exam->results_time ?? 'неколку недели' }}.
+        <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-[#111827] flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #84CDF1;">
+            <p class="text-[13px] md:text-sm" style="font-family: 'Montserrat', sans-serif;">
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">Европско признавање</strong>
+                сертификатите важат низ цела ЕУ.
+            </p>
+        </div>
+
+        <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-white flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #194077;">
+            <p class="text-[13px] md:text-sm font-medium md:font-normal" style="font-family: 'Montserrat', sans-serif;">
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block md:inline">Брзи резултати</strong> 
+                <span class="opacity-90 leading-tight block md:inline md:leading-normal">добиваш сертификат за {{ $exam->results_time ?? 'неколку недели' }}.</span>
             </p>
         </div>
 
@@ -264,22 +341,21 @@
 {{-- Only show if there is more than 1 level to actually switch between --}}
 @if($exam->levels->count() > 1)
 <section class="w-full py-16 bg-[#F9FBFC]" x-data="{ activeTab: {{ $exam->levels->first()->id }} }">
-    <div class="mx-auto" style="width: 1400px; max-w-full; px-6">
+    <div class="mx-auto w-full max-w-[1400px] px-4 md:px-6">
         
         {{-- Section Title --}}
-        <div class="text-center mb-10">
-            <h2 class="font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">
+        <div class="text-left md:text-center mb-8 md:mb-10 w-full max-w-[500px] md:max-w-none mx-auto md:px-0">
+            <h2 class="font-black text-[22px] md:text-4xl uppercase mb-3 md:mb-4 text-[#111827]" style="font-family: 'Jost', sans-serif;">
                 CEFR НИВОА ЗА {{ $exam->title }}
             </h2>
-            <p class="text-gray-600 text-sm max-w-2xl mx-auto" style="font-family: 'Montserrat', sans-serif;">
+            <p class="text-gray-600 text-[14px] md:text-sm max-w-2xl mx-auto md:mx-auto" style="font-family: 'Montserrat', sans-serif;">
                 Сите нивоа се усогласени со Заедничката европска референтна рамка за јазици (CEFR).
             </p>
         </div>
 
         {{-- Thinner Tab Switcher --}}
-        <div class="flex justify-center mb-12">
-            {{-- Reduced padding from p-1 to p-0.5 and decreased height --}}
-            <div class="flex bg-[#E5E7EB] rounded-full p-0.5 gap-1" style="width: fit-content; min-width: 800px;">
+        <div class="flex justify-center mb-8 md:mb-12">
+            <div class="flex flex-row md:bg-[#E5E7EB] md:rounded-full md:p-0.5 gap-2 md:gap-1 w-full max-w-[500px] md:max-w-none md:w-auto justify-center md:min-w-[800px]">
                 @foreach($exam->levels as $index => $level)
                     @php
                         // Reversed: Darkest first, then progressively lighter
@@ -293,10 +369,9 @@
 
                     <button 
                         @click="activeTab = {{ $level->id }}"
-                        :class="activeTab === {{ $level->id }} ? 'text-white' : 'text-gray-500 hover:text-black'"
-                        :style="activeTab === {{ $level->id }} ? 'background-color: {{ $activeColor }}; shadow: 0 2px 4px rgba(0,0,0,0.1);' : ''"
-                        {{-- py-2 instead of py-3 to make it thinner --}}
-                        class="flex-1 py-2 rounded-full font-bold transition-all duration-300 uppercase text-xs tracking-wider"
+                        :class="activeTab === {{ $level->id }} ? 'text-white border-transparent' : 'text-[#111827] md:text-gray-500 hover:text-black border-gray-300'"
+                        :style="activeTab === {{ $level->id }} ? 'background-color: {{ $activeColor }}; box-shadow: 0 2px 4px rgba(0,0,0,0.1);' : 'background-color: transparent;'"
+                        class="px-5 md:px-0 py-1.5 md:py-2 flex-1 md:flex-1 rounded-[40px] md:rounded-full font-bold transition-all duration-300 uppercase text-[11px] md:text-xs tracking-wider border md:border-transparent outline-none focus:outline-none"
                         style="font-family: 'Montserrat', sans-serif;">
                         {{ $level->level }}
                     </button>
@@ -305,7 +380,7 @@
         </div>
 
         {{-- Content Card --}}
-        <div class="relative">
+        <div class="relative w-full max-w-[500px] md:max-w-none mx-auto">
             @foreach($exam->levels as $index => $level)
                 @php
                     $pointBlues = [
@@ -320,36 +395,37 @@
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 scale-95"
                      x-transition:enter-end="opacity-100 scale-100"
-                     class="bg-white rounded-3xl p-12 shadow-sm border border-gray-100 mx-auto w-full"
-                     style="box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);">
+                     class="bg-white rounded-[24px] md:rounded-3xl p-6 md:p-12 shadow-[0_4px_25px_rgba(0,0,0,0.04)] md:shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gray-100 mx-auto w-full">
                     
-                    <div class="flex flex-col gap-6">
+                    <div class="flex flex-col gap-5 md:gap-6">
                         {{-- Level Badge --}}
-                        <span class="inline-block px-4 py-1 rounded-md text-white font-bold text-[10px] w-fit uppercase" 
-                              style="background-color: {{ $badgeColor }};">
-                            {{ $level->level }}
-                        </span>
+                        <div class="flex items-center">
+                            <span class="inline-block px-4 py-1.5 md:py-1 rounded-[40px] md:rounded-md text-white font-bold text-[11px] md:text-[10px] w-fit uppercase" 
+                                  style="background-color: {{ $badgeColor }};">
+                                {{ $level->level }}
+                            </span>
+                        </div>
 
-                        <div>
-                            <h3 class="font-bold text-2xl mb-2 text-black" style="font-family: 'Montserrat', sans-serif;">
+                        <div class="flex flex-col md:gap-2">
+                            <h3 class="font-bold text-[18px] md:text-2xl text-[#111827]" style="font-family: 'Montserrat', sans-serif;">
                                 {{ $level->name }}
                             </h3>
-                            <p class="text-gray-500 italic text-sm" style="font-family: 'Montserrat', sans-serif;">
+                            <p class="text-gray-600 md:text-gray-500 font-medium md:italic md:font-normal text-[14px] md:text-sm mt-1 md:mt-0" style="font-family: 'Montserrat', sans-serif;">
                                 {{ $level->description }}
                             </p>
                         </div>
 
                         {{-- Bullet Points from JSON can_do array --}}
-                        <div class="grid grid-cols-1 gap-5 mt-4">
+                        <div class="grid grid-cols-1 gap-5 md:gap-5 mt-2 md:mt-4">
                             @if($level->can_do)
                                 @foreach($level->can_do as $point)
                                     <div class="flex items-start gap-4">
                                         <div class="mt-1 flex-shrink-0">
                                             <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.5 7.5L6.5 12.5L16.5 1.5" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M1.5 7.5L6.5 12.5L16.5 1.5" stroke="#111827" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         </div>
-                                        <p class="text-gray-700 text-[16px] leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                                        <p class="text-gray-700 text-[14px] md:text-[16px] leading-relaxed font-medium md:font-normal" style="font-family: 'Montserrat', sans-serif;">
                                             {{ $point }}
                                         </p>
                                     </div>

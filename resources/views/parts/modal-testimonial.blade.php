@@ -1,4 +1,4 @@
-<div id="modal-testimonial" class="fixed inset-0 flex items-center justify-center z-50 hidden" style="background: rgba(0,0,0,0.5);">
+<div id="modal-testimonial" class="fixed inset-0 flex items-center justify-center z-[100] hidden" style="background: rgba(0,0,0,0.5);">
     <div class="bg-white rounded-2xl relative" style="width: 430px; padding: 30px 56px 30px 56px;">
   
       <!-- Close button -->
