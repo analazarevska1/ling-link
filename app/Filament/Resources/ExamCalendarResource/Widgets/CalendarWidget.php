@@ -102,4 +102,18 @@ class CalendarWidget extends FullCalendarWidget
                 ]),
         ];
     }
+
+            public function config(): array
+        {
+            return [
+                'locale' => 'mk',
+                'buttonText' => [
+                    'today' => 'Денес',
+                    'month' => 'Месец',
+                    'week'  => 'Недела',
+                    'day'   => 'Ден',
+                    'list'  => 'Листа',
+                ],
+            ];
+        }
 }

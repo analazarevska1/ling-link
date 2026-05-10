@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ExamResource extends Resource
 {
-    protected static ?string $model = Exam::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationLabel = 'Испити';
+    protected static ?string $navigationGroup = 'Содржина';
 
     // PERFORMANCE BOOST: Eager load relationships to prevent N+1 queries
     public static function getEloquentQuery(): Builder

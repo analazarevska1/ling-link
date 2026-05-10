@@ -18,4 +18,9 @@ class ExamDate extends Model
     public function exam() {
         return $this->belongsTo(Exam::class);
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(ExamRegistration::class);
+    }
 }

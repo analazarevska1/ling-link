@@ -12,8 +12,9 @@ use Filament\Tables\Table;
 
 class CourseResource extends Resource
 {
-    protected static ?string $model = Course::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationLabel = 'Курсеви';
+    protected static ?string $navigationGroup = 'Содржина';
 
     public static function form(Form $form): Form
     {

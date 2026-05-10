@@ -29,9 +29,16 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('LinguaLink')
+            ->brandLogo(asset('images/logo.png'))
+            ->brandLogoHeight('2.5rem')
+            
+            ->favicon(asset('images/logo.png'))
+            
             ->databaseNotifications()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#194077'),
+                'gray' => Color::Slate,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -41,8 +48,15 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
-                CalendarWidget::class, // Integrated your custom calendar here
+                
+                CalendarWidget::class,
+            ])
+            ->navigationGroups([
+                'Содржина',
+                'Испити',
+                'Барања',
+                'Извештаи',
+                'Аналитика',
             ])
             ->middleware([
                 EncryptCookies::class,

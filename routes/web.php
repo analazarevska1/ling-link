@@ -10,6 +10,7 @@ use App\Http\Controllers\TestimonialController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamRegistrationController;
 
 
 
@@ -79,3 +80,8 @@ Route::post('/testimonial', [TestimonialController::class, 'store'])->name('test
 
 Route::get('/exams', [ExamController::class, 'index'])->name('exams.index');
 Route::get('/exams/{exam}', [ExamController::class, 'show'])->name('exams.show');
+
+
+
+Route::post('/exams/{exam}/register', [ExamRegistrationController::class, 'store'])
+    ->name('exams.register');

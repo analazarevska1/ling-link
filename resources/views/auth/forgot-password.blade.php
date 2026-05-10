@@ -1,25 +1,64 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('parts.main')
+
+@section('content')
+<section class="min-h-screen flex items-center justify-center py-16" style="background: #f0f9ff;">
+  <div class="bg-white rounded-3xl shadow-lg p-12" style="width: 480px;">
+
+    <!-- Logo -->
+    <div class="flex justify-center mb-8">
+      <img src="{{ asset('images/logo.png') }}" alt="LinguaLink" style="width: 160px;">
     </div>
 
+    <!-- Title -->
+    <h1 class="font-black text-3xl uppercase text-center mb-2" style="font-family: 'Jost', sans-serif;">
+      ЗАБОРАВЕНА <span style="color: #194077;">ЛОЗИНКА</span>
+    </h1>
+    <p class="text-center text-gray-500 text-sm mb-8" style="font-family: 'Montserrat', sans-serif;">
+      Внеси го твојот е-маил и ќе ти испратиме линк за ресетирање
+    </p>
+
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    @if (session('status'))
+      <div class="mb-6 text-sm text-green-600 text-center font-bold" style="font-family: 'Montserrat', sans-serif;">
+        {{ session('status') }}
+      </div>
+    @endif
 
+    <!-- Form -->
     <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+      @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+      <!-- Email -->
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+          Е-маил
+        </label>
+        <input type="email" name="email" value="{{ old('email') }}" required autofocus
+          class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
+          style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
+          onfocus="this.style.borderColor='#194077'"
+          onblur="this.style.borderColor='#e5e7eb'"
+          placeholder="ime@email.com">
+        @error('email')
+          <p class="text-red-500 text-xs mt-1" style="font-family: 'Montserrat', sans-serif;">{{ $message }}</p>
+        @enderror
+      </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
+      <!-- Submit -->
+      <button type="submit" class="w-full py-3 text-white font-bold rounded-xl transition-all duration-200"
+        style="background: linear-gradient(to right, #194077, #194077); font-family: 'Montserrat', sans-serif;"
+        onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)'"
+        onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)'">
+        Испрати линк
+      </button>
     </form>
-</x-guest-layout>
+
+    <!-- Back to login -->
+    <p class="text-center text-sm text-gray-500 mt-6" style="font-family: 'Montserrat', sans-serif;">
+      Се сетивте?
+      <a href="{{ route('login') }}" class="font-bold underline" style="color: #194077;">Логирај се</a>
+    </p>
+
+  </div>
+</section>
+@endsection

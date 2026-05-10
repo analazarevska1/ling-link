@@ -47,6 +47,9 @@ class Exam extends Model
         return $this->hasMany(ExamDate::class); // Make sure your model name matches!
     }
 
-
+    public function registrations()
+    {
+        return $this->hasMany(ExamRegistration::class);
+    }
 
 }

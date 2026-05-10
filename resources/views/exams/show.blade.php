@@ -1,6 +1,8 @@
 @extends('parts.main')
 
 @section('content')
+
+@include('parts.exam-registration-modal')
 <section class="w-full flex justify-center py-6 md:py-8 px-4 md:px-6 bg-[#F9FBFC] md:bg-white">
 
     <!-- DESKTOP TOP SECTION -->
@@ -83,13 +85,24 @@
             </div>
             @endif
 
-            <button
-                class="text-white font-medium transition-all duration-200"
-                style="width: 160px; height: 48px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px;"
-                onmouseover="this.style.background='#020C1B';"
-                onmouseout="this.style.background='#194077';">
-                Пријави се
-            </button>
+            @if($exam->is_on_demand)
+                <button
+                    onclick="window.dispatchEvent(new CustomEvent('open-exam-modal', {detail: {dateId: null, dateLabel: null}}))"
+                    class="text-white font-medium transition-all duration-200"
+                    style="width: 160px; height: 48px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px;"
+                    onmouseover="this.style.background='#020C1B';"
+                    onmouseout="this.style.background='#194077';">
+                    Пријави се
+                </button>
+            @else
+                <a href="#termini"
+                    class="inline-flex items-center justify-center text-white font-medium transition-all duration-200"
+                    style="width: 160px; height: 48px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px;"
+                    onmouseover="this.style.background='#020C1B';"
+                    onmouseout="this.style.background='#194077';">
+                    Пријави се
+                </a>
+            @endif
         </div>
 
         {{-- Right: Image --}}
@@ -176,13 +189,24 @@
               @endif
          </div>
 
+         @if($exam->is_on_demand)
          <button
-             class="w-full text-white font-bold transition-all duration-200 shadow-md"
+             onclick="window.dispatchEvent(new CustomEvent('open-exam-modal', {detail: {dateId: null, dateLabel: null}}))"
+             class="w-full inline-flex items-center justify-center text-white font-bold transition-all duration-200 shadow-md"
              style="height: 54px; border-radius: 40px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
              onmouseover="this.style.background='#020C1B';"
              onmouseout="this.style.background='#194077';">
              Пријави се
          </button>
+     @else
+         <a href="#termini"
+             class="w-full inline-flex items-center justify-center text-white font-bold transition-all duration-200 shadow-md"
+             style="height: 54px; border-radius: 40px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
+             onmouseover="this.style.background='#020C1B';"
+             onmouseout="this.style.background='#194077';">
+             Пријави се
+         </a>
+     @endif
     </div>
 
 </section>
@@ -444,8 +468,12 @@
 @if(!$exam->is_on_demand && $exam->examDates->count() > 0)
 @php
     $mappedDates = $exam->examDates->map(function($date) {
-        return \Carbon\Carbon::parse($date->exam_date)->format('Y-m-d');
-    })->toArray();
+        return [
+            'date'  => \Carbon\Carbon::parse($date->exam_date)->format('Y-m-d'),
+            'id'    => $date->id,
+            'label' => \Carbon\Carbon::parse($date->exam_date)->format('d.m.Y'),
+        ];
+    })->values()->toArray();
 @endphp
 
 <section class="w-full py-16 bg-white" id="termini">
@@ -497,7 +525,8 @@
                             <div class="flex items-center justify-center">
                                 <div
                                     class="w-8 h-8 flex items-center justify-center rounded-lg font-semibold transition-colors"
-                                    :class="hasExam(day) ? 'bg-[#194077] text-white' : 'text-gray-700'"
+                                    :class="hasExam(day) ? 'bg-[#194077] text-white cursor-pointer hover:bg-[#020C1B]' : 'text-gray-700'"
+                                    @click="handleDayClick(day)"
                                     x-text="day">
                                 </div>
                             </div>
@@ -545,13 +574,14 @@
                         @endif
 
                         <div x-show="activeDateId === {{ $date->id }}" x-collapse class="mt-5">
-                            <a href="#"
-                                class="inline-flex items-center justify-center text-white font-medium transition-all duration-200"
-                                style="width: 130px; height: 40px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px;"
-                                onmouseover="this.style.background='#020C1B';"
-                                onmouseout="this.style.background='#194077';">
-                                Пријави се
-                            </a>
+                            <button
+                            @click.stop="$dispatch('open-exam-modal', {dateId: {{ $date->id }}, dateLabel: '{{ \Carbon\Carbon::parse($date->exam_date)->format('d.m.Y') }}'})"
+                            class="inline-flex items-center justify-center text-white font-medium transition-all duration-200"
+                            style="width: 130px; height: 40px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px;"
+                            onmouseover="this.style.background='#020C1B';"
+                            onmouseout="this.style.background='#194077';">
+                            Пријави се
+                        </button>
                         </div>
                     </div>
                     @endforeach
@@ -571,31 +601,46 @@
 
 <script>
     function examCalendar(availableDates) {
-        return {
-            activeDateId: null,
-            month: new Date().getMonth(),
-            year: new Date().getFullYear(),
-            monthNames: ['Јануари','Февруари','Март','Април','Мај','Јуни','Јули','Август','Септември','Октомври','Ноември','Декември'],
-            availableDates: availableDates,
-            get blanks() {
-                return Array.from({ length: new Date(this.year, this.month, 1).getDay() });
-            },
-            get days() {
-                return Array.from({ length: new Date(this.year, this.month + 1, 0).getDate() }, (_, i) => i + 1);
-            },
-            prevMonth() {
-                if (this.month === 0) { this.month = 11; this.year--; } else { this.month--; }
-            },
-            nextMonth() {
-                if (this.month === 11) { this.month = 0; this.year++; } else { this.month++; }
-            },
-            hasExam(day) {
-                const m = String(this.month + 1).padStart(2, '0');
-                const d = String(day).padStart(2, '0');
-                return this.availableDates.includes(this.year + '-' + m + '-' + d);
-            }
+    return {
+        activeDateId: null,
+        month: new Date().getMonth(),
+        year: new Date().getFullYear(),
+        monthNames: ['Јануари','Февруари','Март','Април','Мај','Јуни','Јули','Август','Септември','Октомври','Ноември','Декември'],
+        availableDates: availableDates,
+        get blanks() {
+            return Array.from({ length: new Date(this.year, this.month, 1).getDay() });
+        },
+        get days() {
+            return Array.from({ length: new Date(this.year, this.month + 1, 0).getDate() }, (_, i) => i + 1);
+        },
+        prevMonth() {
+            if (this.month === 0) { this.month = 11; this.year--; } else { this.month--; }
+        },
+        nextMonth() {
+            if (this.month === 11) { this.month = 0; this.year++; } else { this.month++; }
+        },
+        getExamForDay(day) {
+            const m = String(this.month + 1).padStart(2, '0');
+            const d = String(day).padStart(2, '0');
+            const dateStr = this.year + '-' + m + '-' + d;
+            return this.availableDates.find(e => e.date === dateStr) || null;
+        },
+        hasExam(day) {
+            return this.getExamForDay(day) !== null;
+        },
+        handleDayClick(day) {
+            const exam = this.getExamForDay(day);
+            if (!exam) return;
+            window.dispatchEvent(new CustomEvent('open-exam-modal', {
+                detail: { dateId: exam.id, dateLabel: exam.label }
+            }));
         }
     }
+}
 </script>
 @endif
+
+
+
+
 @endsection

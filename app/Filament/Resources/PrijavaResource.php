@@ -17,7 +17,9 @@ class PrijavaResource extends Resource
 {
     protected static ?string $model = Prijava::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox';
+    protected static ?string $navigationLabel = 'Пријави';
+    protected static ?string $navigationGroup = 'Барања';
 
     public static function form(Form $form): Form
     {
