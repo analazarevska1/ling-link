@@ -9,34 +9,31 @@
 
     <!-- Badge -->
     <span class="px-5 py-1 rounded-full text-gray-600 text-sm mb-6 self-start" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
-      Добродојдовте на Lingua Link
+      {{ __('home.welcome_badge') }}
     </span>
 
     <h1 class="uppercase" style="font-family: 'Jost', sans-serif; font-size: 72px; line-height: 82px; letter-spacing: 0; font-weight: 900; color: #000;">
-      ТВОЈОТ ЛИНК<br>
-      ДО СВЕТОТ
+      {{ __('home.hero_title_l1') }}<br>
+      {{ __('home.hero_title_l2') }}
     </h1>
 
     <p class="mt-4 text-gray-600" style="font-family: 'Montserrat', sans-serif; font-size: 17px; max-width: 480px;">
-      Повеќе од училница – Lingua Link е заедница која те
-      води од првите зборови до самоуверена комуникација.
+      {{ __('home.hero_subtitle') }}
     </p>
 
     <div class="flex gap-4 mt-8">
-      <!-- Одбери курс -->
       <a href="{{route('courses.index')}}" class="flex items-center justify-center transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: rgba(229, 247, 255, 0.9); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='rgba(229, 247, 255, 0.9)';">
-        Одбери курс
+        {{ __('home.select_course') }}
       </a>
 
-      <!-- Одбери испит -->
       <a href="{{route('exams.index')}}" class="flex items-center justify-center transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)';"
         onmouseout="this.style.background='#194077';">
-        Одбери испит
+        {{ __('home.select_exam') }}
       </a>
     </div>
   </div>
@@ -49,28 +46,27 @@
   
   <div class="flex flex-col items-center text-center px-6 py-10">
     <span class="px-5 py-1 rounded-full text-gray-600 text-xs mb-6" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
-      Добродојдовте на Lingua Link
+      {{ __('home.welcome_badge') }}
     </span>
 
     <h1 class="uppercase mb-4" style="font-family: 'Jost', sans-serif; font-size: 42px; line-height: 1.1; font-weight: 900; color: #000;">
-      ТВОЈОТ ЛИНК<br>
-      ДО СВЕТОТ
+      {{ __('home.hero_title_l1') }}<br>
+      {{ __('home.hero_title_l2') }}
     </h1>
 
     <p class="text-gray-600 text-sm mb-10" style="font-family: 'Montserrat', sans-serif; max-width: 320px;">
-      Повеќе од училница – Lingua Link е заедница која те 
-      води од првите зборови до самоуверена комуникација.
+      {{ __('home.hero_subtitle') }}
     </p>
 
     <div class="flex flex-col gap-4 w-full px-4">
       <a href="#" class="flex items-center justify-center transition-all duration-200"
         style="width: 100%; height: 50px; border-radius: 12px; background: rgba(229, 247, 255, 0.9); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-        Одбери курс
+        {{ __('home.select_course') }}
       </a>
 
       <a href="{{route('exams.index')}}" class="flex items-center justify-center transition-all duration-200"
         style="width: 100%; height: 50px; border-radius: 12px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-        Одбери испит
+        {{ __('home.select_exam') }}
       </a>
     </div>
   </div>
@@ -78,13 +74,13 @@
 
 <!-- Info Banner-->
 <div class="flex flex-col items-center justify-center mx-auto text-center" style="max-width: 620px; border-radius: 20px; background: white; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12); padding: 16px 40px; margin-top: 36px; margin-bottom: 36px; position: relative; z-index: 10;">
-  <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Административно работно време</p>
-  <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">Понеделник - четврток од 14.00 до 21.00 часот</p>
+  <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.admin_hours_title') }}</p>
+  <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.admin_hours_schedule') }}</p>
 </div> 
 
 
 <section class="w-full pt-8" style="background: #f8fbff;">
-    <h2 class="text-center font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">Одбери курс</h2>
+    <h2 class="text-center font-black text-4xl uppercase mb-4" style="font-family: 'Jost', sans-serif;">{{ __('home.choose_course') }}</h2>
   
     {{-- DESKTOP LAYOUT (Perfect - Visible on MD and up) --}}
     <div class="hidden md:flex justify-center gap-[60px] px-32 pb-12">
@@ -93,23 +89,23 @@
       <a href="/courses/english" class="block" style="width: 244px; height: 88px; margin-top: 140px; position: relative;">
         <img src="{{ asset('images/flag-en.png') }}" alt="English" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
         <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 88px; width: 240px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
-          <span class="font-extrabold text-base text-left" style="font-family: 'Montserrat', sans-serif;">Англиски јазик</span>
+          <span class="font-extrabold text-base text-left" style="font-family: 'Montserrat', sans-serif;">{{ __('home.english') }}</span>
         </div>
       </a>
-  
+
       <!-- Card 2 -->
       <a href="/courses/german" class="block" style="width: 244px; height: 88px; margin-top: 140px; position: relative;">
         <img src="{{ asset('images/flag-de.png') }}" alt="German" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
         <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 88px; width: 240px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
-          <span class="font-bold text-base text-left" style="font-family: 'Montserrat', sans-serif;">Германски јазик</span>
+          <span class="font-bold text-base text-left" style="font-family: 'Montserrat', sans-serif;">{{ __('home.german') }}</span>
         </div>
       </a>
-  
+
       <!-- Card 3 -->
       <a href="/courses/macedonian" class="block" style="width: 244px; height: 110px; margin-top: 140px; position: relative;">
         <img src="{{ asset('images/flag-mk.png') }}" alt="Macedonian" class="absolute object-contain z-10" style="height: 160px; width: 110px; bottom: 50%; left: 10px;">
         <div class="bg-white rounded-2xl hover:shadow-lg transition-shadow duration-200 flex items-center justify-center" style="height: 88px; width: 240px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid black; padding: 20px 24px 20px 40px;">
-          <span class="font-bold text-base text-left" style="font-family: 'Montserrat', sans-serif;">Македонски јазик за странци</span>
+          <span class="font-bold text-base text-left" style="font-family: 'Montserrat', sans-serif;">{{ __('home.macedonian') }}</span>
         </div>
       </a>
     </div>
@@ -122,8 +118,7 @@
                 style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
             <div class="bg-white rounded-2xl flex items-center justify-center"
                 style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
-                <span class="font-extrabold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Англиски
-                    јазик</span>
+                <span class="font-extrabold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">{{ __('home.english') }}</span>
             </div>
         </a>
 
@@ -132,8 +127,7 @@
                 style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
             <div class="bg-white rounded-2xl flex items-center justify-center"
                 style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
-                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Македонски јазик
-                    за странци</span>
+                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">{{ __('home.macedonian') }}</span>
             </div>
         </a>
 
@@ -142,8 +136,7 @@
                 style="height: 120px; width: 90px; bottom: 100%; left: 10px; transform: translateY(40px);">
             <div class="bg-white rounded-2xl flex items-center justify-center"
                 style="height: 110px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 1px solid #d1d5db; padding: 20px 24px 20px 24px;">
-                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">Германски
-                    јазик</span>
+                <span class="font-bold text-lg text-center" style="font-family: 'Montserrat', sans-serif;">{{ __('home.german') }}</span>
             </div>
         </a>
 
@@ -152,8 +145,7 @@
     {{-- Common Recommendation Footer --}}
     <div class="flex flex-col items-center text-center py-10 px-6" style="background: #f8fbff;">
       <p class="text-base md:text-lg text-gray-700 mb-8" style="font-family: 'Montserrat', sans-serif;">
-        Сакаш ние да ти <span style="font-style: italic;">препорачаме</span> курс<br>
-        кој најмногу ке ти <a href="#" class="font-bold text-[#194077]">одговара</a>?
+        {!! __('home.recommend_text') !!}
       </p>
     
       <form method="POST" action="/set-personalizacija-session" class="w-full flex justify-center">
@@ -163,7 +155,7 @@
           style="height: 52px; md:height: 40px; border-radius: 12px; md:border-radius: 10px; background: #194077; color: white; font-family: 'Montserrat', sans-serif; font-size: 16px; md:font-size: 14px; font-weight: 600; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: none;"
           onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)';"
           onmouseout="this.style.background='#194077';">
-          Започни сега
+          {{ __('home.start_now') }}
         </button>
       </form>
     </div>
@@ -210,7 +202,7 @@
     }
   </style>
     <section class="w-full py-16 px-6 md:px-24">
-  <h2 class="font-black text-4xl uppercase mb-12 text-center md:text-left" style="font-family: 'Jost', sans-serif;">Одбери испит</h2>
+  <h2 class="font-black text-4xl uppercase mb-12 text-center md:text-left" style="font-family: 'Jost', sans-serif;">{{ __('home.choose_exam') }}</h2>
 
   {{-- DESKTOP CAROUSEL (Visible on MD and up) --}}
   <div class="hidden md:flex relative items-center justify-center">
@@ -255,7 +247,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
               </svg>
-              <span>Нивоа: <strong>{{ $levelDesktopText }}</strong></span>
+              <span>{{ __('exams.levels') }} <strong>{{ $levelDesktopText }}</strong></span>
             </div>
             <div class="flex items-center gap-2 text-sm mb-4" style="font-family: 'Montserrat', sans-serif;">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -268,18 +260,18 @@
                 } elseif ($exam->first_exam_date && $exam->first_exam_date >= now()) {
                     $examDateFormatted = \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y');
                 } else {
-                    $examDateFormatted = 'Наскоро';
+                    $examDateFormatted = __('exams.soon');
                 }
               @endphp
 
               @if($exam->is_on_demand)
-                <span>Прв термин: <strong>Зависно од пријавата</strong></span>
+                <span>{{ __('exams.first_date') }} <strong>{{ __('exams.on_demand') }}</strong></span>
               @else
-              <span>Прв термин: <strong>{{ $examDateFormatted }}</strong></span>
+              <span>{{ __('exams.first_date') }} <strong>{{ $examDateFormatted }}</strong></span>
               @endif
             </div>
             <div class="mt-auto">
-              <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">Прочитај повеќе.</span>
+              <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.read_more') }}</span>
             </div>
           </div>
         </a>
@@ -326,11 +318,11 @@
         } elseif ($exam->first_exam_date && $exam->first_exam_date >= now()) {
             $examDate = \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y');
         } else {
-            $examDate = 'Наскоро';
+            $examDate = __('exams.soon');
         }
 
         if ($exam->is_on_demand) {
-            $examDate = 'По договор';
+            $examDate = __('exams.by_appointment');
         }
 @endphp
       <a href="{{ route('exams.show', $exam) }}" class="flex flex-col p-8 rounded-[32px] shadow-sm border border-gray-100 {{ $textColor }}" style="background: {{ $bgColor }};">
@@ -347,24 +339,24 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
               </svg>
-              <span class="text-sm">Нивоа: <strong>{{ $levelText }}</strong></span>
+              <span class="text-sm">{{ __('exams.levels') }} <strong>{{ $levelText }}</strong></span>
             @endif
           </div>
-          
+
           <!-- Info Row: Date -->
           <div class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
-            <span class="text-sm">Прв термин за испит:<br><strong>{{ $examDate }}</strong></span>
+            <span class="text-sm">{{ __('exams.first_exam_date') }}<br><strong>{{ $examDate }}</strong></span>
           </div>
         </div>
       </a>
     @endforeach
 
-    <!-- "Види ги сите" Button -->
+    <!-- See all button -->
     <a href="{{ route('exams.index') }}" class="mt-4 flex items-center justify-center py-5 rounded-[20px] font-bold text-[#194077] transition-all hover:bg-[#d6effa]" style="background: #e5f7ff; font-family: 'Montserrat', sans-serif;">
-      Види ги сите
+      {{ __('home.see_all') }}
     </a>
   </div>
 
@@ -383,21 +375,21 @@
 
 <div class="hidden md:flex items-center justify-between px-8 mx-auto" style="width: 900px; height: 80px; border-radius: 20px; background: white; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); gap: 116px; margin-top: 32px; margin-bottom: 32px;">
   <div class="text-left">
-    <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">Дали си подготвен да го докажеш своето знаење?</p>
-    <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">Избери некој од нашите испити!</p>
+    <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.exam_promo_title') }}</p>
+    <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.exam_promo_subtitle') }}</p>
   </div>
   <a href="{{route('exams.index')}}" class="flex-shrink-0 flex items-center justify-center text-white font-medium transition-all duration-200"
   style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
   onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
   onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
-  Прочитај повеќе
+  {{ __('home.read_more') }}
 </a>
 </div>
 
 
 
 <section class="w-full py-16 px-16" style="background: white;">
-  <h2 class="text-center font-black text-4xl uppercase mb-12" style="font-family: 'Jost', sans-serif;">Други услуги</h2>
+  <h2 class="text-center font-black text-4xl uppercase mb-12" style="font-family: 'Jost', sans-serif;">{{ __('home.other_services') }}</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
@@ -405,159 +397,135 @@
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-aktivno-pasivno').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Потврди за активно и пасивно</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">За вработување или запишување на постдипломски студии</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-aktivno-pasivno').classList.remove('hidden'); return false;"
         class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
 
     @include('parts.modal-prijava', [
     'id' => 'aktivno-pasivno',
-    'title' => 'ПОТВРДА ЗА АКТИВНО И ПАСИВНО',
-    'description' => '
-        <p class="mb-4"><strong>Потврдите за активно или пасивно</strong> познавање на јазик може да послужат за вработување, запишување на постдипломски студии, учество на семинари и сл.</p>
-        <p class="mb-4">Тестирањето се закажува во <strong>ЛингваЛинк</strong> и по положениот тест, потврдата се издава на македонски јазик.</p>
-        <p><strong>На барање на кандидатот, потврда може да се издаде и на странскиот јазик на кој се полага.</strong></p>
-    ',
-    'description_mobile' => 'Потврдите за активно или пасивно познавање на јазик може да послужат за вработување, запишување на постдипломски студии, учество на семинари и сл.'
+    'title' => __('home.svc1_modal_title'),
+    'description' => __('home.svc1_modal_desc'),
+    'description_mobile' => __('home.svc1_modal_mobile')
     ])
 
     <!-- Card 2 -->
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-cefr').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Потврда за ниво според CEFR</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Заедничката европска референтна рамка за јазици.</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-cefr').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
     @include('parts.modal-prijava', [
       'id' => 'cefr',
-      'title' => 'ПОТВРДА ЗА НИВО СПОРЕД CEFR',
-      'description' => '
-          <p class="mb-4">LinguaLink издава потврди за јазично ниво според <strong>Заедничката европска референтна рамка (CEFR)</strong> — од А1 до С2.</p>
-          <p class="mb-4">Оваа потврда е објективен доказ за степенот на познавање на јазикот и е често потребна при аплицирање за работа во странство, визи, студии или меѓународни програми.</p>
-          <p><strong>Тестирањето опфаќа слушање, читање, пишување и говор, со детална проценка по секоја вештина.</strong></p>
-      ',
-      'description_mobile' => 'LinguaLink издава потврди за јазично ниво според Заедничката европска референтна рамка (CEFR) — од А1 до С2.'
+      'title' => __('home.svc2_modal_title'),
+      'description' => __('home.svc2_modal_desc'),
+      'description_mobile' => __('home.svc2_modal_mobile')
   ])
     <!-- Card 3 -->
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-institucii').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Тестирања потребни на институции</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">За вработување или запишување на постдипломски студии</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-institucii').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
 
     @include('parts.modal-prijava', [
     'id' => 'institucii',
-    'title' => 'ТЕСТИРАЊА ПОТРЕБНИ НА ИНСТИТУЦИИ',
-    'description' => '
-        <p class="mb-4">Нудиме прилагодени тестирања според потребите на компании, образовни установи и организации.</p>
-        <p class="mb-4">Тестовите можат да бидат групни или индивидуални, на различни јазици, и се дизајнирани според специфичните цели на институцијата — вработување, интерна евалуација или професионален развој.</p>
-        <p><strong>Резултатите се презентираат во детален извештај со препораки за понатамошна обука или сертификација.</strong></p>
-    ',
-    'description_mobile' => 'Нудиме прилагодени тестирања според потребите на компании, институции и организации.'
+    'title' => __('home.svc3_modal_title'),
+    'description' => __('home.svc3_modal_desc'),
+    'description_mobile' => __('home.svc3_modal_mobile')
     ])
 
     <!-- Card 4 -->
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-probni-testovi').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Потврди за јазик</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Пробни тестови (англиски и германски)</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Запознавање со тежината, нивото и форматот на испитот.</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-probni-testovi').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
     @include('parts.modal-prijava', [
     'id' => 'probni-testovi',
-    'title' => 'ПРОБНИ ТЕСТОВИ ПО АНГЛИСКИ И ГЕРМАНСКИ',
-    'description' => '
-        <p class="mb-4">Подгответ се самоуверено за полагање на официјални испити преку нашите <strong>пробни тестови</strong>.</p>
-        <p class="mb-4">Тестовите се базирани на форматите на telc, TestDaF, LanguageCert и други меѓународни стандарди.</p>
-        <p>Со нив ќе можеш да го процениш своето тековно ниво, да се запознаеш со типичните задачи и да научиш стратегии за подобро управување со времето. По тестирањето, добиваш <strong>детална повратна информација</strong> и <strong>индивидуални препораки</strong> од предавач.</p>
-    ',
-    'description_mobile' => 'Подгответ се самоуверено за полагање на официјални испити преку нашите пробни тестови.'
+    'title' => __('home.svc4_modal_title'),
+    'description' => __('home.svc4_modal_desc'),
+    'description_mobile' => __('home.svc4_modal_mobile')
     ])
 
     <!-- Card 5 -->
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-iznajmuvanje').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Други услуги</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Изнајмување на простории</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Изведување испити, одржување семинари, предавања и сл.</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.other_service_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-iznajmuvanje').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
         onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'; this.style.borderImage='linear-gradient(90deg, #041020, #194077) 1';"
         onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'; this.style.borderImage='none'; this.style.borderColor='transparent';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
 
     @include('parts.modal-prijava', [
     'id' => 'iznajmuvanje',
-    'title' => 'ИЗНАЈМУВАЊЕ НА ПРОСТОРИИ',
-    'description' => '
-        <p class="mb-4">LinguaLink располага со современо опремени училници и тест-сали кои можат да се изнесуваат под наем за <strong>спроведување на испити, семинари, или деловни состаноци</strong>.</p>
-        <p class="mb-4">Просториите се климатизирани, имаат стабилна интернет конекција, проектор, табла и удобен распоред за различен број учесници.</p>
-        <p>Нашиот персонал обезбедува логистичка поддршка, техничка асистенција и прилагодување на распоредот според вашите потреби.</p>
-    ',
-    'description_mobile' => 'LinguaLink располага со опремени училници и тест-сали кои можат да се изнајмуваат.'
+    'title' => __('home.svc5_modal_title'),
+    'description' => __('home.svc5_modal_desc'),
+    'description_mobile' => __('home.svc5_modal_mobile')
     ])
 
     <!-- Card 6 -->
     <div onclick="if(window.innerWidth < 768) document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden');" 
       class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">Други услуги</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">Комуникациски обуки</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">Развој на деловните комуникациски вештини во усна и писмена форма.</p>
+      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.other_service_label') }}</span>
+      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc6_title') }}</p>
+      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc6_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); "
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
-        Прочитај повеќе
+        {{ __('home.read_more') }}
       </a>
     </div>
 
     @include('parts.modal-prijava', [
     'id' => 'komunikaciski-obuki',
-    'title' => 'КОМУНИКАЦИСКИ ОБУКИ',
-    'description' => '
-        <p class="mb-4">Со нашите обуки за деловна и професионална комуникација ќе го усовршите изразувањето во <strong>писмена</strong> и <strong>усна</strong> форма.</p>
-        <p class="mb-4">Програмите опфаќаат: пишување професионални мејлови, презентациски вештини, водење состаноци, аргументирање, интервјуа и јавен настап.</p>
-        <p>Овие обуки се погодни за компании, јавни институции и поединци кои сакаат да го унапредат својот <strong>професионален израз</strong> и <strong>меѓународна комуникација</strong>.</p>
-    ',
-    'description_mobile' => 'Развој на деловните комуникациски вештини во усна и писмена форма.'
+    'title' => __('home.svc6_modal_title'),
+    'description' => __('home.svc6_modal_desc'),
+    'description_mobile' => __('home.svc6_modal_mobile')
     ])
 
   </div>
@@ -580,27 +548,26 @@
 
   <!-- Title -->
   <h2 class="text-center font-black text-3xl md:text-5xl uppercase leading-tight mb-8 md:mb-12" style="font-family: 'Jost', sans-serif;">
-    НАШАТА <span style="font-weight: 500; font-style: italic;">РАБОТА</span><br>
-    ЗБОРУВА ЗА <span style="color: #194077;">НАС</span>
+    {!! __('home.our_work_title') !!}
   </h2>
 
   <!-- Stats - Desktop: horizontal row, Mobile: 2x2 grid -->
   <div class="hidden md:flex justify-center mb-12" style="gap: 46px;">
     <div class="flex-shrink-0 flex flex-col items-center justify-center text-white" style="width: 240px; height: 149px; background: #194077; border-radius: 60px 16px 16px 16px;">
       <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">задоволни<br>студенти</p>
+      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_students') }}</p>
     </div>
     <div class="flex-shrink-0 flex flex-col items-center justify-center rounded-2xl" style="width: 240px; height: 149px; background: #a8dff0;">
       <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">10+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">години<br>искуство</p>
+      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_experience') }}</p>
     </div>
     <div class="flex-shrink-0 flex flex-col items-center justify-center rounded-2xl" style="width: 240px; height: 149px; background: #d6eef8;">
       <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">15+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">сертификати и<br>акредитации</p>
+      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_certs') }}</p>
     </div>
     <div class="flex-shrink-0 flex flex-col items-center justify-center text-white" style="width: 240px; height: 149px; background: #194077; border-radius: 16px 60px 16px 16px;">
       <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">20+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">професионални<br>наставници</p>
+      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_teachers') }}</p>
     </div>
   </div>
 
@@ -608,19 +575,19 @@
   <div class="grid grid-cols-2 gap-3 mb-8 md:hidden">
     <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 40px 16px 16px 16px;">
       <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">задоволни<br>студенти</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_students') }}</p>
     </div>
     <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #a8dff0;">
       <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">10+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">години<br>искуство</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_experience') }}</p>
     </div>
     <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #d6eef8;">
       <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">15+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">сертификати и<br>акредитации</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_certs') }}</p>
     </div>
     <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 16px 40px 16px 16px;">
       <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">20+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">професионални<br>наставници</p>
+      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_teachers') }}</p>
     </div>
   </div>
 
@@ -641,7 +608,7 @@
           <path d="M0 24.5H80M80 24.5L62 8M80 24.5L62 41" stroke="#194077" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-          <strong>Модерно јазично училиште</strong> – со фокус на практична комуникација и реални ситуации.
+          <strong>{{ __('home.point1_title') }}</strong> {{ __('home.point1_desc') }}
         </p>
       </div>
 
@@ -651,7 +618,7 @@
           <path d="M0 24.5H80M80 24.5L62 8M80 24.5L62 41" stroke="#84CDF1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-          <strong>Гаранција за квалитет</strong> – ЛингваЛинк го гарантира квалитетот во јазичното подучување преку висококвалитетни наставни и образовни стандарди
+          <strong>{{ __('home.point2_title') }}</strong> {{ __('home.point2_desc') }}
         </p>
       </div>
 
@@ -661,7 +628,7 @@
           <path d="M0 24.5H80M80 24.5L62 8M80 24.5L62 41" stroke="#194077" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-          <strong>Флексибилни формати на настава</strong> – индивидуални, групни и онлајн часови според твоите потреби.
+          <strong>{{ __('home.point3_title') }}</strong> {{ __('home.point3_desc') }}
         </p>
       </div>
 
@@ -685,7 +652,7 @@
           <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
-          <strong>Модерно јазично училиште</strong> – со фокус на практична комуникација и реални ситуации.
+          <strong>{{ __('home.point1_title') }}</strong> {{ __('home.point1_desc') }}
         </p>
       </div>
 
@@ -695,7 +662,7 @@
           <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#84CDF1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
-          <strong>Гаранција за квалитет</strong> – ЛингваЛинк го гарантира квалитетот во јазичното подучување преку висококвалитетни наставни и образовни стандарди
+          <strong>{{ __('home.point2_title') }}</strong> {{ __('home.point2_desc') }}
         </p>
       </div>
 
@@ -705,7 +672,7 @@
           <path d="M0 14H44M44 14L34 4M44 14L34 24" stroke="#194077" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <p style="font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.6;">
-          <strong>Флексибилни формати на настава</strong> – индивидуални, групни и онлајн часови според твоите потреби.
+          <strong>{{ __('home.point3_title') }}</strong> {{ __('home.point3_desc') }}
         </p>
       </div>
 
@@ -718,12 +685,12 @@
     <!-- Left: Title -->
     <div class="flex-shrink-0" style="width: 320px;">
       <h2 class="font-black text-5xl uppercase leading-tight text-white mb-6" style="font-family: 'Jost', sans-serif;">
-        СЛУШНЕТЕ <span style="font-weight: 500; font-style: italic;">ПОВЕЌЕ</span> ОД НАШИТЕ КЛИЕНТИ
+        {!! __('home.testimonials_title') !!}
       </h2>
       <p class="text-white text-sm mb-4" style="font-family: 'Montserrat', sans-serif; opacity: 0.9;">
-        Прочитај ги тестимониалите оставени од нашите верни клиенти. Сакаш да напишеш свој тестимониал?
+        {{ __('home.testimonials_subtitle') }}
       </p>
-      <a href="#" onclick="document.getElementById('modal-testimonial').classList.remove('hidden'); return false;" class="text-white font-bold underline text-sm" style="font-family: 'Montserrat', sans-serif;">притисни овде.</a>
+      <a href="#" onclick="document.getElementById('modal-testimonial').classList.remove('hidden'); return false;" class="text-white font-bold underline text-sm" style="font-family: 'Montserrat', sans-serif;">{{ __('home.testimonials_link') }}</a>
     </div>
   
     <!-- Right: Carousel -->
@@ -760,10 +727,10 @@
     
     <!-- Title -->
     <h2 class="font-black text-3xl uppercase leading-tight text-white mb-4" style="font-family: 'Jost', sans-serif;">
-      СЛУШНЕТЕ ПОВЕЌЕ<br>ОД НАШИТЕ КЛИЕНТИ
+      {!! __('home.testimonials_title_mobile') !!}
     </h2>
     <p class="text-white text-sm mb-10" style="font-family: 'Montserrat', sans-serif; opacity: 0.85; max-width: 280px; line-height: 1.6;">
-      Прочитај ги тестимониалите оставени од нашите верни клиенти.
+      {{ __('home.testimonials_subtitle_mob') }}
     </p>
 
     <!-- Card Carousel -->
@@ -806,7 +773,7 @@
     <button type="button" onclick="document.getElementById('modal-testimonial').classList.remove('hidden');"
       class="mt-12 flex items-center justify-center w-full font-medium transition-all duration-200"
       style="max-width: 300px; height: 50px; border-radius: 25px; background: #E0F2FE; color: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px; border: none; cursor: pointer;">
-      Напиши тестимониал
+      {{ __('home.write_testimonial_btn') }}
     </button>
   </section>
 
@@ -922,23 +889,22 @@
     <div class="relative flex flex-col items-center" style="z-index: 10;">
   
       <span class="px-6 py-2 rounded-full text-gray-600 text-sm mb-8" style="background: rgba(0,0,0,0.07); font-family: 'Montserrat', sans-serif;">
-        Повик за акција
+        {{ __('home.cta_badge') }}
       </span>
-  
+
       <h2 class="font-black text-6xl uppercase leading-tight mb-6" style="font-family: 'Jost', sans-serif;">
-        ДАЛИ СИ СПРЕМЕН<br>
-        ДА <span style="color: #194077;">ЗАПОЧНЕШ</span>?
+        {!! __('home.cta_title') !!}
       </h2>
-  
+
       <p class="text-gray-600 text-lg mb-10 max-w-xl" style="font-family: 'Montserrat', sans-serif;">
-        Избери го курсот што ти одговара и постигни резултати кои ќе ти ја отворат вратата кон нови можности.
+        {{ __('home.cta_subtitle') }}
       </p>
-  
+
       <a href="/courses" class="flex items-center justify-center px-10 py-4 text-white font-medium text-lg transition-all duration-200"
         style="border-radius: 30px; background: linear-gradient(to right, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.15);"
         onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)';"
         onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)';">
-        Започни сега
+        {{ __('home.cta_btn') }}
       </a>
   
     </div>

@@ -43,7 +43,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="font-bold text-black leading-tight" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">Каде е признаен?</p>
+                        <p class="font-bold text-black leading-tight" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">{{ __('exams.where_recognized') }}</p>
                         <p class="text-gray-600 leading-tight mt-1" style="font-family: 'Montserrat', sans-serif; font-size: 14px;">{{ $exam->where_recognized }}</p>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="font-bold text-black leading-tight" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">За што е потребен?</p>
+                        <p class="font-bold text-black leading-tight" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">{{ __('exams.what_for') }}</p>
                         <p class="text-gray-600 leading-tight mt-1" style="font-family: 'Montserrat', sans-serif; font-size: 14px;">{{ $exam->what_for }}</p>
                     </div>
                 </div>
@@ -71,16 +71,16 @@
             @if(!$exam->is_on_demand && $firstDate)
             <div class="mb-7">
                 <p class="text-gray-800 mb-1" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-                    Прв термин за полагање на испит: <strong>{{ \Carbon\Carbon::parse($firstDate->exam_date)->format('d.m.Y') }}</strong>
+                    {{ __('exams.first_date_full') }} <strong>{{ \Carbon\Carbon::parse($firstDate->exam_date)->format('d.m.Y') }}</strong>
                 </p>
                 <a href="#termini" class="font-bold underline text-black hover:text-[#194077] transition-colors" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-                    Види ги сите термини.
+                    {{ __('exams.see_all_dates') }}
                 </a>
             </div>
             @elseif($exam->is_on_demand)
             <div class="mb-7">
                 <p class="text-gray-800" style="font-family: 'Montserrat', sans-serif; font-size: 15px;">
-                    Овој испит се полага по барање.
+                    {{ __('exams.on_demand_text') }}
                 </p>
             </div>
             @endif
@@ -92,7 +92,7 @@
                     style="width: 160px; height: 48px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px;"
                     onmouseover="this.style.background='#020C1B';"
                     onmouseout="this.style.background='#194077';">
-                    Пријави се
+                    {{ __('exams.register_btn') }}
                 </button>
             @else
                 <a href="#termini"
@@ -100,7 +100,7 @@
                     style="width: 160px; height: 48px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 16px;"
                     onmouseover="this.style.background='#020C1B';"
                     onmouseout="this.style.background='#194077';">
-                    Пријави се
+                    {{ __('exams.register_btn') }}
                 </a>
             @endif
         </div>
@@ -145,7 +145,7 @@
                           </svg>
                       </div>
                       <div class="flex flex-col justify-center">
-                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">Каде е признаен?</p>
+                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.where_recognized') }}</p>
                           <p class="text-gray-600 leading-snug mt-1 text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ $exam->where_recognized }}</p>
                       </div>
                   </div>
@@ -159,7 +159,7 @@
                           </svg>
                       </div>
                       <div class="flex flex-col justify-center">
-                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">За што е потребен?</p>
+                          <p class="font-bold text-[#111827] leading-tight text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.what_for') }}</p>
                           <p class="text-gray-600 leading-snug mt-1 text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{ $exam->what_for }}</p>
                       </div>
                   </div>
@@ -173,17 +173,17 @@
               @if(!$exam->is_on_demand && $firstDate)
               <div class="pt-2">
                   <p class="text-[#111827] text-[13px] mb-2" style="font-family: 'Montserrat', sans-serif;">
-                      Прв термин за полагање на испит:<br>
+                      {{ __('exams.first_date_full') }}<br>
                       <strong>{{ \Carbon\Carbon::parse($firstDate->exam_date)->format('d.m.Y') }}</strong>
                   </p>
                   <a href="#termini" class="font-bold underline text-[#111827] hover:text-[#194077] transition-colors text-[13px]" style="font-family: 'Montserrat', sans-serif;">
-                      Види ги сите термини.
+                      {{ __('exams.see_all_dates') }}
                   </a>
               </div>
               @elseif($exam->is_on_demand)
               <div class="pt-2">
                   <p class="text-[#111827] text-[13px]" style="font-family: 'Montserrat', sans-serif;">
-                      Овој испит се полага по барање.
+                      {{ __('exams.on_demand_text') }}
                   </p>
               </div>
               @endif
@@ -196,7 +196,7 @@
              style="height: 54px; border-radius: 40px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
              onmouseover="this.style.background='#020C1B';"
              onmouseout="this.style.background='#194077';">
-             Пријави се
+             {{ __('exams.register_btn') }}
          </button>
      @else
          <a href="#termini"
@@ -204,7 +204,7 @@
              style="height: 54px; border-radius: 40px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
              onmouseover="this.style.background='#020C1B';"
              onmouseout="this.style.background='#194077';">
-             Пријави се
+             {{ __('exams.register_btn') }}
          </a>
      @endif
     </div>
@@ -270,11 +270,11 @@
         {{-- Section Header --}}
         <div class="text-left md:text-center mb-8 md:mb-12 px-2 xl:px-0">
             <h2 class="font-black text-[22px] md:text-4xl uppercase mb-3 md:mb-4 text-[#111827]" style="font-family: 'Jost', sans-serif;">
-                СТРУКТУРА<br class="block md:hidden"> НА ИСПИТОТ
+                {{ __('exams.exam_structure') }}
             </h2>
             <p class="text-gray-600 text-[13px] md:text-sm leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
-                Сакате да дознаете повеќе од официјалната страна на {{ $exam->title }}?<br class="hidden md:block">
-                <a href="{{ $exam->official_site_url }}" target="_blank" class="font-bold underline text-[#111827]">Кликнете овде.</a>
+                {{ __('exams.official_site_text', ['exam' => $exam->title]) }}<br class="hidden md:block">
+                <a href="{{ $exam->official_site_url }}" target="_blank" class="font-bold underline text-[#111827]">{{ __('exams.official_site_link') }}</a>
             </p>
         </div>
 
@@ -333,29 +333,29 @@
         
         <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-white flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #194077;">
             <p class="text-[13px] md:text-sm font-medium md:font-normal" style="font-family: 'Montserrat', sans-serif;">
-                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">Флексибилна подготовка</strong>
-                <span class="opacity-90">онлајн и во живо.</span>
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">{{ __('exams.flex_prep') }}</strong>
+                <span class="opacity-90">{{ __('exams.flex_prep_sub') }}</span>
             </p>
         </div>
 
         <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-[#111827] flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #E5F7FF;">
             <p class="text-[13px] md:text-sm" style="font-family: 'Montserrat', sans-serif;">
-                Вкупно времетраење <span class="md:hidden"><br></span>
-                <strong class="text-[13px] md:text-lg block mt-0.5 md:mt-1">{{ $exam->duration ?? 'Контактирајте не' }}</strong>
+                {{ __('exams.total_duration') }} <span class="md:hidden"><br></span>
+                <strong class="text-[13px] md:text-lg block mt-0.5 md:mt-1">{{ $exam->duration ?? __('exams.contact_us') }}</strong>
             </p>
         </div>
 
         <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-[#111827] flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #84CDF1;">
             <p class="text-[13px] md:text-sm" style="font-family: 'Montserrat', sans-serif;">
-                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">Европско признавање</strong>
-                сертификатите важат низ цела ЕУ.
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">{{ __('exams.eu_recognition') }}</strong>
+                {{ __('exams.eu_recognition_sub') }}
             </p>
         </div>
 
         <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 md:p-6 text-white flex flex-col justify-center min-h-[90px] md:min-h-[140px]" style="background: #194077;">
             <p class="text-[13px] md:text-sm font-medium md:font-normal" style="font-family: 'Montserrat', sans-serif;">
-                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block md:inline">Брзи резултати</strong> 
-                <span class="opacity-90 leading-tight block md:inline md:leading-normal">добиваш сертификат за {{ $exam->results_time ?? 'неколку недели' }}.</span>
+                <strong class="text-[13px] md:text-lg mb-0.5 md:mb-1 block md:inline">{{ __('exams.fast_results') }}</strong>
+                <span class="opacity-90 leading-tight block md:inline md:leading-normal">{{ __('exams.fast_results_sub', ['time' => $exam->results_time ?? '']) }}</span>
             </p>
         </div>
 
@@ -370,10 +370,10 @@
         {{-- Section Title --}}
         <div class="text-left md:text-center mb-8 md:mb-10 w-full max-w-[500px] md:max-w-none mx-auto md:px-0">
             <h2 class="font-black text-[22px] md:text-4xl uppercase mb-3 md:mb-4 text-[#111827]" style="font-family: 'Jost', sans-serif;">
-                CEFR НИВОА ЗА {{ $exam->title }}
+                {{ __('exams.cefr_levels_title', ['exam' => $exam->title]) }}
             </h2>
             <p class="text-gray-600 text-[14px] md:text-sm max-w-2xl mx-auto md:mx-auto" style="font-family: 'Montserrat', sans-serif;">
-                Сите нивоа се усогласени со Заедничката европска референтна рамка за јазици (CEFR).
+                {{ __('exams.cefr_subtitle') }}
             </p>
         </div>
 
@@ -481,7 +481,7 @@
 
         <div class="mb-10">
             <h2 class="font-black text-[28px] uppercase text-black" style="font-family: 'Jost', sans-serif;">
-                ДАТУМИ НА ПОЛАГАЊЕ
+                {{ __('exams.exam_dates_title') }}
             </h2>
         </div>
 
@@ -491,11 +491,10 @@
             {{-- LEFT: Calendar --}}
             <div class="col-span-5 bg-white rounded-2xl p-8 border border-gray-200">
                 <h3 class="font-bold text-[16px] mb-2 text-black" style="font-family: 'Montserrat', sans-serif;">
-                    Селектирај датум на полагање
+                    {{ __('exams.select_date') }}
                 </h3>
                 <p class="text-gray-500 text-[14px] leading-relaxed mb-8" style="font-family: 'Montserrat', sans-serif;">
-                    Постојат два формати за полагање на {{ $exam->title }}, <strong>дигитален</strong> и <strong>класичен</strong>.
-                    Кликни на датата за да дознаеш повеќе детали.
+                    {!! __('exams.formats_text', ['exam' => $exam->title]) !!}
                 </p>
 
                 <div class="border border-gray-200 rounded-xl p-6 w-full" style="font-family: 'Montserrat', sans-serif;">
@@ -513,7 +512,7 @@
 
                     {{-- Day Headers --}}
                     <div class="grid grid-cols-7 text-center text-[12px] text-gray-400 font-medium mb-2">
-                        <div>Не</div><div>Пон</div><div>Втр</div><div>Сре</div><div>Чет</div><div>Пет</div><div>Саб</div>
+                        <div>{{ __('exams.day_sun') }}</div><div>{{ __('exams.day_mon') }}</div><div>{{ __('exams.day_tue') }}</div><div>{{ __('exams.day_wed') }}</div><div>{{ __('exams.day_thu') }}</div><div>{{ __('exams.day_fri') }}</div><div>{{ __('exams.day_sat') }}</div>
                     </div>
 
                     {{-- Day Grid --}}
@@ -538,10 +537,10 @@
             {{-- RIGHT: Date Cards --}}
             <div class="col-span-7 bg-white rounded-2xl p-8 border border-gray-200">
                 <h3 class="font-bold text-[16px] mb-1 text-black" style="font-family: 'Montserrat', sans-serif;">
-                    Сите претстојни датуми
+                    {{ __('exams.upcoming_dates') }}
                 </h3>
                 <p class="text-gray-500 text-[14px] mb-6" style="font-family: 'Montserrat', sans-serif;">
-                    Одбери од достапните термини
+                    {{ __('exams.available_dates_sub') }}
                 </p>
 
                 <div class="flex flex-col gap-3 overflow-y-auto pr-1 custom-scrollbar" style="max-height: 520px;">
@@ -569,7 +568,7 @@
                             <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                             </svg>
-                            <span>Рок за пријавување: {{ \Carbon\Carbon::parse($date->registration_start)->format('d.m.Y') }} – {{ \Carbon\Carbon::parse($date->registration_deadline)->format('d.m.Y') }}</span>
+                            <span>{{ __('exams.reg_deadline') }} {{ \Carbon\Carbon::parse($date->registration_start)->format('d.m.Y') }} – {{ \Carbon\Carbon::parse($date->registration_deadline)->format('d.m.Y') }}</span>
                         </div>
                         @endif
 
@@ -580,7 +579,7 @@
                             style="width: 130px; height: 40px; border-radius: 8px; background: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px;"
                             onmouseover="this.style.background='#020C1B';"
                             onmouseout="this.style.background='#194077';">
-                            Пријави се
+                            {{ __('exams.register_btn') }}
                         </button>
                         </div>
                     </div>
@@ -605,7 +604,7 @@
         activeDateId: null,
         month: new Date().getMonth(),
         year: new Date().getFullYear(),
-        monthNames: ['Јануари','Февруари','Март','Април','Мај','Јуни','Јули','Август','Септември','Октомври','Ноември','Декември'],
+        monthNames: '{{ __('exams.months') }}'.split(','),
         availableDates: availableDates,
         get blanks() {
             return Array.from({ length: new Date(this.year, this.month, 1).getDay() });

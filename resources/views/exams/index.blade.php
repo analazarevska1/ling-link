@@ -9,24 +9,24 @@
         <img src="{{ asset('images/exams-header.jpg') }}" alt="Курсеви"
             class="w-full h-full object-cover brightness-75 rounded-3xl">
         <div class="absolute inset-0 flex items-center justify-center">
-            <h1 class="text-white text-3xl md:text-5xl font-extrabold tracking-widest uppercase">Испити</h1>
+            <h1 class="text-white text-3xl md:text-5xl font-extrabold tracking-widest uppercase">{{ __('exams.page_title') }}</h1>
         </div>
     </div>
-<h1 class="hidden md:block text-center mx-auto mt-8 w-[196px] h-[40px] font-semibold text-[20px] leading-[40px] opacity-100" style="font-family: 'Jost', sans-serif;">ЛИСТА НА ИСПИТИ</h1>
+<h1 class="hidden md:block text-center mx-auto mt-8 w-[196px] h-[40px] font-semibold text-[20px] leading-[40px] opacity-100" style="font-family: 'Jost', sans-serif;">{{ __('exams.exam_list') }}</h1>
 
 <section class="w-full py-8 md:px-24">
 
     <div class="flex justify-center items-center gap-3 md:gap-4 mb-8 md:mb-16 px-4 md:px-0">
         <button onclick="switchTab('administrirani')" id="tab-administrirani"
-          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300"
+          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300 p-3"
           style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; font-weight: 700; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
-          Администрирање на испити
+          {{ __('exams.tab_administered') }}
         </button>
-        
+
         <button onclick="switchTab('podgotveni')" id="tab-podgotveni"
-          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300"
+          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300 p-3"
           style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; font-weight: 500; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
-          Подготовка за испити
+          {{ __('exams.tab_preparation') }}
         </button>
       </div>
 
@@ -74,20 +74,20 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                   </svg>
-                  <span>Нивоа: <strong>{{ $levelDesktopText }}</strong></span>
+                  <span>{{ __('exams.levels') }} <strong>{{ $levelDesktopText }}</strong></span>
                 </div>
                 <div class="flex items-center gap-2 text-sm mb-4" style="font-family: 'Montserrat', sans-serif;">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                   </svg>
                   @if($exam->is_on_demand)
-                    <span>Прв термин: <strong>Зависно од пријавата</strong></span>
+                    <span>{{ __('exams.first_date') }} <strong>{{ __('exams.on_demand') }}</strong></span>
                   @else
-                    <span>Прв термин: <strong>{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : 'Наскоро' }}</strong></span>
+                    <span>{{ __('exams.first_date') }} <strong>{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : __('exams.soon') }}</strong></span>
                   @endif
                 </div>
                 <div class="mt-auto">
-                  <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">Прочитај повеќе.</span>
+                  <span class="text-sm underline font-medium" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.read_more') }}</span>
                 </div>
               </div>
             </a>
@@ -103,7 +103,7 @@
 
         <!-- MOBILE VIEW -->
         <div class="flex md:hidden flex-col gap-4 items-stretch justify-center w-full px-6">
-            <p class="text-gray-500 text-[13px] mb-2 text-left w-full pl-2" style="font-family: 'Montserrat', sans-serif;">Сите испити</p>
+            <p class="text-gray-500 text-[13px] mb-2 text-left w-full pl-2" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.all_exams') }}</p>
             @foreach($exams as $exam)
             @php
               $bgColor = $exam->is_featured ? '#194077' : 'white';
@@ -135,14 +135,14 @@
                   <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                   </svg>
-                  <span class="opacity-80 font-normal">Нивоа: <strong class="ml-1 opacity-100 font-bold {{ $textColor == 'text-white' ? 'text-white' : 'text-black' }}">{{ $levelMobileText }}</strong></span>
+                  <span class="opacity-80 font-normal">{{ __('exams.levels') }} <strong class="ml-1 opacity-100 font-bold {{ $textColor == 'text-white' ? 'text-white' : 'text-black' }}">{{ $levelMobileText }}</strong></span>
                 </div>
                 
                 <div class="flex items-start gap-3 text-[13px] font-semibold mb-2 {{ $textColor == 'text-white' ? 'text-white' : 'text-[#111827]' }}" style="font-family: 'Montserrat', sans-serif;">
                   <svg class="w-5 h-5 flex-shrink-0 mt-[2px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                   </svg>
-                  <span class="opacity-80 font-normal">Прв термин за испит:<br><strong class="opacity-100 font-bold {{ $textColor == 'text-white' ? 'text-white' : 'text-black' }}">{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : ($exam->is_on_demand ? 'Зависно од пријава' : 'По договор') }}</strong></span>
+                  <span class="opacity-80 font-normal">{{ __('exams.first_exam_date') }}<br><strong class="opacity-100 font-bold {{ $textColor == 'text-white' ? 'text-white' : 'text-black' }}">{{ $exam->first_exam_date ? \Carbon\Carbon::parse($exam->first_exam_date)->format('d.m.Y') : ($exam->is_on_demand ? __('exams.on_demand_short') : __('exams.by_appointment')) }}</strong></span>
                 </div>
               </div>
             </a>
@@ -152,7 +152,7 @@
         <div class="flex flex-col items-center justify-center py-16 text-center">
             <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <p class="text-lg text-gray-500 font-medium" style="font-family: 'Montserrat', sans-serif;">
-                Моментално нема активни испити.
+                {{ __('exams.no_exams') }}
             </p>
         </div>
     @endif
@@ -160,7 +160,7 @@
 
   <div id="content-podgotveni" class="hidden w-full pb-12">
     <!-- MOBILE Breadcrumbs equivalent -->
-    <p class="md:hidden text-gray-500 text-[12px] mb-4 text-left px-6" style="font-family: 'Montserrat', sans-serif;">&laquo; Подготовка за испити</p>
+    <p class="md:hidden text-gray-500 text-[12px] mb-4 text-left px-6" style="font-family: 'Montserrat', sans-serif;">&laquo; {{ __('exams.prep_breadcrumb') }}</p>
     
     @if($groupedExamPreps->isNotEmpty())
         <div class="max-w-5xl mx-auto space-y-4 md:space-y-8 px-4 md:px-0">
@@ -216,7 +216,7 @@
         <div class="flex flex-col items-center justify-center py-16 text-center">
             <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             <p class="text-lg text-gray-500 font-medium" style="font-family: 'Montserrat', sans-serif;">
-                Моментално нема достапни подготовки за испити.
+                {{ __('exams.no_preps') }}
             </p>
         </div>
     @endif
@@ -227,41 +227,39 @@
 <section class="w-full py-16" style="background: white;">
     <!-- DESKTOP TITLE -->
     <h2 class="hidden md:block text-center font-black text-4xl uppercase mb-12" style="font-family: 'Jost', sans-serif;">
-      СЕ ШТО <span style="font-weight: 500; font-style: italic;">ТРЕБА</span> ДА<br>
-      ЗНАЕТЕ ЗА <span style="color: #194077;">ИСПИТИТЕ</span>
+      {!! __('exams.info_title') !!}
     </h2>
     <!-- MOBILE TITLE -->
     <h2 class="md:hidden text-left font-black text-[25px] uppercase mb-8 leading-tight px-6" style="font-family: 'Jost', sans-serif; color: #111827;">
-      СЕ ШТО ТРЕБА ДА<br>
-      ЗНАЕТЕ ЗА ИСПИТИТЕ
+      {!! __('exams.info_title_mobile') !!}
     </h2>
 
     <!-- DESKTOP BOXES -->
     <div class="hidden md:flex mx-auto" style="width: 1100px; height: 211px; gap: 43px;">
       <div class="flex-1 flex items-center rounded-2xl p-8 text-white" style="background: #194077;">
-        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">Пријавите и уплатите пред крајниот датум за пријавување</p>
+        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info1') }}</p>
       </div>
       <div class="flex-1 flex items-center rounded-2xl p-8" style="background: #f0f4f8;">
-        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">Принципот на пријавување работи на начин прв-дојден, прв-услужен</p>
+        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info2') }}</p>
       </div>
       <div class="flex-1 flex items-center rounded-2xl p-8" style="background: #a8dff0;">
-        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">Местата за секој датум за испит се ограничени, резервирајте го вашето.</p>
+        <p class="font-bold text-lg" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info3') }}</p>
       </div>
     </div>
 
     <!-- MOBILE BOXES -->
     <div class="flex md:hidden flex-col w-full h-auto gap-4 px-6">
       <div class="flex-1 flex rounded-[20px] p-6 text-white min-h-[140px]" style="background: #194077;">
-        <p class="font-bold text-[15px] leading-snug" style="font-family: 'Montserrat', sans-serif;">Пријавите и уплатите пред крајниот датум за пријавување</p>
+        <p class="font-bold text-[15px] leading-snug" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info1') }}</p>
       </div>
       <div class="flex-1 flex rounded-[20px] p-6 min-h-[140px]" style="background: #f0f9ff;">
-        <p class="font-bold text-[15px] text-[#111827] leading-snug" style="font-family: 'Montserrat', sans-serif;">Принципот на пријавување работи на начин прв-дојден, прв-услужен</p>
+        <p class="font-bold text-[15px] text-[#111827] leading-snug" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info2') }}</p>
       </div>
       <div class="flex-1 flex rounded-[20px] p-6 min-h-[140px]" style="background: #89CDE3;">
-        <p class="font-bold text-[15px] text-[#111827] leading-snug" style="font-family: 'Montserrat', sans-serif;">Местата за секој датум за испит се ограничени, резервирајте го вашето.</p>
+        <p class="font-bold text-[15px] text-[#111827] leading-snug" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info3') }}</p>
       </div>
       <div class="flex-1 flex rounded-[20px] p-6 text-white min-h-[140px]" style="background: #194077;">
-        <p class="font-bold text-[15px] leading-snug" style="font-family: 'Montserrat', sans-serif;">Резервирајте го вашето слободно место на време</p>
+        <p class="font-bold text-[15px] leading-snug" style="font-family: 'Montserrat', sans-serif;">{{ __('exams.info4') }}</p>
       </div>
     </div>
 </section>
