@@ -24,7 +24,7 @@
 
     <div class="flex gap-4 mt-8">
       <!-- Одбери курс -->
-      <a href="#" class="flex items-center justify-center transition-all duration-200"
+      <a href="{{route('courses.index')}}" class="flex items-center justify-center transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; padding: 10px 16px; background: rgba(229, 247, 255, 0.9); color: #194077; font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
         onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
         onmouseout="this.style.background='rgba(229, 247, 255, 0.9)';">

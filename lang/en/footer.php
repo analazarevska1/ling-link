@@ -7,7 +7,8 @@ return [
     'exams'        => 'Exams',
     'rights'       => 'All rights reserved.',
     'english'      => 'English language',
-    'macedonian'   => 'Macedonian language for foreigners',
+    'macedonian'   => 'Macedonian language',
     'italian'      => 'Italian language',
     'french'       => 'French language',
+    'german'       => 'German language',
 ];

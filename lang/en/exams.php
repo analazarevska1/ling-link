@@ -1,0 +1,68 @@
+<?php
+return [
+    // Index page
+    'page_title'       => 'Exams',
+    'exam_list'        => 'EXAM LIST',
+    'tab_administered' => 'Exam administration',
+    'tab_preparation'  => 'Exam preparation',
+    'all_exams'        => 'All exams',
+    'levels'           => 'Levels:',
+    'first_date'       => 'First date:',
+    'first_exam_date'  => 'First exam date:',
+    'on_demand'        => 'Subject to registration',
+    'on_demand_short'  => 'Subject to registration',
+    'by_appointment'   => 'By appointment',
+    'soon'             => 'Coming soon',
+    'all_levels'       => 'All levels',
+    'read_more'        => 'Read more.',
+    'no_exams'         => 'No active exams at the moment.',
+    'no_preps'         => 'No exam preparations available at the moment.',
+    'prep_breadcrumb'  => 'Exam preparation',
+
+    // Info boxes (index page)
+    'info_title' => 'EVERYTHING YOU <span style="font-weight:500;font-style:italic;">NEED</span> TO<br>KNOW ABOUT <span style="color:#194077;">EXAMS</span>',
+    'info_title_mobile' => 'EVERYTHING YOU NEED<br>TO KNOW ABOUT EXAMS',
+    'info1'      => 'Register and pay before the registration deadline',
+    'info2'      => 'Registration works on a first-come, first-served basis',
+    'info3'      => 'Seats for each exam date are limited — reserve yours.',
+    'info4'      => 'Reserve your available spot in time',
+
+    // Show page
+    'where_recognized'   => 'Where is it recognised?',
+    'what_for'           => 'What is it needed for?',
+    'first_date_full'    => 'First exam date:',
+    'see_all_dates'      => 'See all dates.',
+    'on_demand_text'     => 'This exam is taken on request.',
+    'register_btn'       => 'Register',
+    'exam_structure'     => 'EXAM STRUCTURE',
+    'official_site_text' => 'Want to learn more from the official :exam website?',
+    'official_site_link' => 'Click here.',
+    'flex_prep'          => 'Flexible preparation',
+    'flex_prep_sub'      => 'online and in-person.',
+    'total_duration'     => 'Total duration',
+    'contact_us'         => 'Contact us',
+    'eu_recognition'     => 'European recognition',
+    'eu_recognition_sub' => 'certificates valid across the EU.',
+    'fast_results'       => 'Fast results',
+    'fast_results_sub'   => 'receive your certificate in :time.',
+    'cefr_levels_title'  => 'CEFR LEVELS FOR :exam',
+    'cefr_subtitle'      => 'All levels are aligned with the Common European Framework of Reference for Languages (CEFR).',
+    'exam_dates_title'   => 'EXAM DATES',
+    'select_date'        => 'Select an exam date',
+    'formats_text'       => 'There are two formats for taking the :exam exam — <strong>digital</strong> and <strong>paper-based</strong>. Click on a date to find out more details.',
+    'upcoming_dates'     => 'All upcoming dates',
+    'available_dates_sub'=> 'Choose from the available slots',
+    'reg_deadline'       => 'Registration period:',
+
+    // Calendar day headers
+    'day_sun' => 'Sun',
+    'day_mon' => 'Mon',
+    'day_tue' => 'Tue',
+    'day_wed' => 'Wed',
+    'day_thu' => 'Thu',
+    'day_fri' => 'Fri',
+    'day_sat' => 'Sat',
+
+    // Month names (used in JS)
+    'months' => 'January,February,March,April,May,June,July,August,September,October,November,December',
+];
