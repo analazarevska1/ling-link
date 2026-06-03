@@ -16,19 +16,19 @@
 
 <section class="w-full py-8 md:px-24">
 
-    <div class="flex justify-center items-center gap-3 md:gap-4 mb-8 md:mb-16 px-4 md:px-0">
-        <button onclick="switchTab('administrirani')" id="tab-administrirani"
-          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300 p-3"
-          style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; font-weight: 700; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
-          {{ __('exams.tab_administered') }}
-        </button>
+  <div class="flex justify-center items-center gap-3 md:gap-4 mb-8 md:mb-16 px-4 md:px-0">
+    <button onclick="switchTab('administrirani')" id="tab-administrirani"
+      class="rounded-xl transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-transparent"
+      style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; font-weight: 700; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+      {{ __('exams.tab_administered') }}
+    </button>
 
-        <button onclick="switchTab('podgotveni')" id="tab-podgotveni"
-          class="rounded-full transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-300 p-3"
-          style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; font-weight: 500; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
-          {{ __('exams.tab_preparation') }}
-        </button>
-      </div>
+    <button onclick="switchTab('podgotveni')" id="tab-podgotveni"
+      class="rounded-xl transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-200"
+      style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; font-weight: 500; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+      {{ __('exams.tab_preparation') }}
+    </button>
+</div>
 
   <div id="content-administrirani">
     @if($exams->isNotEmpty())

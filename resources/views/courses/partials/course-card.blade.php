@@ -1,3 +1,5 @@
+
+@use('Illuminate\Support\Facades\Storage')
 <div class="course-card flex-shrink-0 bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100
             flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer"
     style="width: calc(33.333% - 32px); min-width: 260px;"
@@ -11,9 +13,9 @@
     )">
 
     <div class="w-full overflow-hidden bg-gray-100" style="height: 190px;">
-        <img src="{{ asset($course->image) }}" alt="{{ $course->getLocalizedTitle() }}" loading="lazy"
-            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            onerror="this.src='{{ asset('images/course-placeholder.jpg') }}'">
+        <img src="{{ Storage::url($course->image) }}" alt="{{ $course->getLocalizedTitle() }}" loading="lazy"
+    class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+    onerror="this.src='{{ asset('images/course-placeholder.jpg') }}'">
     </div>
 
     <div class="flex-1 flex flex-col" style="padding: 14px 16px 10px;">

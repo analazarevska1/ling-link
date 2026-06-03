@@ -119,12 +119,12 @@
                 <div>
                     <p class="font-bold mb-3">{{ __('contact.follow_us') }}</p>
                     <div class="flex gap-3">
-                        <a href="#" class="bg-white rounded-full p-3 hover:bg-blue-100 transition">
+                        <a href="https://www.facebook.com/YourLinguaLink" class="bg-white rounded-full p-3 hover:bg-blue-100 transition">
                             <svg class="w-5 h-5" style="color: #1e3a5f;" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
                             </svg>
                         </a>
-                        <a href="#" class="bg-white rounded-full p-3 hover:bg-blue-100 transition">
+                        <a href="https://www.instagram.com/lingualink_language/" class="bg-white rounded-full p-3 hover:bg-blue-100 transition">
                             <svg class="w-5 h-5" style="color: #194077;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                                 <circle cx="12" cy="12" r="4"/>

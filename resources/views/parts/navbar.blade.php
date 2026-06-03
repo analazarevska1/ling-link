@@ -6,11 +6,11 @@
 
   {{-- Desktop nav links --}}
   <ul class="hidden lg:flex items-center gap-12 list-none m-0 p-0">
-    <li><a href="{{route('home-page')}}" class="text-[#194077]">{{ __('nav.home') }}</a></li>
-    <li><a href="{{route('about-us')}}" class="text-gray-700 hover:text-[#194077]">{{ __('nav.about') }}</a></li>
-    <li><a href="{{route('courses.index')}}" class="text-gray-700 hover:text-[#194077]">{{ __('nav.courses') }}</a></li>
-    <li><a href="{{route('exams.index')}}" class="text-gray-700 hover:text-[#194077]">{{ __('nav.exams') }}</a></li>
-    <li><a href="{{route('contact')}}" class="text-gray-700 hover:text-[#194077]">{{ __('nav.contact') }}</a></li>
+    <li><a href="{{route('home-page')}}" class="{{ request()->routeIs('home-page') ? 'text-[#194077]' : 'text-gray-700 hover:text-[#194077]' }}">{{ __('nav.home') }}</a></li>
+    <li><a href="{{route('about-us')}}" class="{{ request()->routeIs('about-us') ? 'text-[#194077]' : 'text-gray-700 hover:text-[#194077]' }}">{{ __('nav.about') }}</a></li>
+    <li><a href="{{route('courses.index')}}" class="{{ request()->routeIs('courses.index') ? 'text-[#194077]' : 'text-gray-700 hover:text-[#194077]' }}">{{ __('nav.courses') }}</a></li>
+    <li><a href="{{route('exams.index')}}" class="{{ request()->routeIs('exams.index') ? 'text-[#194077]' : 'text-gray-700 hover:text-[#194077]' }}">{{ __('nav.exams') }}</a></li>
+    <li><a href="{{route('contact')}}" class="{{ request()->routeIs('contact') ? 'text-[#194077]' : 'text-gray-700 hover:text-[#194077]' }}">{{ __('nav.contact') }}</a></li>
   </ul>
 
   {{-- Desktop right side: language switcher + auth --}}
@@ -138,13 +138,13 @@
   <div class="mobile-menu-social">
     <p style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px; color: #333; margin-bottom: 16px;">{{ __('nav.follow_us') }}</p>
     <div style="display: flex; gap: 12px;">
-      <a href="#" class="mobile-social-icon">
+      <a href="https://www.facebook.com/YourLinguaLink" class="mobile-social-icon">
         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
-      <a href="#" class="mobile-social-icon">
+      <a href="https://www.instagram.com/lingualink_language/" class="mobile-social-icon">
         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" class="fill-[#1e3a5f]"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a href="#" class="mobile-social-icon">
+      <a href="/contact" class="mobile-social-icon">
         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       </a>
     </div>
