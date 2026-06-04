@@ -1,7 +1,7 @@
 @use('Illuminate\Support\Facades\Storage')
 <div class="course-card bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100
             flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer"
-    style="flex: 0 0 auto; width: 320px; min-width: 0;"
+    style="flex: 0 0 auto; min-width: 0;"
     onclick="openPrijavaModal(
         '{{ addslashes($course->getLocalizedTitle()) }}',
         '{{ addslashes($course->getLocalizedSubtitle()) }}',

@@ -16,7 +16,7 @@
   {{-- Desktop right side: language switcher + auth --}}
   <div class="hidden lg:flex items-center gap-6">
 
-    {{-- ✅ Language Switcher --}}
+    {{-- Language Switcher --}}
     <div class="flex items-center gap-1" style="font-size: 13px; font-weight: 700;">
       <a href="{{ route('language.switch', 'mk') }}"
          style="color: {{ app()->getLocale() === 'mk' ? '#194077' : '#9ca3af' }}; text-decoration: none;">
@@ -56,7 +56,7 @@
     @endauth
   </div>
 
-{{-- Mobile: language switcher + hamburger grouped together --}}
+  {{-- Mobile: language switcher + hamburger --}}
   <div class="lg:hidden flex items-center gap-3">
     <div class="flex items-center gap-1" style="font-size: 13px; font-weight: 700;">
       <a href="{{ route('language.switch', 'mk') }}"
@@ -70,10 +70,9 @@
       </a>
     </div>
 
-    <button id="mobileMenuOpen" class="flex flex-col justify-center items-center gap-[5px] p-2" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu" style="background: none; border: none; cursor: pointer;">
-      <span style="display: block; width: 24px; height: 2.5px; background: #194077; border-radius: 2px;"></span>
-      <span style="display: block; width: 24px; height: 2.5px; background: #194077; border-radius: 2px;"></span>
-      <span style="display: block; width: 24px; height: 2.5px; background: #194077; border-radius: 2px;"></span>
+    {{-- Custom hamburger icon from ImageKit --}}
+    <button id="mobileMenuOpen" class="p-1" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Open menu" style="background: none; border: none; cursor: pointer;">
+      <img src="https://ik.imagekit.io/ijiuecjvx/Hamburger_icon.svg.png?updatedAt=1780560467129" alt="Menu" style="width: 28px; height: 28px; object-fit: contain;">
     </button>
   </div>
 
@@ -108,8 +107,6 @@
       <span>{{ __('nav.more_about_us') }}</span>
       <svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1L7 7L1 13" stroke="#999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-
-
 
     {{-- Auth section for mobile --}}
     @auth

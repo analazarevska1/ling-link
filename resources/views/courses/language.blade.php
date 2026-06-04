@@ -62,11 +62,7 @@
                     </button>
 
                 </div>
-                <a href="{{ route('personalizacija.1') }}"
-                   class="block text-center mt-6 text-sm text-[#194077] underline"
-                   style="font-family: 'Montserrat', sans-serif;">
-                    {{ __('courses.change_params') }}
-                </a>
+               
             </div>
 
             {{-- ── ALL COURSES PANEL ── --}}
@@ -313,11 +309,42 @@
         color: white !important;
         border-color: #194077 !important;
     }
+
+    /* ── Mobile carousel ── */
     @media (max-width: 767px) {
         .course-card {
             flex: 0 0 100% !important;
             width: 100% !important;
             min-width: unset !important;
+            border-radius: 16px !important;
+        }
+
+        /* Hide arrows on mobile — swipe handles navigation */
+        #prevBtn, #nextBtn, #prevBtnRec, #nextBtnRec {
+            display: none !important;
+        }
+
+        /* Make the track scrollable horizontally on mobile */
+        #carouselTrack, #carouselTrackRec {
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            scrollbar-width: none !important;
+            transform: none !important;
+        }
+
+        #carouselTrack::-webkit-scrollbar,
+        #carouselTrackRec::-webkit-scrollbar {
+            display: none !important;
+        }
+
+        .course-card {
+            scroll-snap-align: start !important;
+        }
+
+        /* Track wrapper: allow overflow for scroll */
+        #carouselTrack, #carouselTrackRec {
+            width: auto !important;
         }
     }
 </style>
@@ -349,6 +376,22 @@
         function update() {
             var cards = getCards();
             if (!cards.length) {
+                prevBtn.style.opacity = '0.2';
+                nextBtn.style.opacity = '0.2';
+                return;
+            }
+
+            /* On mobile: CSS scroll handles everything, skip JS layout */
+            if (window.innerWidth < 768) {
+                cards.forEach(function(c) {
+                    c.style.flex     = '0 0 100%';
+                    c.style.width    = '100%';
+                    c.style.minWidth = 'unset';
+                });
+                track.style.width          = 'auto';
+                track.style.transform      = '';
+                track.style.flexWrap       = 'nowrap';
+                track.style.justifyContent = 'flex-start';
                 prevBtn.style.opacity = '0.2';
                 nextBtn.style.opacity = '0.2';
                 return;

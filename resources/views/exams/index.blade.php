@@ -171,69 +171,77 @@
   </div>
 
   <div id="content-podgotveni" class="hidden w-full pb-12">
-    <!-- MOBILE Breadcrumbs equivalent -->
     <p class="md:hidden text-gray-500 text-[12px] mb-4 text-left px-6" style="font-family: 'Montserrat', sans-serif;">&laquo; {{ __('exams.prep_breadcrumb') }}</p>
     
     @if($groupedExamPreps->isNotEmpty())
-        <div class="max-w-5xl mx-auto space-y-4 md:space-y-8 px-4 md:px-0">
+        <div class="max-w-5xl mx-auto space-y-4 md:space-y-6 px-4 md:px-0">
             
             @foreach($groupedExamPreps as $category => $groups)
-            <div class="bg-white rounded-2xl md:rounded-[20px] p-5 md:p-10" style="box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.05);">
+            <div class="bg-white rounded-2xl md:rounded-[20px] overflow-hidden" style="box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.06);">
                 
-                <h2 class="text-gray-500 text-[13px] md:text-[15px] mb-4 md:mb-6 font-medium" style="font-family: 'Montserrat', sans-serif;">
-                    {{ $category }}
-                </h2>
+                {{-- Category header --}}
+                <div class="px-6 md:px-10 pt-6 md:pt-8 pb-3 md:pb-4">
+                    <p class="text-gray-400 text-[11px] md:text-[12px] font-semibold uppercase tracking-widest" style="font-family: 'Montserrat', sans-serif;">
+                        {{ $category }}
+                    </p>
+                </div>
 
-                <div class="space-y-2">
+                {{-- Accordion rows --}}
+                <div class="px-4 md:px-6 pb-4 md:pb-6">
                     @foreach($groups as $examGroup => $preps)
-                    <div x-data="{ expanded: false }" class="border-b border-gray-100 last:border-0 pb-2 last:pb-0">
+                    <div x-data="{ expanded: false }" class="rounded-xl md:rounded-2xl mb-2 last:mb-0 overflow-hidden border border-gray-100">
                         
-                        <button @click="expanded = !expanded" class="w-full flex justify-between items-center py-3 md:py-4 group focus:outline-none">
-                            <div class="flex items-center gap-3 md:gap-4">
-                                <svg class="w-[20px] h-[20px] text-[#194077]" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                </svg>
-                                <span class="font-bold text-[#111827] text-[15px] md:text-[16px] group-hover:opacity-80 transition-opacity" style="font-family: 'Montserrat', sans-serif;">
-                                    {{ $examGroup }}
-                                </span>
-                            </div>
+                        {{-- Accordion trigger --}}
+                        <button 
+                            @click="expanded = !expanded" 
+                            class="w-full flex justify-between items-center px-5 md:px-6 py-4 md:py-5 text-left transition-colors duration-200 focus:outline-none"
+                            :class="expanded ? 'bg-[#194077]' : 'bg-white hover:bg-gray-50'">
                             
-                            <svg :class="{'rotate-180': expanded}" class="w-4 h-4 text-gray-400 opacity-80 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <span class="font-bold text-[14px] md:text-[15px] transition-colors duration-200"
+                                  :class="expanded ? 'text-white' : 'text-[#111827]'"
+                                  style="font-family: 'Montserrat', sans-serif;">
+                                {{ $examGroup }}
+                            </span>
+                            
+                            <svg :class="[expanded ? 'rotate-180 text-white' : 'text-gray-400']" 
+                                 class="w-4 h-4 flex-shrink-0 ml-4 transition-all duration-300" 
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
 
-                        <div x-show="expanded" x-collapse x-cloak class="mt-1 space-y-3 pl-8 pb-4">
-                            @foreach($preps as $prep)
-                            <div class="bg-white border border-[#f3f4f6] rounded-2xl p-5" style="box-shadow: 0px 2px 10px rgba(0,0,0,0.02);">
-                                <h3 class="font-bold text-[#111827] text-[14px] mb-1 leading-snug" style="font-family: 'Montserrat', sans-serif;">
+                        {{-- Expanded content --}}
+                        <div x-show="expanded" x-collapse x-cloak class="bg-white border-t border-gray-100">
+                            @foreach($preps as $index => $prep)
+                            <div class="px-5 md:px-6 py-4 md:py-5 {{ !$loop->last ? 'border-b border-gray-50' : '' }}">
+                                <h3 class="font-semibold text-[#111827] text-[13px] md:text-[14px] mb-1 leading-snug" style="font-family: 'Montserrat', sans-serif;">
                                     {{ $prep->getLocalizedName() }}
                                 </h3>
-                                @if($prep->description)
-                                    <p class="text-[13px] text-gray-500 leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                                @if($prep->getLocalizedDescription())
+                                    <p class="text-[12px] md:text-[13px] text-gray-500 leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
                                         {{ $prep->getLocalizedDescription() }}
                                     </p>
                                 @endif
                             </div>
                             @endforeach
                         </div>
+
                     </div>
                     @endforeach
                 </div>
+
             </div>
             @endforeach
 
         </div>
     @else
         <div class="flex flex-col items-center justify-center py-16 text-center">
-            <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-            <p class="text-lg text-gray-500 font-medium" style="font-family: 'Montserrat', sans-serif;">
+            <p class="text-lg text-gray-400 font-medium" style="font-family: 'Montserrat', sans-serif;">
                 {{ __('exams.no_preps') }}
             </p>
         </div>
     @endif
-  </div>
-
+</div>
 </section>
 
 <section class="w-full py-16" style="background: white;">
