@@ -34,7 +34,7 @@ class CourseResource extends Resource
 
                         Forms\Components\Select::make('category')
                             ->required()
-                            ->live() // 👈 make category live too
+                            ->live()
                             ->options(function (Forms\Get $get) {
                                 $language = $get('language');
                                 return match ($language) {
@@ -73,14 +73,12 @@ class CourseResource extends Resource
                         Forms\Components\Select::make('age_group')
                             ->options(function (Forms\Get $get) {
                                 $category = $get('category');
-                                // 👇 children category = only under 18
                                 if ($category === 'children') {
                                     return [
                                         'до 12' => 'до 12',
                                         '13-17' => '13-17',
                                     ];
                                 }
-                                // all other categories = adults
                                 return [
                                     '18-25' => '18-25',
                                     '26-35' => '26-35',
@@ -95,9 +93,38 @@ class CourseResource extends Resource
                         Forms\Components\TextInput::make('hours')
                             ->numeric(),
 
-                        Forms\Components\FileUpload::make('image')
-                            ->image()
+                        // Image preview (only shown when editing)
+                        Forms\Components\Placeholder::make('image_preview')
+                            ->label('Моментална слика')
+                            ->content(function ($record) {
+                                if ($record && $record->image) {
+                                    return new \Illuminate\Support\HtmlString(
+                                        '<img src="' . $record->image . '" style="max-width: 100%; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">'
+                                    );
+                                }
+                                return 'Нема прикачено слика.';
+                            })
+                            ->hidden(fn ($record) => !$record)
                             ->columnSpanFull(),
+
+                        // ImageKit upload
+                        Forms\Components\FileUpload::make('image')
+                            ->label(fn ($record) => $record ? 'Прикачи нова слика (остави празно за да ја задржиш старата)' : 'Насловна слика')
+                            ->image()
+                            ->required(fn (string $operation): bool => $operation === 'create')
+                            ->saveUploadedFileUsing(function ($file) {
+                                $imageKit = app(\App\Services\ImageKitService::class);
+                                return $imageKit->upload(
+                                    $file,
+                                    uniqid() . '.' . $file->getClientOriginalExtension(),
+                                    '/courses'
+                                );
+                            })
+                            ->dehydrated(fn ($state) => filled($state))
+                            ->columnSpanFull(),
+
+
+
                     ])->columns(2),
 
                 Forms\Components\Section::make('🇲🇰 Македонска содржина')
@@ -148,7 +175,9 @@ class CourseResource extends Resource
                 Tables\Columns\TextColumn::make('duration')->searchable(),
                 Tables\Columns\TextColumn::make('students_count')->searchable(),
                 Tables\Columns\TextColumn::make('hours')->numeric()->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->url(fn ($record) => $record->image)
+                    ->defaultImageUrl('https://placehold.co/400x300?text=No+Image'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

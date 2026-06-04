@@ -21,4 +21,6 @@ return [
     'experience_label'     => 'Your experience',
     'experience_placeholder'=> 'Share your experience here.',
     'testimonial_submit'   => 'Submit',
+
+    
 ];

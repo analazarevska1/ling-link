@@ -11,18 +11,18 @@
   </div>
 
   <h1 class="font-black text-4xl uppercase text-center leading-tight mb-12" style="font-family: 'Jost', sans-serif;">
-    КОЈА Е <span style="font-weight: 500; font-style: italic;">ТВОЈАТА</span> <span style="color: #194077;">ВОЗРАСТ</span>?
+    {!! __('personalizacija.step2_title') !!}
   </h1>
 
   <form method="POST" action="{{ route('personalizacija.save2') }}" class="w-full" style="max-width: 500px;">
     @csrf
     <div class="flex flex-col gap-4">
   @foreach([
-    'до 12' => 'До 12 години',
-    '13-17'  => '13-17 години',
-    '18-25'  => '18-25 години',
-    '26-35'  => '26-35 години',
-    '40+'    => '40+ години',
+    'до 12' => __('personalizacija.age_u12'),
+    '13-17'  => __('personalizacija.age_13_17'),
+    '18-25'  => __('personalizacija.age_18_25'),
+    '26-35'  => __('personalizacija.age_26_35'),
+    '40+'    => __('personalizacija.age_40plus'),
 ] as $value => $label)
     <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
       style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">

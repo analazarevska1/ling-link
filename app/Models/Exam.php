@@ -7,22 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Exam extends Model
 {
     protected $fillable = [
-        'title', 
-        'subtitle', 
-        'description', 
+        'title',
+        'subtitle',
+        'description',
         'image',
-        'where_recognized', 
-        'what_for', 
+        'where_recognized',
+        'what_for',
         'first_exam_date',
-        'official_site_url', 
-        'is_active', 
+        'official_site_url',
+        'is_active',
         'is_featured',
-        'duration',       
-        'results_time',   
+        'duration',
+        'results_time',
         'is_on_demand',
         'has_fast_registration',
-        'layout_type',    
-        'info_cards'     
+        'layout_type',
+        'info_cards',
+        'title_en', 'subtitle_en', 'description_en', 'duration_en',
     ];
 
     protected $casts = [
@@ -50,6 +51,38 @@ class Exam extends Model
     public function registrations()
     {
         return $this->hasMany(ExamRegistration::class);
+    }
+
+    public function getLocalizedTitle(): string
+    {
+        if (app()->getLocale() === 'en' && $this->title_en) {
+            return $this->title_en;
+        }
+        return $this->title;
+    }
+
+    public function getLocalizedSubtitle(): ?string
+    {
+        if (app()->getLocale() === 'en' && $this->subtitle_en) {
+            return $this->subtitle_en;
+        }
+        return $this->subtitle;
+    }
+
+    public function getLocalizedDescription(): ?string
+    {
+        if (app()->getLocale() === 'en' && $this->description_en) {
+            return $this->description_en;
+        }
+        return $this->description;
+    }
+
+    public function getLocalizedDuration(): ?string
+    {
+        if (app()->getLocale() === 'en' && $this->duration_en) {
+            return $this->duration_en;
+        }
+        return $this->duration;
     }
 
 }

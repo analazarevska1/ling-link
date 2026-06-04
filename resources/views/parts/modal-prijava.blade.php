@@ -28,7 +28,9 @@
             </div>
         </div>
 
-        <h3 class="hidden md:block font-black text-2xl text-center uppercase mb-6" style="font-family: 'Jost', sans-serif;">ФОРМА ЗА ПРИЈАВУВАЊЕ</h3>
+        <h3 class="hidden md:block font-black text-2xl text-center uppercase mb-6" style="font-family: 'Jost', sans-serif;">
+            {{ __('modal.form_title') }}
+        </h3>
   
         <form method="POST" action="{{ route('prijava.store', $id) }}" class="flex flex-col gap-4">
           @csrf
@@ -36,16 +38,20 @@
           <!-- Field Group: Name & Phone -->
           <div class="flex flex-col md:flex-row gap-4">
             <div class="flex-1">
-              <label class="block text-xs font-bold mb-2 text-gray-700 md:text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашето име и презиме</label>
-              <input type="text" name="name" placeholder="пр.Маја Иванова" required
+              <label class="block text-xs font-bold mb-2 text-gray-700 md:text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+                {{ __('modal.name_label') }}
+              </label>
+              <input type="text" name="name" placeholder="{{ __('modal.name_placeholder') }}" required
                 class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
                 style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
                 onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
                 onblur="this.style.borderColor='#e5e7eb'; this.style.boxShadow='0px 2px 4px rgba(0,0,0,0.02)'">
             </div>
             <div class="flex-1">
-              <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашиот телефонски број</label>
-              <input type="text" name="phone" placeholder="пр.07* *** ***" required
+              <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+                {{ __('modal.phone_label') }}
+              </label>
+              <input type="text" name="phone" placeholder="{{ __('modal.phone_placeholder') }}" required
                 class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
                 style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
                 onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
@@ -55,8 +61,10 @@
   
           <!-- Field: Email -->
           <div>
-            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашата е-меил адреса</label>
-            <input type="email" name="email" placeholder="пр. majaivanova@gmail.com" required
+            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+                {{ __('modal.email_label') }}
+            </label>
+            <input type="email" name="email" placeholder="{{ __('modal.email_placeholder') }}" required
               class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none transition-all"
               style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
               onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
@@ -65,8 +73,10 @@
   
           <!-- Field: Message -->
           <div>
-            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Порака</label>
-            <textarea name="message" placeholder='пр. "Сакам да се пријавам за потврда за активно и пасивно"' rows="4"
+            <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+                {{ __('modal.message_label') }}
+            </label>
+            <textarea name="message" placeholder="{{ __('modal.message_placeholder') }}" rows="4"
               class="w-full px-5 py-3 md:py-2 rounded-2xl md:rounded-xl border text-sm outline-none resize-none transition-all"
               style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb; box-shadow: 0px 2px 4px rgba(0,0,0,0.02);"
               onfocus="this.style.borderColor='#194077'; this.style.boxShadow='0px 4px 6px rgba(0,0,0,0.05)'" 
@@ -77,7 +87,7 @@
             style="background: #194077; font-family: 'Montserrat', sans-serif;"
             onmouseover="this.style.background='#0d2345'"
             onmouseout="this.style.background='#194077'">
-            Пријави се
+            {{ __('modal.submit_btn') }}
           </button>
         </form>
       </div>

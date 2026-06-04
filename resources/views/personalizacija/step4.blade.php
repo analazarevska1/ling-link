@@ -11,18 +11,17 @@
   </div>
 
   <h1 class="font-black text-4xl uppercase text-center leading-tight mb-12" style="font-family: 'Jost', sans-serif;">
-    КОЈ Е ТВОЈОТ СТЕПЕН НА<br>
-    <span style="font-weight: 500; font-style: italic;">ЗНАЕЊЕ</span> НА <span style="color: #194077;">{{ strtoupper(explode(' ', $language)[0]) }}</span>?
+    {!! __('personalizacija.step4_title', ['lang' => strtoupper($language)]) !!}
   </h1>
 
   <form method="POST" action="{{ route('personalizacija.store') }}" class="w-full" style="max-width: 500px;">
     @csrf
     <div class="flex flex-col gap-4">
 @foreach([
-    'A1-A2'  => 'Почетно ниво (А1-А2)',
-    'B1-B2'  => 'Средно ниво (Б1-Б2)',
-    'C1-C2'  => 'Напредно ниво (Ц1-Ц2)',
-    'unsure' => 'Не сум сигурен/на',
+    'A1-A2'  => __('personalizacija.lvl_a1a2'),
+    'B1-B2'  => __('personalizacija.lvl_b1b2'),
+    'C1-C2'  => __('personalizacija.lvl_c1c2'),
+    'unsure' => __('personalizacija.lvl_unsure'),
 ] as $value => $label)
     <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
       style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">

@@ -24,7 +24,7 @@ class ExamRegistrationController extends Controller
     $registration = $exam->registrations()->create($validated);
 
     try {
-        Mail::to('martinagogova16@gmail.com')->send(new ExamRegistrationMail($registration));
+        Mail::to('ana.lazarevska19@gmail.com')->send(new ExamRegistrationMail($registration));
     } catch (\Exception $e) {
         Log::error('Exam registration mail failed: ' . $e->getMessage());
     }

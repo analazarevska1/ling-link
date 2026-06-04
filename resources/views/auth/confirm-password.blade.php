@@ -1,27 +1,47 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
+@extends('parts.main')
+
+@section('content')
+<section class="min-h-screen flex items-center justify-center py-16" style="background: #f0f9ff;">
+  <div class="bg-white rounded-3xl shadow-lg p-12" style="width: 480px;">
+
+    <!-- Logo -->
+    <div class="flex justify-center mb-8">
+      <img src="{{ asset('images/logo.png') }}" alt="LinguaLink" style="width: 160px;">
     </div>
 
+    <h1 class="font-black text-3xl uppercase text-center mb-2" style="font-family: 'Jost', sans-serif;">
+      {{ __('auth.confirm_title') }}
+    </h1>
+    <p class="text-center text-gray-500 text-sm mb-8" style="font-family: 'Montserrat', sans-serif;">
+      {{ __('auth.confirm_subtitle') }}
+    </p>
+
     <form method="POST" action="{{ route('password.confirm') }}">
-        @csrf
+      @csrf
 
-        <!-- Password -->
-        <div>
-            <x-input-label for="password" :value="__('Password')" />
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+          {{ __('auth.password') }}
+        </label>
+        <input type="password" name="password" required autocomplete="current-password"
+          class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
+          style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
+          onfocus="this.style.borderColor='#194077'"
+          onblur="this.style.borderColor='#e5e7eb'"
+          placeholder="••••••••">
+        @error('password')
+          <p class="text-red-500 text-xs mt-1" style="font-family: 'Montserrat', sans-serif;">{{ $message }}</p>
+        @enderror
+      </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <div class="flex justify-end mt-4">
-            <x-primary-button>
-                {{ __('Confirm') }}
-            </x-primary-button>
-        </div>
+      <button type="submit" class="w-full py-3 text-white font-bold rounded-xl transition-all duration-200"
+        style="background: #194077; font-family: 'Montserrat', sans-serif;"
+        onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)'"
+        onmouseout="this.style.background='#194077'">
+        {{ __('auth.confirm_btn') }}
+      </button>
     </form>
-</x-guest-layout>
+
+  </div>
+</section>
+@endsection

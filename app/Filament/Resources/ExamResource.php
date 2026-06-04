@@ -20,7 +20,6 @@ class ExamResource extends Resource
     protected static ?string $navigationLabel = 'Испити';
     protected static ?string $navigationGroup = 'Содржина';
 
-    // PERFORMANCE BOOST: Eager load relationships to prevent N+1 queries
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->with(['examDates', 'levels', 'structureParts']);
@@ -30,23 +29,49 @@ class ExamResource extends Resource
     {
         return $form->schema([
             Wizard::make([
-                
+
                 // ЧЕКОР 1: Основни податоци
                 Wizard\Step::make('Основни податоци')
                     ->icon('heroicon-m-document-text')
                     ->schema([
-                        Forms\Components\TextInput::make('title')->required()->label('Наслов на испит'),
-                        Forms\Components\TextInput::make('subtitle')->label('Поднаслов'),
-                        Forms\Components\Textarea::make('description')->label('Краток опис')->columnSpanFull(),
-                        
-                        // The "Smart" Row for Stats
-                        Forms\Components\Grid::make(3)
+                        Section::make('🇲🇰 Македонска содржина')
+                            ->description('Содржина на македонски јазик')
                             ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Наслов на испит (МК)')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('subtitle')
+                                    ->label('Поднаслов (МК)')
+                                    ->maxLength(255),
                                 Forms\Components\TextInput::make('duration')
-                                    ->label('Времетраење')
-                                    ->placeholder('пр. 3 часа')
+                                    ->label('Времетраење (МК) — пр. 3 часа')
+                                    ->maxLength(255)
                                     ->disabled(fn (Forms\Get $get) => $get('has_fast_registration')),
-                                    
+                                Forms\Components\Textarea::make('description')
+                                    ->label('Краток опис (МК)')
+                                    ->columnSpanFull(),
+                            ])->columns(2),
+
+                        Section::make('🇬🇧 English Content')
+                            ->description('Content in English language')
+                            ->schema([
+                                Forms\Components\TextInput::make('title_en')
+                                    ->label('Title (EN)')
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('subtitle_en')
+                                    ->label('Subtitle (EN)')
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('duration_en')
+                                    ->label('Duration (EN) — e.g. 3 hours')
+                                    ->maxLength(255),
+                                Forms\Components\Textarea::make('description_en')
+                                    ->label('Short description (EN)')
+                                    ->columnSpanFull(),
+                            ])->columns(2),
+
+                        Forms\Components\Grid::make(2)
+                            ->schema([
                                 Forms\Components\TextInput::make('results_time')
                                     ->label('Објава на резултати')
                                     ->placeholder('пр. 4 недели'),
@@ -65,7 +90,6 @@ class ExamResource extends Resource
                             ->live()
                             ->columnSpanFull(),
 
-                        // Layout Selection Section
                         Section::make('Тип на приказ на страната')
                             ->description('Одберете како сакате да се прикажуваат информациите.')
                             ->schema([
@@ -97,100 +121,127 @@ class ExamResource extends Resource
                         Forms\Components\TextInput::make('where_recognized')->label('Признаен во:'),
                         Forms\Components\TextInput::make('what_for')->label('Наменет за:'),
                         Forms\Components\TextInput::make('official_site_url')->label('Линк до официјална страна'),
-                        
-                        // --- IMAGE FIX START ---
+
+                        // Image preview (only shown when editing)
                         Forms\Components\Placeholder::make('image_preview')
                             ->label('Моментална слика')
                             ->content(function ($record) {
                                 if ($record && $record->image) {
-                                    return new \Illuminate\Support\HtmlString('<img src="' . $record->image . '" style="max-width: 100%; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">');
+                                    return new \Illuminate\Support\HtmlString(
+                                        '<img src="' . $record->image . '" style="max-width: 100%; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0px 4px 6px rgba(0,0,0,0.1);">'
+                                    );
                                 }
                                 return 'Нема прикачено слика.';
                             })
-                            ->hidden(fn ($record) => ! $record),
+                            ->hidden(fn ($record) => !$record),
 
+                        // ImageKit upload
                         Forms\Components\FileUpload::make('image')
                             ->label(fn ($record) => $record ? 'Прикачи нова слика (остави празно за да ја задржиш старата)' : 'Насловна слика')
                             ->image()
                             ->required(fn (string $operation): bool => $operation === 'create')
                             ->saveUploadedFileUsing(function ($file) {
                                 $imageKit = app(\App\Services\ImageKitService::class);
-                                return $imageKit->upload($file, null, '/exams');
+                                return $imageKit->upload(
+                                    $file,
+                                    uniqid() . '.' . $file->getClientOriginalExtension(),
+                                    '/exams'
+                                );
                             })
                             ->dehydrated(fn ($state) => filled($state)),
-                        // --- IMAGE FIX END ---
-                            
+
                         Forms\Components\Toggle::make('is_active')->label('Активен')->default(true),
                         Forms\Components\Toggle::make('is_featured')->label('Истакни на почетна')->default(false),
-                    ])->columns(2), 
+                    ])->columns(2),
 
-                // STEP 2: Јазични нивоа
+                // ЧЕКОР 2: Јазични нивоа
                 Wizard\Step::make('Јазични нивоа')
                     ->icon('heroicon-m-academic-cap')
                     ->schema([
-                        Repeater::make('levels') 
+                        Repeater::make('levels')
                             ->relationship()
                             ->schema([
-                                Forms\Components\TextInput::make('level')->label('Ниво')->required(),
-                                Forms\Components\TextInput::make('name')->label('Целосно име'),
-                                Forms\Components\Textarea::make('description')->label('Опис')->columnSpanFull(),
+                                Forms\Components\TextInput::make('level')->label('Ниво')->required()->columnSpanFull(),
+                                Section::make('🇲🇰 Македонска содржина')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name')->label('Целосно име (МК)'),
+                                        Forms\Components\Textarea::make('description')->label('Опис (МК)')->columnSpanFull(),
+                                    ])->columns(2),
+                                Section::make('🇬🇧 English Content')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name_en')->label('Full name (EN)'),
+                                        Forms\Components\Textarea::make('description_en')->label('Description (EN)')->columnSpanFull(),
+                                    ])->columns(2),
                                 Repeater::make('can_do')
                                     ->label('Вештини')
                                     ->simple(Forms\Components\TextInput::make('competency')->required())
                                     ->columnSpanFull(),
                             ])
-                            ->columns(2) 
+                            ->columns(1)
                     ]),
 
                 // ЧЕКОР 3: Структура
                 Wizard\Step::make('Структура на испит')
                     ->icon('heroicon-m-squares-2x2')
                     ->schema([
-                        Repeater::make('structureParts') 
+                        Repeater::make('structureParts')
                             ->relationship()
                             ->schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->label('Дел (пр. Слушање)')
-                                    ->required(),
+                                Forms\Components\Grid::make(2)
+                                    ->schema([
+                                        Forms\Components\ToggleButtons::make('icon')
+                                            ->label('Икона')
+                                            ->inline()
+                                            ->options([
+                                                'reading'   => 'Читање',
+                                                'writing'   => 'Пишување',
+                                                'listening' => 'Слушање',
+                                                'speaking'  => 'Говорење',
+                                            ])
+                                            ->icons([
+                                                'reading'   => 'heroicon-o-book-open',
+                                                'writing'   => 'heroicon-o-pencil-square',
+                                                'listening' => 'heroicon-o-speaker-wave',
+                                                'speaking'  => 'heroicon-o-chat-bubble-left-right',
+                                            ])
+                                            ->required(),
 
-                                Forms\Components\TextInput::make('duration')
-                                    ->label('Времетраење на овој дел')
-                                    ->placeholder('пр. 45 мин.'),
+                                        Forms\Components\TextInput::make('order')
+                                            ->label('Редослед')
+                                            ->numeric()
+                                            ->default(0),
+                                    ]),
 
-                                Forms\Components\ToggleButtons::make('icon')
-                                    ->label('Икона')
-                                    ->inline() 
-                                    ->options([
-                                        'reading' => 'Читање',
-                                        'writing' => 'Пишување',
-                                        'listening' => 'Слушање',
-                                        'speaking' => 'Говорење',
-                                    ])
-                                    ->icons([
-                                        'reading' => 'heroicon-o-book-open',
-                                        'writing' => 'heroicon-o-pencil-square',
-                                        'listening' => 'heroicon-o-speaker-wave', 
-                                        'speaking' => 'heroicon-o-chat-bubble-left-right',
-                                    ])
-                                    ->required(),
+                                Section::make('🇲🇰 Македонска содржина')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title')
+                                            ->label('Дел (МК, пр. Слушање)')
+                                            ->required(),
+                                        Forms\Components\TextInput::make('duration')
+                                            ->label('Времетраење (МК, пр. 45 мин.)'),
+                                        Forms\Components\Textarea::make('description')
+                                            ->label('Опис за овој дел (МК)')
+                                            ->columnSpanFull(),
+                                    ])->columns(2),
 
-                                Forms\Components\TextInput::make('order')
-                                    ->label('Редослед')
-                                    ->numeric()
-                                    ->default(0),
-
-                                Forms\Components\Textarea::make('description')
-                                    ->label('Детали / Опис за овој дел')
-                                    ->placeholder('Што точно се прави во овој дел од испитот?')
-                                    ->columnSpanFull(),
+                                Section::make('🇬🇧 English Content')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('title_en')
+                                            ->label('Part name (EN, e.g. Listening)'),
+                                        Forms\Components\TextInput::make('duration_en')
+                                            ->label('Duration (EN, e.g. 45 min.)'),
+                                        Forms\Components\Textarea::make('description_en')
+                                            ->label('Description (EN)')
+                                            ->columnSpanFull(),
+                                    ])->columns(2),
                             ])
-                            ->columns(2)
+                            ->columns(1)
                             ->addActionLabel('Додај дел во структура')
                             ->collapsible()
                             ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
                     ]),
 
-                // STEP 4: Dates
+                // ЧЕКОР 4: Термини
                 Wizard\Step::make('Термини')
                     ->icon('heroicon-m-calendar-days')
                     ->schema([
@@ -208,7 +259,8 @@ class ExamResource extends Resource
                             ])
                             ->collapsible(),
                     ]),
-            ])->columnSpanFull() 
+
+            ])->columnSpanFull()
         ]);
     }
 
@@ -234,9 +286,9 @@ class ExamResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListExams::route('/'),
+            'index'  => Pages\ListExams::route('/'),
             'create' => Pages\CreateExam::route('/create'),
-            'edit' => Pages\EditExam::route('/{record}/edit'),
+            'edit'   => Pages\EditExam::route('/{record}/edit'),
         ];
     }
 }

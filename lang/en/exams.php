@@ -51,7 +51,7 @@ return [
     'select_date'        => 'Select an exam date',
     'formats_text'       => 'There are two formats for taking the :exam exam — <strong>digital</strong> and <strong>paper-based</strong>. Click on a date to find out more details.',
     'upcoming_dates'     => 'All upcoming dates',
-    'available_dates_sub'=> 'Choose from the available slots',
+    'available_dates_sub' => 'Choose from the available slots',
     'reg_deadline'       => 'Registration period:',
 
     // Calendar day headers
@@ -65,4 +65,21 @@ return [
 
     // Month names (used in JS)
     'months' => 'January,February,March,April,May,June,July,August,September,October,November,December',
+    'modal_title'              => 'Exam Registration',
+    'modal_subtitle_date'      => 'You are registering for the date',
+    'modal_subtitle_no_date'   => 'Fill in your details and we will contact you.',
+    'modal_name'               => 'Your full name',
+    'modal_name_placeholder'   => 'e.g. Maya Johnson',
+    'modal_email'              => 'Email',
+    'modal_email_placeholder'  => 'e.g. maya@email.com',
+    'modal_phone'              => 'Phone',
+    'modal_phone_placeholder'  => 'e.g. +389 70 123 456',
+    'modal_message'            => 'Message (optional)',
+    'modal_message_placeholder' => 'Additional questions or comments...',
+    'modal_submit'             => 'Register',
+    'modal_sending'            => 'Sending...',
+    'modal_success_title'      => 'Successfully registered!',
+    'modal_success_sub'        => 'We will contact you shortly.',
+    'modal_close'              => 'Close',
+    'modal_error'              => 'An error occurred. Please try again.',
 ];

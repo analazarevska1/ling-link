@@ -46,17 +46,34 @@ class ExamPrepResource extends Resource
                     ->maxLength(255)
                     ->columnSpan(1),
 
-                Forms\Components\TextInput::make('name')
-                    ->label('Ниво / Exam Level')
-                    ->placeholder('e.g., A2 Key (KET)')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
+                Forms\Components\Section::make('🇲🇰 Македонска содржина')
+                    ->description('Содржина на македонски јазик')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Ниво / Exam Level (МК)')
+                            ->placeholder('пр. A2 Key (KET)')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('description')
+                            ->label('Опис (МК)')
+                            ->rows(4)
+                            ->columnSpanFull(),
+                    ]),
 
-                Forms\Components\Textarea::make('description')
-                    ->label('Опис / Description')
-                    ->rows(4)
-                    ->columnSpanFull(),
+                Forms\Components\Section::make('🇬🇧 English Content')
+                    ->description('Content in English language')
+                    ->schema([
+                        Forms\Components\TextInput::make('name_en')
+                            ->label('Exam Level (EN)')
+                            ->placeholder('e.g., A2 Key (KET)')
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('description_en')
+                            ->label('Description (EN)')
+                            ->rows(4)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 

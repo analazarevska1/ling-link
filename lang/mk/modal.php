@@ -21,4 +21,5 @@ return [
     'experience_label'     => 'Твоето искуство',
     'experience_placeholder'=> 'Сподели ги твоето искуство тука.',
     'testimonial_submit'   => 'Испрати одговор',
+    
 ];

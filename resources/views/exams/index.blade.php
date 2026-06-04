@@ -16,19 +16,31 @@
 
 <section class="w-full py-8 md:px-24">
 
-  <div class="flex justify-center items-center gap-3 md:gap-4 mb-8 md:mb-16 px-4 md:px-0">
+  <div class="flex justify-center items-center gap-4 md:gap-8 mb-8 md:mb-16 px-4 md:px-0">
+    {{-- Desktop --}}
     <button onclick="switchTab('administrirani')" id="tab-administrirani"
-      class="rounded-xl transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-transparent"
-      style="font-family: 'Montserrat', sans-serif; background: #194077; color: white; font-weight: 700; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+      class="exam-tab-btn hidden md:flex rounded-2xl border-2 font-medium transition-all duration-200 items-center justify-center text-center"
+      style="font-family: 'Montserrat', sans-serif; font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box; background-color: #194077; color: #ffffff; border-color: #194077;">
       {{ __('exams.tab_administered') }}
     </button>
-
     <button onclick="switchTab('podgotveni')" id="tab-podgotveni"
-      class="rounded-xl transition-all duration-200 flex items-center justify-center text-center whitespace-nowrap px-6 md:px-8 py-[10px] border border-gray-200"
-      style="font-family: 'Montserrat', sans-serif; background: #FFFFFF; color: #111827; font-weight: 500; font-size: 14px; box-shadow: 0px 4px 15px rgba(0,0,0,0.05);">
+      class="exam-tab-btn hidden md:flex rounded-2xl border-2 font-medium transition-all duration-200 items-center justify-center text-center"
+      style="font-family: 'Montserrat', sans-serif; font-size: 0.78rem; width: 200px; height: 60px; padding: 10px 16px; box-sizing: border-box; background-color: #ffffff; color: #374151; border-color: #d1d5db;">
       {{ __('exams.tab_preparation') }}
     </button>
-</div>
+
+    {{-- Mobile --}}
+    <button onclick="switchTab('administrirani')" id="tab-administrirani-mob"
+      class="exam-tab-btn flex md:hidden flex-shrink-0 rounded-2xl border-2 font-medium transition-all duration-200 items-center justify-center text-center"
+      style="font-family: 'Montserrat', sans-serif; font-size: 0.72rem; min-width: 130px; height: 40px; padding: 6px 12px; box-sizing: border-box; background-color: #194077; color: #ffffff; border-color: #194077;">
+      {{ __('exams.tab_administered') }}
+    </button>
+    <button onclick="switchTab('podgotveni')" id="tab-podgotveni-mob"
+      class="exam-tab-btn flex md:hidden flex-shrink-0 rounded-2xl border-2 font-medium transition-all duration-200 items-center justify-center text-center"
+      style="font-family: 'Montserrat', sans-serif; font-size: 0.72rem; min-width: 130px; height: 40px; padding: 6px 12px; box-sizing: border-box; background-color: #ffffff; color: #374151; border-color: #d1d5db;">
+      {{ __('exams.tab_preparation') }}
+    </button>
+  </div>
 
   <div id="content-administrirani">
     @if($exams->isNotEmpty())
@@ -66,10 +78,10 @@
               }
             @endphp
             <a href="{{ route('exams.show', $exam) }}" class="flex flex-col rounded-2xl overflow-hidden flex-shrink-0 hover:shadow-xl transition-shadow duration-200" style="width: 310px; min-height: 458px; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-              <img src="{{ $imageUrl }}" alt="{{ $exam->title }}" class="w-full object-cover" style="height: 240px;">
+              <img src="{{ $imageUrl }}" alt="{{ $exam->getLocalizedTitle() }}" class="w-full object-cover" style="height: 240px;">
               <div class="p-5 flex-1 flex flex-col {{ $textColor }}" style="background: {{ $bgColor }};">
-                <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->title }}</p>
-                <p class="text-sm mb-4 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->subtitle }}</p>
+                <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->getLocalizedTitle() }}</p>
+                <p class="text-sm mb-4 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->getLocalizedSubtitle() }}</p>
                 <div class="flex items-center gap-2 text-sm mb-2" style="font-family: 'Montserrat', sans-serif;">
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
@@ -128,8 +140,8 @@
             @endphp
             <a href="{{ route('exams.show', $exam) }}" class="flex flex-col rounded-[20px] overflow-hidden flex-shrink-0 hover:shadow-md transition-shadow duration-200 w-full min-h-[160px]" style="box-shadow: 0px 4px 15px rgba(0,0,0,0.03); border: {{ $borderStyle }}; background: {{ $bgColor }};">
               <div class="p-6 flex-1 flex flex-col {{ $textColor }}">
-                <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->title }}</p>
-                <p class="text-[13px] mb-6 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->subtitle }}</p>
+                <p class="font-black text-lg mb-1" style="font-family: 'Montserrat', sans-serif;">{{ $exam->getLocalizedTitle() }}</p>
+                <p class="text-[13px] mb-6 {{ $subtitleColor }}" style="font-family: 'Montserrat', sans-serif;">{{ $exam->getLocalizedSubtitle() }}</p>
                 
                 <div class="flex items-center gap-3 text-[13px] font-semibold mb-3 {{ $textColor == 'text-white' ? 'text-white' : 'text-[#111827]' }}" style="font-family: 'Montserrat', sans-serif;">
                   <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -195,11 +207,11 @@
                             @foreach($preps as $prep)
                             <div class="bg-white border border-[#f3f4f6] rounded-2xl p-5" style="box-shadow: 0px 2px 10px rgba(0,0,0,0.02);">
                                 <h3 class="font-bold text-[#111827] text-[14px] mb-1 leading-snug" style="font-family: 'Montserrat', sans-serif;">
-                                    {{ $prep->name }}
+                                    {{ $prep->getLocalizedName() }}
                                 </h3>
                                 @if($prep->description)
                                     <p class="text-[13px] text-gray-500 leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
-                                        {{ $prep->description }}
+                                        {{ $prep->getLocalizedDescription() }}
                                     </p>
                                 @endif
                             </div>
@@ -266,32 +278,39 @@
 
 @include('parts.faq')
 
+<style>
+  .exam-tab-btn:hover {
+    background-color: #194077 !important;
+    color: white !important;
+    border-color: #194077 !important;
+  }
+</style>
+
 <script>
+  function setTabActive(id) {
+    document.getElementById(id).style.backgroundColor = '#194077';
+    document.getElementById(id).style.color           = '#ffffff';
+    document.getElementById(id).style.borderColor     = '#194077';
+  }
+  function setTabInactive(id) {
+    document.getElementById(id).style.backgroundColor = '#ffffff';
+    document.getElementById(id).style.color           = '#374151';
+    document.getElementById(id).style.borderColor     = '#d1d5db';
+  }
+
   function switchTab(tab) {
-    // Hide both content sections
     document.getElementById('content-administrirani').classList.add('hidden');
     document.getElementById('content-podgotveni').classList.add('hidden');
-    
-    // Reset both buttons to the inactive state (White background, Dark text)
-    const btnAdmin = document.getElementById('tab-administrirani');
-    const btnPrep = document.getElementById('tab-podgotveni');
-    
-    btnAdmin.style.background = '#FFFFFF';
-    btnAdmin.style.color = '#111827';
-    btnAdmin.style.fontWeight = '500';
-    
-    btnPrep.style.background = '#FFFFFF';
-    btnPrep.style.color = '#111827';
-    btnPrep.style.fontWeight = '500';
 
-    // Show the clicked content section
+    setTabInactive('tab-administrirani');
+    setTabInactive('tab-podgotveni');
+    setTabInactive('tab-administrirani-mob');
+    setTabInactive('tab-podgotveni-mob');
+
     document.getElementById('content-' + tab).classList.remove('hidden');
-    
-    // Set the clicked button to the active state (Dark Blue background, White text)
-    const activeBtn = document.getElementById('tab-' + tab);
-    activeBtn.style.background = '#194077';
-    activeBtn.style.color = 'white';
-    activeBtn.style.fontWeight = '700';
+
+    setTabActive('tab-' + tab);
+    setTabActive('tab-' + tab + '-mob');
   }
 
   function scrollCarousel(id, direction) {

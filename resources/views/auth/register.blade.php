@@ -11,10 +11,10 @@
 
     <!-- Title -->
     <h1 class="font-black text-3xl uppercase text-center mb-2" style="font-family: 'Jost', sans-serif;">
-      СОЗДАЈ <span style="color: #194077;">ПРОФИЛ</span>
+      {{ __('auth.register_title') }}
     </h1>
     <p class="text-center text-gray-500 text-sm mb-8" style="font-family: 'Montserrat', sans-serif;">
-      Започни го своето јазично патување
+      {{ __('auth.register_subtitle') }}
     </p>
 
     <!-- Form -->
@@ -24,7 +24,7 @@
       <!-- Name -->
       <div class="mb-5">
         <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
-          Име и презиме
+          {{ __('auth.name') }}
         </label>
         <input type="text" name="name" value="{{ old('name') }}" required autofocus
           class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
@@ -40,7 +40,7 @@
       <!-- Email -->
       <div class="mb-5">
         <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
-          Е-маил
+          {{ __('auth.email') }}
         </label>
         <input type="email" name="email" value="{{ old('email') }}" required
           class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
@@ -56,7 +56,7 @@
       <!-- Password -->
       <div class="mb-5">
         <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
-          Лозинка
+          {{ __('auth.password') }}
         </label>
         <input type="password" name="password" required
           class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
@@ -72,7 +72,7 @@
       <!-- Confirm Password -->
       <div class="mb-8">
         <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
-          Потврди лозинка
+          {{ __('auth.confirm_password') }}
         </label>
         <input type="password" name="password_confirmation" required
           class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
@@ -87,14 +87,14 @@
         style="background: linear-gradient(to right, #194077, #194077); font-family: 'Montserrat', sans-serif;"
         onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)'"
         onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)'">
-        Регистрирај се
+        {{ __('auth.register_btn') }}
       </button>
     </form>
 
     <!-- Login link -->
     <p class="text-center text-sm text-gray-500 mt-6" style="font-family: 'Montserrat', sans-serif;">
-      Веќе имаш профил?
-      <a href="{{ route('login') }}" class="font-bold underline" style="color: #194077;">Логирај се</a>
+      {{ __('auth.have_account') }}
+      <a href="{{ route('login') }}" class="font-bold underline" style="color: #194077;">{{ __('auth.login_link') }}</a>
     </p>
 
   </div>

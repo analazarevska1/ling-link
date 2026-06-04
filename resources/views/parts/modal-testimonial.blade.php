@@ -5,9 +5,11 @@
       <button onclick="closeModal('modal-testimonial')" class="absolute top-4 right-4 text-2xl text-gray-400 hover:text-gray-700">&times;</button>
   
       <!-- Title -->
-      <h3 class="font-black text-2xl text-center uppercase mb-2" style="font-family: 'Jost', sans-serif;">СПОДЕЛИ ГО ТВОЕТО ИСКУСТВО</h3>
+      <h3 class="font-black text-2xl text-center uppercase mb-2" style="font-family: 'Jost', sans-serif;">
+          {{ __('modal.testimonial_title') }}
+      </h3>
       <p class="text-center text-sm text-gray-500 mb-6" style="font-family: 'Montserrat', sans-serif;">
-        Кажи ни за твоето искуство. Секоја повратна информација ни помага во нашето растење и подобрување.
+          {{ __('modal.testimonial_subtitle') }}
       </p>
   
       @if(session('testimonial_success'))
@@ -21,8 +23,10 @@
   
         <!-- Name -->
         <div class="mb-4">
-          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Вашето име и презиме</label>
-          <input type="text" name="name" placeholder="пр.Маја Иванова" required
+          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+              {{ __('modal.name_label') }}
+          </label>
+          <input type="text" name="name" placeholder="{{ __('modal.name_placeholder') }}" required
             class="w-full px-4 py-2 rounded-xl border text-sm outline-none"
             style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
             onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'">
@@ -30,8 +34,10 @@
   
         <!-- Role -->
         <div class="mb-4">
-          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Твојата улога</label>
-          <input type="text" name="role" placeholder="пр.Студент" required
+          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+              {{ __('modal.role_label') }}
+          </label>
+          <input type="text" name="role" placeholder="{{ __('modal.role_placeholder') }}" required
             class="w-full px-4 py-2 rounded-xl border text-sm outline-none"
             style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
             onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'">
@@ -39,7 +45,9 @@
   
         <!-- Rating -->
         <div class="mb-4">
-          <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Рејтинг</label>
+          <label class="block text-xs font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+              {{ __('modal.rating_label') }}
+          </label>
           <div class="flex gap-2" id="star-rating">
             @for($i = 1; $i <= 5; $i++)
               <span class="cursor-pointer text-3xl star" data-value="{{ $i }}" style="color: #FBBF24;">★</span>
@@ -50,8 +58,10 @@
   
         <!-- Message -->
         <div class="mb-6">
-          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">Твоето искуство</label>
-          <textarea name="message" placeholder="Сподели ги твоето искуство тука." rows="4" required
+          <label class="block text-xs font-bold mb-1 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
+              {{ __('modal.experience_label') }}
+          </label>
+          <textarea name="message" placeholder="{{ __('modal.experience_placeholder') }}" rows="4" required
             class="w-full px-4 py-2 rounded-xl border text-sm outline-none resize-none"
             style="font-family: 'Montserrat', sans-serif; border-color: #e5e7eb;"
             onfocus="this.style.borderColor='#194077'" onblur="this.style.borderColor='#e5e7eb'"></textarea>
@@ -62,7 +72,7 @@
           style="background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif;"
           onmouseover="this.style.background='linear-gradient(90deg, #194077, #020C1B)'"
           onmouseout="this.style.background='linear-gradient(90deg, #194077, #194077)'">
-          Испрати одговор
+          {{ __('modal.testimonial_submit') }}
         </button>
       </form>
     </div>

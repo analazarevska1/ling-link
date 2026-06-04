@@ -54,17 +54,17 @@
                 </svg>
             </div>
             <h3 class="font-black text-2xl uppercase text-[#194077] text-center" style="font-family: 'Montserrat', sans-serif;">
-                Успешно пријавување!
+                {{ __('exams.modal_success_title') }}
             </h3>
             <p class="text-gray-500 text-sm text-center" style="font-family: 'Montserrat', sans-serif;">
-                Ќе ве контактираме наскоро.
+                {{ __('exams.modal_success_sub') }}
             </p>
             <button @click="open = false"
                 class="mt-2 w-full text-white font-bold py-4 rounded-xl transition-all duration-200"
                 style="background: #194077; font-family: 'Montserrat', sans-serif; font-size: 15px;"
                 onmouseover="this.style.background='#020C1B';"
                 onmouseout="this.style.background='#194077';">
-                Затвори
+                {{ __('exams.modal_close') }}
             </button>
         </div>
 
@@ -74,106 +74,106 @@
             {{-- Title --}}
             <h3 class="font-black text-2xl uppercase text-center text-[#111827] mb-3 leading-tight"
                 style="font-family: 'Montserrat', sans-serif;">
-                ПРИЈАВА ЗА ИСПИТ
+                {{ __('exams.modal_title') }}
             </h3>
 
             {{-- Subtitle --}}
             <p class="text-gray-500 text-sm text-center mb-8 leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
-                <span x-show="dateLabel">Се пријавувате за термин на <strong x-text="dateLabel"></strong>.</span>
-                <span x-show="!dateLabel">Пополнете ги податоците и ние ќе ве контактираме.</span>
+                <span x-show="dateLabel">{{ __('exams.modal_subtitle_date') }} <strong x-text="dateLabel"></strong>.</span>
+                <span x-show="!dateLabel">{{ __('exams.modal_subtitle_no_date') }}</span>
             </p>
 
             <form
-    x-data="{ loading: false }"
-    @submit.prevent="
-        if (loading) return;
-        loading = true;
-        fetch('{{ route('exams.register', $exam) }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                full_name: $el.querySelector('[name=full_name]').value,
-                email: $el.querySelector('[name=email]').value,
-                phone: $el.querySelector('[name=phone]').value,
-                message: $el.querySelector('[name=message]').value,
-                exam_date_id: dateId
-            })
-        })
-        .then(r => r.json())
-        .then(data => {
-            if (data.success) {
-                submitted = true;
-            }
-        })
-        .catch(() => {
-            alert('Настана грешка. Обидете се повторно.');
-        })
-        .finally(() => {
-            loading = false;
-        })
-    "
-    class="flex flex-col gap-5">
+                x-data="{ loading: false }"
+                @submit.prevent="
+                    if (loading) return;
+                    loading = true;
+                    fetch('{{ route('exams.register', $exam) }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            full_name: $el.querySelector('[name=full_name]').value,
+                            email: $el.querySelector('[name=email]').value,
+                            phone: $el.querySelector('[name=phone]').value,
+                            message: $el.querySelector('[name=message]').value,
+                            exam_date_id: dateId
+                        })
+                    })
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.success) {
+                            submitted = true;
+                        }
+                    })
+                    .catch(() => {
+                        alert('{{ __('exams.modal_error') }}');
+                    })
+                    .finally(() => {
+                        loading = false;
+                    })
+                "
+                class="flex flex-col gap-5">
 
-    {{-- Full Name --}}
-    <div>
-        <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
-            Вашето име и презиме
-        </label>
-        <input type="text" name="full_name" required
-            placeholder="пр. Maja Ivanова"
-            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
-            style="font-family: 'Montserrat', sans-serif;">
-    </div>
+                {{-- Full Name --}}
+                <div>
+                    <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
+                        {{ __('exams.modal_name') }}
+                    </label>
+                    <input type="text" name="full_name" required
+                        placeholder="{{ __('exams.modal_name_placeholder') }}"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
+                        style="font-family: 'Montserrat', sans-serif;">
+                </div>
 
-    {{-- Email --}}
-    <div>
-        <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
-            Е-пошта
-        </label>
-        <input type="email" name="email" required
-            placeholder="пр. maja@email.com"
-            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
-            style="font-family: 'Montserrat', sans-serif;">
-    </div>
+                {{-- Email --}}
+                <div>
+                    <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
+                        {{ __('exams.modal_email') }}
+                    </label>
+                    <input type="email" name="email" required
+                        placeholder="{{ __('exams.modal_email_placeholder') }}"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
+                        style="font-family: 'Montserrat', sans-serif;">
+                </div>
 
-    {{-- Phone --}}
-    <div>
-        <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
-            Телефон
-        </label>
-        <input type="text" name="phone" required
-            placeholder="пр. +389 70 123 456"
-            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
-            style="font-family: 'Montserrat', sans-serif;">
-    </div>
+                {{-- Phone --}}
+                <div>
+                    <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
+                        {{ __('exams.modal_phone') }}
+                    </label>
+                    <input type="text" name="phone" required
+                        placeholder="{{ __('exams.modal_phone_placeholder') }}"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300"
+                        style="font-family: 'Montserrat', sans-serif;">
+                </div>
 
-    {{-- Message --}}
-    <div>
-        <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
-            Порака (опционално)
-        </label>
-        <textarea name="message" rows="3"
-            placeholder="Дополнителни прашања или коментари..."
-            class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300 resize-none"
-            style="font-family: 'Montserrat', sans-serif;"></textarea>
-    </div>
+                {{-- Message --}}
+                <div>
+                    <label class="block text-sm font-bold text-[#111827] mb-2" style="font-family: 'Montserrat', sans-serif;">
+                        {{ __('exams.modal_message') }}
+                    </label>
+                    <textarea name="message" rows="3"
+                        placeholder="{{ __('exams.modal_message_placeholder') }}"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-700 outline-none focus:border-[#194077] transition placeholder-gray-300 resize-none"
+                        style="font-family: 'Montserrat', sans-serif;"></textarea>
+                </div>
 
-    {{-- Submit --}}
-    <button type="submit"
-        :disabled="loading"
-        :style="loading ? 'background: #6b7280; cursor: not-allowed;' : 'background: #194077;'"
-        class="w-full text-white font-bold py-4 rounded-xl transition-all duration-200 mt-1 uppercase tracking-wide"
-        style="font-family: 'Montserrat', sans-serif; font-size: 15px;"
-        onmouseover="if(!this.disabled){ this.style.background='#020C1B'; }"
-        onmouseout="if(!this.disabled){ this.style.background='#194077'; }">
-        <span x-show="!loading">Пријави се</span>
-        <span x-show="loading">Се испраќа...</span>
-    </button>
+                {{-- Submit --}}
+                <button type="submit"
+                    :disabled="loading"
+                    :style="loading ? 'background: #6b7280; cursor: not-allowed;' : 'background: #194077;'"
+                    class="w-full text-white font-bold py-4 rounded-xl transition-all duration-200 mt-1 uppercase tracking-wide"
+                    style="font-family: 'Montserrat', sans-serif; font-size: 15px;"
+                    onmouseover="if(!this.disabled){ this.style.background='#020C1B'; }"
+                    onmouseout="if(!this.disabled){ this.style.background='#194077'; }">
+                    <span x-show="!loading">{{ __('exams.modal_submit') }}</span>
+                    <span x-show="loading">{{ __('exams.modal_sending') }}</span>
+                </button>
 
-</form>
+            </form>
         </div>
     </div>
 </div>

@@ -11,27 +11,24 @@
 
     <!-- Title -->
     <h1 class="font-black text-3xl uppercase text-center mb-2" style="font-family: 'Jost', sans-serif;">
-      ЗАБОРАВЕНА <span style="color: #194077;">ЛОЗИНКА</span>
+      {{ __('auth.forgot_title') }}
     </h1>
     <p class="text-center text-gray-500 text-sm mb-8" style="font-family: 'Montserrat', sans-serif;">
-      Внеси го твојот е-маил и ќе ти испратиме линк за ресетирање
+      {{ __('auth.forgot_subtitle') }}
     </p>
 
-    <!-- Session Status -->
     @if (session('status'))
       <div class="mb-6 text-sm text-green-600 text-center font-bold" style="font-family: 'Montserrat', sans-serif;">
         {{ session('status') }}
       </div>
     @endif
 
-    <!-- Form -->
     <form method="POST" action="{{ route('password.email') }}">
       @csrf
 
-      <!-- Email -->
       <div class="mb-6">
         <label class="block text-sm font-bold mb-2 text-gray-700" style="font-family: 'Montserrat', sans-serif;">
-          Е-маил
+          {{ __('auth.email') }}
         </label>
         <input type="email" name="email" value="{{ old('email') }}" required autofocus
           class="w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all duration-200"
@@ -44,19 +41,17 @@
         @enderror
       </div>
 
-      <!-- Submit -->
       <button type="submit" class="w-full py-3 text-white font-bold rounded-xl transition-all duration-200"
-        style="background: linear-gradient(to right, #194077, #194077); font-family: 'Montserrat', sans-serif;"
+        style="background: #194077; font-family: 'Montserrat', sans-serif;"
         onmouseover="this.style.background='linear-gradient(to right, #2a6db5, #0d1f3c)'"
-        onmouseout="this.style.background='linear-gradient(to right, #194077, #194077)'">
-        Испрати линк
+        onmouseout="this.style.background='#194077'">
+        {{ __('auth.forgot_btn') }}
       </button>
     </form>
 
-    <!-- Back to login -->
     <p class="text-center text-sm text-gray-500 mt-6" style="font-family: 'Montserrat', sans-serif;">
-      Се сетивте?
-      <a href="{{ route('login') }}" class="font-bold underline" style="color: #194077;">Логирај се</a>
+      {{ __('auth.remembered') }}
+      <a href="{{ route('login') }}" class="font-bold underline" style="color: #194077;">{{ __('auth.login_link') }}</a>
     </p>
 
   </div>

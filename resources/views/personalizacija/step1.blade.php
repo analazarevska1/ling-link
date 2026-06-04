@@ -11,19 +11,18 @@
   </div>
 
   <h1 class="font-black text-4xl uppercase text-center leading-tight mb-12" style="font-family: 'Jost', sans-serif;">
-    КОЈ Е <span style="font-weight: 500; font-style: italic;">ЈАЗИКОТ</span> КОЈ<br>
-    САКАШ ДА ГО <span style="color: #194077;">УЧИШ</span>?
+    {!! __('personalizacija.step1_title') !!}
   </h1>
 
   <form method="POST" action="{{ route('personalizacija.save1') }}" class="w-full" style="max-width: 500px;">
     @csrf
     <div class="flex flex-col gap-4">
    @foreach([
-    'english'    => 'Англиски јазик',
-    'german'     => 'Германски јазик',
-    'macedonian' => 'Македонски јазик',
-    'italian'    => 'Италијански јазик',
-    'french'     => 'Француски јазик',
+    'english'    => __('personalizacija.lang_english'),
+    'german'     => __('personalizacija.lang_german'),
+    'macedonian' => __('personalizacija.lang_macedonian'),
+    'italian'    => __('personalizacija.lang_italian'),
+    'french'     => __('personalizacija.lang_french'),
 ] as $value => $label)
     <label class="flex items-center justify-between px-6 py-4 bg-white rounded-2xl cursor-pointer transition-all duration-200 option-card"
       style="box-shadow: 0px 0px 7px rgba(0,0,0,0.08);">

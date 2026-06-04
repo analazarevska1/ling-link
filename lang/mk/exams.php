@@ -51,7 +51,7 @@ return [
     'select_date'        => 'Селектирај датум на полагање',
     'formats_text'       => 'Постојат два формати за полагање на :exam, <strong>дигитален</strong> и <strong>класичен</strong>. Кликни на датата за да дознаеш повеќе детали.',
     'upcoming_dates'     => 'Сите претстојни датуми',
-    'available_dates_sub'=> 'Одбери од достапните термини',
+    'available_dates_sub' => 'Одбери од достапните термини',
     'reg_deadline'       => 'Рок за пријавување:',
 
     // Calendar day headers
@@ -65,4 +65,21 @@ return [
 
     // Month names (used in JS)
     'months' => 'Јануари,Февруари,Март,Април,Мај,Јуни,Јули,Август,Септември,Октомври,Ноември,Декември',
+    'modal_title'              => 'Пријава за испит',
+    'modal_subtitle_date'      => 'Се пријавувате за термин на',
+    'modal_subtitle_no_date'   => 'Пополнете ги податоците и ние ќе ве контактираме.',
+    'modal_name'               => 'Вашето име и презиме',
+    'modal_name_placeholder'   => 'пр. Maja Ivanова',
+    'modal_email'              => 'Е-пошта',
+    'modal_email_placeholder'  => 'пр. maja@email.com',
+    'modal_phone'              => 'Телефон',
+    'modal_phone_placeholder'  => 'пр. +389 70 123 456',
+    'modal_message'            => 'Порака (опционално)',
+    'modal_message_placeholder' => 'Дополнителни прашања или коментари...',
+    'modal_submit'             => 'Пријави се',
+    'modal_sending'            => 'Се испраќа...',
+    'modal_success_title'      => 'Успешно пријавување!',
+    'modal_success_sub'        => 'Ќе ве контактираме наскоро.',
+    'modal_close'              => 'Затвори',
+    'modal_error'              => 'Настана грешка. Обидете се повторно.',
 ];
