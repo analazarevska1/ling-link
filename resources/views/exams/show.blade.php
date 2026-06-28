@@ -3,7 +3,6 @@
 @section('content')
     @include('parts.exam-registration-modal')
     <section class="w-full flex justify-center py-6 md:py-8 px-4 md:px-6 bg-[#F9FBFC] md:bg-white">
-
         <!-- DESKTOP TOP SECTION -->
         <div class="hidden md:flex flex-row items-center w-full bg-white"
             style="

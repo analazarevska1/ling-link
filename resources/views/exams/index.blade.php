@@ -175,14 +175,30 @@
     
     @if($groupedExamPreps->isNotEmpty())
         <div class="max-w-5xl mx-auto space-y-4 md:space-y-6 px-4 md:px-0">
+
+            @php
+                $categoryTranslations = [
+                    'Англиски јазик'    => 'English language',
+                    'Германски јазик'   => 'German language',
+                    'Македонски јазик'  => 'Macedonian language',
+                    'Француски јазик'   => 'French language',
+                    'Италијански јазик' => 'Italian language',
+                    'Државна матура'    => 'State graduation exam',
+                ];
+            @endphp
             
             @foreach($groupedExamPreps as $category => $groups)
+            @php
+                $categoryLabel = app()->getLocale() === 'en'
+                    ? ($categoryTranslations[$category] ?? $category)
+                    : $category;
+            @endphp
             <div class="bg-white rounded-2xl md:rounded-[20px] overflow-hidden" style="box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.06);">
                 
                 {{-- Category header --}}
                 <div class="px-6 md:px-10 pt-6 md:pt-8 pb-3 md:pb-4">
                     <p class="text-gray-400 text-[11px] md:text-[12px] font-semibold uppercase tracking-widest" style="font-family: 'Montserrat', sans-serif;">
-                        {{ $category }}
+                        {{ $categoryLabel }}
                     </p>
                 </div>
 
@@ -328,8 +344,3 @@
 </script>
 
 @endsection
-
-
-
-
-

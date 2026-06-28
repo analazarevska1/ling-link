@@ -1,6 +1,6 @@
 <?php
 return [
-    'description'  => 'More than a classroom – Lingua Link is a community that guides you from your first words to confident communication.',
+    'description'  => 'More than a classroom – LinguaLink is a community that guides you from your first words to confident communication.',
     'follow_us'    => 'Follow us on:',
     'company'      => 'Company',
     'courses'      => 'Courses',

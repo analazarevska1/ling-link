@@ -2,7 +2,7 @@
 return [
     'hero_title'        => 'About Us',
     'who_we_are'        => 'WHO ARE WE ?',
-    'who_desc'          => 'Lingua Link is a school that combines modern methods, experienced teachers and programs tailored to each student. With us, learning is more efficient, more accessible and focused on real results.',
+    'who_desc'          => 'LinguaLink is a school that combines modern methods, experienced teachers and programs tailored to each student. With us, learning is more efficient, more accessible and focused on real results.',
 
     'vision_title'      => 'OUR VISION',
     'vision_desc'       => 'We believe that language is not just a means of communication, but also a tool for personal and professional development.',

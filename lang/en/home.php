@@ -1,10 +1,10 @@
 <?php
 return [
     // Hero
-    'welcome_badge'    => 'Welcome to Lingua Link',
+    'welcome_badge'    => 'Welcome to LinguaLink',
     'hero_title_l1'    => 'YOUR LINK',
     'hero_title_l2'    => 'TO THE WORLD',
-    'hero_subtitle'    => 'More than a classroom – Lingua Link is a community that guides you from your first words to confident communication.',
+    'hero_subtitle'    => 'More than a classroom – LinguaLink is a community that guides you from your first words to confident communication.',
     'select_course'    => 'Choose a course',
     'select_exam'      => 'Choose an exam',
 
