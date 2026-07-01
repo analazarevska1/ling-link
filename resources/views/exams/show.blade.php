@@ -344,9 +344,8 @@
                     style="background: #84CDF1;">
                     <p class="text-[13px] md:text-sm" style="font-family: 'Montserrat', sans-serif;">
                         <strong
-                            class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">{{ __('exams.eu_recognition') }}</strong>
-                        {{ __('exams.eu_recognition_sub') }}
-                    </p>
+                            class="text-[13px] md:text-lg mb-0.5 md:mb-1 block">{{ __('exams.where_recognized') }}</strong>
+{{ app()->getLocale() === 'en' ? $exam->where_recognized_en : $exam->where_recognized }}                    </p>
                 </div>
 
                 <div class="flex-1 rounded-[16px] md:rounded-2xl p-6 text-white flex flex-col justify-center min-h-[90px] md:min-h-[140px]"
@@ -355,7 +354,7 @@
                         <strong
                             class="text-[13px] md:text-lg mb-0.5 md:mb-1 block md:inline">{{ __('exams.fast_results') }}</strong>
                         <span
-                            class="opacity-90 leading-tight block md:inline md:leading-normal">{{ __('exams.fast_results_sub', ['time' => $exam->results_time ?? '']) }}</span>
+                            class="opacity-90 leading-tight block md:inline md:leading-normal">{{ __('exams.fast_results_sub',['time' => $exam->results_time ?? '']) }}</span>
                     </p>
                 </div>
 

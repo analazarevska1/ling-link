@@ -47,7 +47,7 @@ class ExamResource extends Resource
                                 Forms\Components\TextInput::make('duration')
                                     ->label('Времетраење (МК) — пр. 3 часа')
                                     ->maxLength(255)
-                                    ->disabled(fn (Forms\Get $get) => $get('has_fast_registration')),
+                                    ->disabled(fn(Forms\Get $get) => $get('has_fast_registration')),
                                 Forms\Components\Textarea::make('description')
                                     ->label('Краток опис (МК)')
                                     ->columnSpanFull(),
@@ -112,14 +112,22 @@ class ExamResource extends Resource
                                             ->label('Листа со информации')
                                             ->simple(Forms\Components\TextInput::make('text')->required())
                                     ])
-                                    ->visible(fn (Forms\Get $get) => $get('layout_type') === 'aptitude')
-                                    ->itemLabel(fn (array $state): ?string => $state['title'] ?? null)
+                                    ->visible(fn(Forms\Get $get) => $get('layout_type') === 'aptitude')
+                                    ->itemLabel(fn(array $state): ?string => $state['title'] ?? null)
                                     ->collapsible()
                                     ->columnSpanFull(),
                             ]),
 
-                        Forms\Components\TextInput::make('where_recognized')->label('Признаен во:'),
-                        Forms\Components\TextInput::make('what_for')->label('Наменет за:'),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('where_recognized')->label('Признаен во (МКД):'),
+                                Forms\Components\TextInput::make('where_recognized_en')->label('Recognized in (EN):'),
+                            ]),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('what_for')->label('Наменет за (МКД):'),
+                                Forms\Components\TextInput::make('what_for_en')->label('Intended for (EN):'),
+                            ]),
                         Forms\Components\TextInput::make('official_site_url')->label('Линк до официјална страна'),
 
                         // Image preview (only shown when editing)
@@ -133,13 +141,13 @@ class ExamResource extends Resource
                                 }
                                 return 'Нема прикачено слика.';
                             })
-                            ->hidden(fn ($record) => !$record),
+                            ->hidden(fn($record) => !$record),
 
                         // ImageKit upload
                         Forms\Components\FileUpload::make('image')
-                            ->label(fn ($record) => $record ? 'Прикачи нова слика (остави празно за да ја задржиш старата)' : 'Насловна слика')
+                            ->label(fn($record) => $record ? 'Прикачи нова слика (остави празно за да ја задржиш старата)' : 'Насловна слика')
                             ->image()
-                            ->required(fn (string $operation): bool => $operation === 'create')
+                            ->required(fn(string $operation): bool => $operation === 'create')
                             ->saveUploadedFileUsing(function ($file) {
                                 $imageKit = app(\App\Services\ImageKitService::class);
                                 return $imageKit->upload(
@@ -148,7 +156,7 @@ class ExamResource extends Resource
                                     '/exams'
                                 );
                             })
-                            ->dehydrated(fn ($state) => filled($state)),
+                            ->dehydrated(fn($state) => filled($state)),
 
                         Forms\Components\Toggle::make('is_active')->label('Активен')->default(true),
                         Forms\Components\Toggle::make('is_featured')->label('Истакни на почетна')->default(false),
@@ -238,7 +246,7 @@ class ExamResource extends Resource
                             ->columns(1)
                             ->addActionLabel('Додај дел во структура')
                             ->collapsible()
-                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
+                            ->itemLabel(fn(array $state): ?string => $state['title'] ?? null),
                     ]),
 
                 // ЧЕКОР 4: Термини
@@ -247,7 +255,7 @@ class ExamResource extends Resource
                     ->schema([
                         Repeater::make('examDates')
                             ->relationship()
-                            ->hidden(fn (Forms\Get $get): bool => $get('is_on_demand') === true)
+                            ->hidden(fn(Forms\Get $get): bool => $get('is_on_demand') === true)
                             ->schema([
                                 Forms\Components\Grid::make(3)
                                     ->schema([
