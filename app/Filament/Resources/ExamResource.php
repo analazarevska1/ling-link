@@ -170,20 +170,26 @@ class ExamResource extends Resource
                             ->relationship()
                             ->schema([
                                 Forms\Components\TextInput::make('level')->label('Ниво')->required()->columnSpanFull(),
+
                                 Section::make('🇲🇰 Македонска содржина')
                                     ->schema([
                                         Forms\Components\TextInput::make('name')->label('Целосно име (МК)'),
                                         Forms\Components\Textarea::make('description')->label('Опис (МК)')->columnSpanFull(),
+                                        Repeater::make('can_do')
+                                            ->label('Вештини (МК)')
+                                            ->simple(Forms\Components\TextInput::make('competency')->required())
+                                            ->columnSpanFull(),
                                     ])->columns(2),
+
                                 Section::make('🇬🇧 English Content')
                                     ->schema([
                                         Forms\Components\TextInput::make('name_en')->label('Full name (EN)'),
                                         Forms\Components\Textarea::make('description_en')->label('Description (EN)')->columnSpanFull(),
+                                        Repeater::make('can_do_en')
+                                            ->label('Skills (EN)')
+                                            ->simple(Forms\Components\TextInput::make('competency')->required())
+                                            ->columnSpanFull(),
                                     ])->columns(2),
-                                Repeater::make('can_do')
-                                    ->label('Вештини')
-                                    ->simple(Forms\Components\TextInput::make('competency')->required())
-                                    ->columnSpanFull(),
                             ])
                             ->columns(1)
                     ]),
