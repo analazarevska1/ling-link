@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\ExamDate;
 use App\Observers\ExamDateObserver;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,8 +20,11 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        ExamDate::observe(ExamDateObserver::class);
-    }
+
+
+public function boot(): void
+{
+  
+    
+}
 }

@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(\App\Http\Middleware\SetLocale::class);
+        $middleware->trustProxies(at: '*');
     })
+    
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();

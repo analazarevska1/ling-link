@@ -33,46 +33,39 @@ return [
     'other_service_label' => 'Other services',
 
     // Service card 1 – Active/Passive
-    'svc1_title'        => 'Active and passive language certificates',
-    'svc1_desc'         => 'For employment or postgraduate enrolment',
-    'svc1_modal_title'  => 'ACTIVE AND PASSIVE LANGUAGE CERTIFICATE',
-    'svc1_modal_desc'   => '<p class="mb-4"><strong>Active or passive language certificates</strong> can be used for employment, postgraduate enrolment, seminar participation, and more.</p><p class="mb-4">Testing is scheduled at <strong>LinguaLink</strong> and, upon passing, the certificate is issued in Macedonian.</p><p><strong>At the candidate\'s request, the certificate can also be issued in the foreign language being tested.</strong></p>',
-    'svc1_modal_mobile' => 'Active or passive language certificates can be used for employment, postgraduate enrolment, seminar participation, and more.',
+    'svc1_title'        => 'CERTIFICATE OF ACTIVE AND PASSIVE LANGUAGE PROFICIENCY',
+    'svc1_desc'         => 'Certificates of active or passive language proficiency can be used for employment, enrollment in postgraduate studies, participation in seminars, etc. Testing is scheduled at LinguaLink, and once the test is passed, the certificate is issued in Macedonian. At the candidate\'s request, the certificate can also be issued in the foreign language being tested.',
+    'svc1_modal_title'  => 'CERTIFICATE OF ACTIVE AND PASSIVE LANGUAGE PROFICIENCY',
+    'svc1_modal_desc'   => '<p class="mb-4"><strong>Certificates of active or passive language proficiency</strong> can be used for employment, enrollment in postgraduate studies, participation in seminars, etc.</p><p class="mb-4">Testing is scheduled at <strong>LinguaLink</strong>, and once the test is passed, the certificate is issued in Macedonian.</p><p><strong>At the candidate\'s request, the certificate can also be issued in the foreign language being tested.</strong></p>',
+    'svc1_modal_mobile' => 'Certificates of active or passive language proficiency can be used for employment, enrollment in postgraduate studies, participation in seminars, etc.',
 
     // Service card 2 – CEFR
-    'svc2_title'        => 'CEFR level certificate',
-    'svc2_desc'         => 'The Common European Framework of Reference for Languages.',
+    'svc2_title'        => 'CEFR LEVEL CERTIFICATE',
+    'svc2_desc'         => 'LinguaLink issues language level certificates according to the Common European Framework of Reference for Languages (CEFR) — from A1 to C2. This certificate is objective proof of language proficiency and is often required when applying for jobs abroad, visas, studies, or international programs. The testing covers listening, reading, writing, and speaking, with a detailed assessment of each skill.',
     'svc2_modal_title'  => 'CEFR LEVEL CERTIFICATE',
-    'svc2_modal_desc'   => '<p class="mb-4">LinguaLink issues language level certificates based on the <strong>Common European Framework of Reference (CEFR)</strong> — from A1 to C2.</p><p class="mb-4">This certificate is an objective proof of language proficiency and is often required when applying for jobs abroad, visas, studies, or international programmes.</p><p><strong>Testing covers listening, reading, writing, and speaking, with detailed assessment of each skill.</strong></p>',
-    'svc2_modal_mobile' => 'LinguaLink issues language level certificates based on the Common European Framework of Reference (CEFR) — from A1 to C2.',
+    'svc2_modal_desc'   => '<p class="mb-4">LinguaLink issues language level certificates according to the <strong>Common European Framework of Reference for Languages (CEFR)</strong> — from A1 to C2.</p><p class="mb-4">This certificate is objective proof of language proficiency and is often required when applying for <strong>jobs abroad, visas, studies, or international programs</strong>.</p><p>The testing covers <strong>listening, reading, writing, and speaking</strong>, with a detailed assessment of each skill.</p>',
+    'svc2_modal_mobile' => 'LinguaLink issues language level certificates according to the Common European Framework of Reference for Languages (CEFR) — from A1 to C2.',
 
     // Service card 3 – Institutions
-    'svc3_title'        => 'Institutional language testing',
-    'svc3_desc'         => 'For employment or postgraduate enrolment',
-    'svc3_modal_title'  => 'INSTITUTIONAL LANGUAGE TESTING',
-    'svc3_modal_desc'   => '<p class="mb-4">We offer customised testing services tailored to the needs of companies, educational institutions, and organisations.</p><p class="mb-4">Tests can be group or individual, in various languages, and are designed according to the institution\'s specific goals — hiring, internal evaluation, or professional development.</p><p><strong>Results are presented in a detailed report with recommendations for further training or certification.</strong></p>',
-    'svc3_modal_mobile' => 'We offer customised testing tailored to the needs of companies, institutions, and organisations.',
+    'svc3_title'        => 'TESTING FOR INSTITUTIONS',
+    'svc3_desc'         => 'We offer customized testing tailored to the needs of companies, educational institutions, and organizations. The tests can be group or individual, in different languages, and are designed around the institution\'s specific goals — recruitment, internal evaluation, or professional development. The results are presented as a report with a detailed assessment of each language skill.',
+    'svc3_modal_title'  => 'TESTING FOR INSTITUTIONS',
+    'svc3_modal_desc'   => '<p class="mb-4">We offer <strong>customized testing</strong> tailored to the needs of companies, educational institutions, and organizations.</p><p class="mb-4">Tests can be group or individual, in different languages, and are designed around the institution\'s specific goals — <strong>recruitment, internal evaluation, or professional development</strong>.</p><p>Results are presented as a <strong>report with a detailed assessment of each language skill</strong>.</p>',
+    'svc3_modal_mobile' => 'We offer customized testing tailored to the needs of companies, educational institutions, and organizations.',
 
     // Service card 4 – Mock tests
-    'svc4_title'        => 'Mock tests (English and German)',
-    'svc4_desc'         => 'Familiarise yourself with the difficulty, level, and format of the exam.',
+    'svc4_title'        => 'MOCK TESTS IN ENGLISH AND GERMAN',
+    'svc4_desc'         => 'Prepare for international exams with our mock tests. The tests are based on the formats of Cambridge, TOEFL, telc, TestDaF, and other internationally standardized exams. They let you assess your current level, get familiar with the exam format and typical tasks, and learn strategies for better time management. After testing, you receive detailed feedback and personalized recommendations from a professor with years of experience with these exams.',
     'svc4_modal_title'  => 'MOCK TESTS IN ENGLISH AND GERMAN',
-    'svc4_modal_desc'   => '<p class="mb-4">Prepare confidently for official exams with our <strong>mock tests</strong>.</p><p class="mb-4">Tests are based on the formats of telc, TestDaF, LanguageCert, and other international standards.</p><p>They help you assess your current level, get familiar with typical tasks, and learn time-management strategies. After testing, you receive <strong>detailed feedback</strong> and <strong>individual recommendations</strong> from a teacher.</p>',
-    'svc4_modal_mobile' => 'Prepare confidently for official exams with our mock tests.',
+    'svc4_modal_desc'   => '<p class="mb-4">Prepare for international exams with our <strong>mock tests</strong>. Tests are based on the formats of Cambridge, TOEFL, telc, TestDaF, and other internationally standardized exams.</p><p class="mb-4">They let you assess your current level, get familiar with the exam format and typical tasks, and learn <strong>strategies for better time management</strong>.</p><p>After testing, you receive <strong>detailed feedback and personalized recommendations</strong> from a professor with years of experience with these exams.</p>',
+    'svc4_modal_mobile' => 'Prepare for international exams with our mock tests based on the formats of Cambridge, TOEFL, telc, TestDaF, and other internationally standardized exams.',
 
     // Service card 5 – Room rental
-    'svc5_title'        => 'Room rental',
-    'svc5_desc'         => 'For exams, seminars, lectures, and more.',
+    'svc5_title'        => 'ROOM RENTAL',
+    'svc5_desc'         => 'LinguaLink has modern, well-equipped classrooms and computer labs available for rent for exams, seminars, workshops, or business meetings. The rooms are air-conditioned, have a stable internet connection, are equipped with projectors and whiteboards, and can accommodate varying numbers of participants. Our staff provides logistical support, technical assistance, and schedule adjustments to fit your needs.',
     'svc5_modal_title'  => 'ROOM RENTAL',
-    'svc5_modal_desc'   => '<p class="mb-4">LinguaLink has modern, fully-equipped classrooms and test rooms available for hire for <strong>exams, seminars, or business meetings</strong>.</p><p class="mb-4">Rooms are air-conditioned, have a stable internet connection, projector, whiteboard, and comfortable seating for various group sizes.</p><p>Our staff provides logistical support, technical assistance, and scheduling adjustments to meet your needs.</p>',
-    'svc5_modal_mobile' => 'LinguaLink has equipped classrooms and test rooms available for hire.',
-
-    // Service card 6 – Communication training
-    'svc6_title'        => 'Communication training',
-    'svc6_desc'         => 'Develop business communication skills in written and spoken form.',
-    'svc6_modal_title'  => 'COMMUNICATION TRAINING',
-    'svc6_modal_desc'   => '<p class="mb-4">Our business and professional communication training helps you master <strong>written</strong> and <strong>spoken</strong> expression.</p><p class="mb-4">Programmes cover: writing professional emails, presentation skills, running meetings, argumentation, interviews, and public speaking.</p><p>These trainings are suitable for companies, public institutions, and individuals looking to enhance their <strong>professional expression</strong> and <strong>international communication</strong>.</p>',
-    'svc6_modal_mobile' => 'Develop business communication skills in written and spoken form.',
+    'svc5_modal_desc'   => '<p class="mb-4">LinguaLink has <strong>modern, well-equipped classrooms and computer labs</strong> available for rent for exams, seminars, workshops, or business meetings.</p><p class="mb-4">Rooms are air-conditioned, have a stable internet connection, are equipped with projectors and whiteboards, and can accommodate varying numbers of participants.</p><p>Our staff provides <strong>logistical support, technical assistance</strong>, and schedule adjustments to fit your needs.</p>',
+    'svc5_modal_mobile' => 'LinguaLink has modern, well-equipped classrooms and computer labs available for rent for exams, seminars, workshops, or business meetings.',
 
     // Stats section
     'our_work_title'    => 'OUR <span style="font-weight:500;font-style:italic;">WORK</span><br>SPEAKS FOR <span style="color:#194077;">US</span>',

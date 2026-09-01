@@ -391,15 +391,14 @@
 <section class="w-full py-16 px-16" style="background: white;">
   <h2 class="text-center font-black text-4xl uppercase mb-12" style="font-family: 'Jost', sans-serif;">{{ __('home.other_services') }}</h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
 
     <!-- Card 1 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-aktivno-pasivno').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-aktivno-pasivno').classList.remove('hidden');"
+      class="w-full md:w-72 md:min-h-[320px] bg-white flex flex-col gap-3 p-6 md:p-5 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default"
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_desc') }}</p>
+<p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_title') }}</p>
+      <p class="text-gray-500 text-sm leading-relaxed md:leading-normal line-clamp-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc1_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-aktivno-pasivno').classList.remove('hidden'); return false;"
         class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
@@ -417,12 +416,11 @@
     ])
 
     <!-- Card 2 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-cefr').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-cefr').classList.remove('hidden');"
+      class="w-full md:w-72 md:min-h-[320px] bg-white flex flex-col gap-3 p-6 md:p-5 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default"
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_desc') }}</p>
+<p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_title') }}</p>
+      <p class="text-gray-500 text-sm leading-relaxed md:leading-normal line-clamp-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc2_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-cefr').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
@@ -438,12 +436,11 @@
       'description_mobile' => __('home.svc2_modal_mobile')
   ])
     <!-- Card 3 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-institucii').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-institucii').classList.remove('hidden');"
+      class="w-full md:w-72 md:min-h-[320px] bg-white flex flex-col gap-3 p-6 md:p-5 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default"
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_desc') }}</p>
+<p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_title') }}</p>
+      <p class="text-gray-500 text-sm leading-relaxed md:leading-normal line-clamp-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc3_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-institucii').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
@@ -461,12 +458,11 @@
     ])
 
     <!-- Card 4 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-probni-testovi').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-probni-testovi').classList.remove('hidden');"
+      class="w-full md:w-72 md:min-h-[320px] bg-white flex flex-col gap-3 p-6 md:p-5 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default"
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.lang_cert_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_desc') }}</p>
+<p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_title') }}</p>
+      <p class="text-gray-500 text-sm leading-relaxed md:leading-normal line-clamp-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc4_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-probni-testovi').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);"
@@ -483,12 +479,11 @@
     ])
 
     <!-- Card 5 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-iznajmuvanje').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
+    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-iznajmuvanje').classList.remove('hidden');"
+      class="w-full md:w-72 md:min-h-[320px] bg-white flex flex-col gap-3 p-6 md:p-5 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default"
       style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.other_service_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_desc') }}</p>
+<p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_title') }}</p>
+      <p class="text-gray-500 text-sm leading-relaxed md:leading-normal line-clamp-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc5_desc') }}</p>
       <a href="#" onclick="document.getElementById('modal-iznajmuvanje').classList.remove('hidden'); return false;"
       class="hidden md:flex items-center justify-center text-white text-sm font-medium transition-all duration-200"
         style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #194077, #194077); font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); border: 2px solid transparent rounded;"
@@ -505,28 +500,9 @@
     'description_mobile' => __('home.svc5_modal_mobile')
     ])
 
-    <!-- Card 6 -->
-    <div onclick="if(window.innerWidth < 768) document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden');" 
-      class="bg-white flex flex-col gap-4 p-8 md:p-6 rounded-3xl md:rounded-xl cursor-pointer md:cursor-default" 
-      style="border: 0.3px solid #d1d5db; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10);">
-      <span class="text-xs px-3 py-1 rounded-full bg-gray-100 self-start" style="font-family: 'Montserrat', sans-serif;">{{ __('home.other_service_label') }}</span>
-      <p class="font-black text-lg md:text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc6_title') }}</p>
-      <p class="text-gray-500 text-sm flex-1 leading-relaxed md:leading-normal" style="font-family: 'Montserrat', sans-serif;">{{ __('home.svc6_desc') }}</p>
-      <a href="#" onclick="document.getElementById('modal-komunikaciski-obuki').classList.remove('hidden'); return false;"
-      class="hidden md:flex items-center justify-center text-sm font-medium transition-all duration-200"
-        style="width: 160px; height: 40px; border-radius: 10px; background: linear-gradient(90deg, #E5F7FF, #E5F7FF); color: #194077; font-family: 'Montserrat', sans-serif; box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.10); "
-        onmouseover="this.style.background='linear-gradient(90deg, #E5F7FF, #89D0F2)';"
-        onmouseout="this.style.background='linear-gradient(90deg, #E5F7FF, #E5F7FF)';">
-        {{ __('home.read_more') }}
-      </a>
-    </div>
+  
 
-    @include('parts.modal-prijava', [
-    'id' => 'komunikaciski-obuki',
-    'title' => __('home.svc6_modal_title'),
-    'description' => __('home.svc6_modal_desc'),
-    'description_mobile' => __('home.svc6_modal_mobile')
-    ])
+ 
 
   </div>
 
@@ -551,45 +527,7 @@
     {!! __('home.our_work_title') !!}
   </h2>
 
-  <!-- Stats - Desktop: horizontal row, Mobile: 2x2 grid -->
-  <div class="hidden md:flex justify-center mb-12" style="gap: 46px;">
-    <div class="flex-shrink-0 flex flex-col items-center justify-center text-white" style="width: 240px; height: 149px; background: #194077; border-radius: 60px 16px 16px 16px;">
-      <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_students') }}</p>
-    </div>
-    <div class="flex-shrink-0 flex flex-col items-center justify-center rounded-2xl" style="width: 240px; height: 149px; background: #a8dff0;">
-      <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">10+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_experience') }}</p>
-    </div>
-    <div class="flex-shrink-0 flex flex-col items-center justify-center rounded-2xl" style="width: 240px; height: 149px; background: #d6eef8;">
-      <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">15+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_certs') }}</p>
-    </div>
-    <div class="flex-shrink-0 flex flex-col items-center justify-center text-white" style="width: 240px; height: 149px; background: #194077; border-radius: 16px 60px 16px 16px;">
-      <p class="font-black text-4xl" style="font-family: 'Montserrat', sans-serif;">20+</p>
-      <p class="text-sm text-center mt-2" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_teachers') }}</p>
-    </div>
-  </div>
 
-  <!-- Stats - Mobile: 2x2 grid -->
-  <div class="grid grid-cols-2 gap-3 mb-8 md:hidden">
-    <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 40px 16px 16px 16px;">
-      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">500+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_students') }}</p>
-    </div>
-    <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #a8dff0;">
-      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">10+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_experience') }}</p>
-    </div>
-    <div class="flex flex-col items-center justify-center rounded-2xl py-5" style="background: #d6eef8;">
-      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">15+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_certs') }}</p>
-    </div>
-    <div class="flex flex-col items-center justify-center text-white rounded-2xl py-5" style="background: #194077; border-radius: 16px 40px 16px 16px;">
-      <p class="font-black text-2xl" style="font-family: 'Montserrat', sans-serif;">20+</p>
-      <p class="text-xs text-center mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.stat_teachers') }}</p>
-    </div>
-  </div>
 
   <!-- Image + Points - Desktop: side by side, Mobile: stacked -->
   <div class="hidden md:flex justify-center gap-12">

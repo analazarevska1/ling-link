@@ -1,7 +1,7 @@
 <?php
 return [
     // Prijava form (modal-prijava)
-    'form_title'         => 'ФОРМА ЗА ПРИЈАВУВАЊЕ',
+    'form_title'         => 'ФОРМУЛАР ЗА ПРИЈАВУВАЊЕ',
     'name_label'         => 'Вашето име и презиме',
     'name_placeholder'   => 'пр.Маја Иванова',
     'phone_label'        => 'Вашиот телефонски број',

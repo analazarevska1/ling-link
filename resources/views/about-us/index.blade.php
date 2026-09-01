@@ -19,7 +19,7 @@
             <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-jost font-semibold">
                 {{ __('about.who_we_are') }}
             </h2>
-            <p class="text-gray-600 text-base leading-relaxed mb-10 pr-16 font-jost font-semibold">
+            <p class=" text-base leading-relaxed mb-10  font-jost font-semibold">
                 {{ __('about.who_desc') }}
             </p>
         </div>
@@ -83,29 +83,23 @@
                 <div class="flex gap-5 items-start">
                     <span class="text-[#1e3a5f] text-4xl md:text-5xl font-bold leading-none mt-1">→</span>
                     <p class="text-gray-700 text-base leading-relaxed">{!! __('about.value_3') !!}</p>
+
+                </div>
+                <div class="flex gap-5 items-start">
+                    <span class="text-[#1e3a5f] text-4xl md:text-5xl font-bold leading-none mt-1">→</span>
+                    <p class="text-gray-700 text-base leading-relaxed">{!! __('about.value_4') !!}</p>
+                </div>
+                <div class="flex gap-5 items-start">
+                    <span class="text-[#1e3a5f] text-4xl md:text-5xl font-bold leading-none mt-1">→</span>
+                    <p class="text-gray-700 text-base leading-relaxed">{!! __('about.value_5') !!}</p>
+                </div>
+                <div class="flex gap-5 items-start">
+                    <span class="text-[#1e3a5f] text-4xl md:text-5xl font-bold leading-none mt-1">→</span>
+                    <p class="text-gray-700 text-base leading-relaxed">{!! __('about.value_6') !!}</p>
                 </div>
             </div>
         </div>
 
-        {{-- Stats --}}
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="bg-[#1e3a5f] text-white rounded-3xl rounded-bl-[80px] p-8 text-center min-h-[140px] flex flex-col items-center justify-center">
-                <p class="text-4xl md:text-5xl font-extrabold mb-2">500+</p>
-                <p class="text-base opacity-90">{{ __('about.stat_1') }}</p>
-            </div>
-            <div class="bg-[#5aaedc] text-white rounded-3xl p-8 text-center min-h-[140px] flex flex-col items-center justify-center">
-                <p class="text-4xl md:text-5xl font-extrabold mb-2">10+</p>
-                <p class="text-base opacity-90">{{ __('about.stat_2') }}</p>
-            </div>
-            <div class="bg-[#ddeef8] text-gray-800 rounded-3xl p-8 text-center min-h-[140px] flex flex-col items-center justify-center">
-                <p class="text-4xl md:text-5xl font-extrabold mb-2">15+</p>
-                <p class="text-base">{{ __('about.stat_3') }}</p>
-            </div>
-            <div class="bg-[#1e3a5f] text-white rounded-3xl rounded-br-[80px] p-8 text-center min-h-[140px] flex flex-col items-center justify-center">
-                <p class="text-4xl md:text-5xl font-extrabold mb-2">20+</p>
-                <p class="text-base opacity-90">{{ __('about.stat_4') }}</p>
-            </div>
-        </div>
     </section>
 
     {{-- Bottom Banner --}}
