@@ -59,8 +59,5 @@
 
   </div>
 
-  {{-- Bottom bar --}}
-  <div class="max-w-7xl mx-auto mt-10 pt-5 border-t border-gray-200 text-center text-gray-400 text-xs">
-    © {{ date('Y') }} LinguaLink. {{ __('footer.rights') }}
-  </div>
+  {{-- Bottom bar --}} <div class="max-w-7xl mx-auto mt-10 pt-5 border-t border-gray-200 text-center text-gray-400 text-xs"> <p> © {{ date('Y') }} LinguaLink. {{ __('footer.rights') }} </p> <p class="mt-2"> Designed &amp; Developed by students of <span class="font-semibold text-gray-500">Brainster Next College</span> </p> </div>
 </footer>
