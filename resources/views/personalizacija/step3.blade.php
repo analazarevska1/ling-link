@@ -11,7 +11,9 @@
   </div>
 
   <h1 class="font-black text-4xl uppercase text-center leading-tight mb-12" style="font-family: 'Jost', sans-serif;">
-    {!! __('personalizacija.step3_title', ['lang' => strtoupper($language)]) !!}
+    {!! __('personalizacija.step3_title', [
+    'lang' => mb_strtoupper(__('languages.' . strtolower($language)), 'UTF-8')
+  ]) !!}
   </h1>
 
   <form method="POST" action="{{ route('personalizacija.save3') }}" class="w-full" style="max-width: 500px;">
