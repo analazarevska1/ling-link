@@ -6,7 +6,7 @@ return [
     'name_placeholder'   => 'пр.Маја Иванова',
     'phone_label'        => 'Вашиот телефонски број',
     'phone_placeholder'  => 'пр.07* *** ***',
-    'email_label'        => 'Вашата е-меил адреса',
+    'email_label'        => 'Вашата е-пошта адреса',
     'email_placeholder'  => 'пр. majaivanova@gmail.com',
     'message_label'      => 'Порака',
     'message_placeholder'=> 'пр. "Сакам да се пријавам за потврда за активно и пасивно"',

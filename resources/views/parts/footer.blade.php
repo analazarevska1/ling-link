@@ -46,16 +46,30 @@
     </div>
 
     {{-- Exams --}}
-    <div>
-      <h4 class="text-gray-900 font-extrabold text-base mb-5">{{ __('footer.exams') }}</h4>
-      <ul class="space-y-3 text-gray-600 text-sm">
-        <li><a href="#" class="hover:text-[#1e3a5f] transition">Telc</a></li>
-        <li><a href="#" class="hover:text-[#1e3a5f] transition">OnSet</a></li>
-        <li><a href="#" class="hover:text-[#1e3a5f] transition">TestDaF</a></li>
-        <li><a href="#" class="hover:text-[#1e3a5f] transition">TestAS</a></li>
-        <li><a href="#" class="hover:text-[#1e3a5f] transition">Language Cert</a></li>
-      </ul>
-    </div>
+    @php
+    $footerExams = \App\Models\Exam::where('is_active', true)
+        ->orderBy('title')
+        ->get();
+@endphp
+
+<div>
+    <h4 class="text-gray-900 font-extrabold text-base mb-5">
+        {{ __('footer.exams') }}
+    </h4>
+
+    <ul class="space-y-3 text-gray-600 text-sm">
+        @foreach ($footerExams as $exam)
+            <li>
+                <a
+                    href="{{ route('exams.show', $exam) }}"
+                    class="hover:text-[#1e3a5f] transition"
+                >
+                    {{ $exam->title }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</div>
 
   </div>
 
