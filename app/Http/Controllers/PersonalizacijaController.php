@@ -12,7 +12,6 @@ class PersonalizacijaController extends Controller
 
     {
 
-   
         if (auth()->user()->profile) {
             $language = auth()->user()->profile->language;
             return redirect('/courses/' . $language . '?preporachani=1');
