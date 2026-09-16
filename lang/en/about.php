@@ -17,6 +17,9 @@ return [
     'value_1'           => '<span class="font-bold">Quality and professionalism</span> – classes are led by certified teachers with international experience.',
     'value_2'           => '<span class="font-bold">Modern approach to learning</span> – interactive methods that make language easier and more interesting.',
     'value_3'           => '<span class="font-bold">Support and trust</span> – every student receives attention, motivation and an environment where they can grow.',
+    'value_4'           => '<span class="font-bold">Innovation</span> – applying modern methods and resources for more successful learning.',
+    'value_5'           => '<span class="font-bold">Responsibility</span> – a professional attitude toward our students, clients, partners, and the educational mission we uphold.',
+    'value_6'           => '<span class="font-bold">Development</span> – belief in continuous learning and constant personal and professional improvement.',
 
     'stat_1'            => 'satisfied students',
     'stat_2'            => 'years of experience',
