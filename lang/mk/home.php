@@ -11,6 +11,7 @@ return [
     // Admin hours banner
     'admin_hours_title'    => 'Административно работно време',
     'admin_hours_schedule' => 'Понеделник - четврток од 14.00 до 21.00 часот',
+    'transaction' => 'Жиро сметка: 300000001485688, Комерцијална Банка',
 
     // Choose course section
     'choose_course' => 'Одбери курс',
