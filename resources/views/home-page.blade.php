@@ -76,7 +76,9 @@
 <div class="flex flex-col items-center justify-center mx-auto text-center" style="max-width: 620px; border-radius: 20px; background: white; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.12); padding: 16px 40px; margin-top: 36px; margin-bottom: 36px; position: relative; z-index: 10;">
   <p class="font-black text-base" style="font-family: 'Montserrat', sans-serif;">{{ __('home.admin_hours_title') }}</p>
   <p class="text-gray-600 text-sm mt-1" style="font-family: 'Montserrat', sans-serif;">{{ __('home.admin_hours_schedule') }}</p>
+  <p class="font-black text-base pt-3" style="font-family: 'Montserrat', sans-serif;">{{ __('home.transaction') }}</p>
 </div> 
+
 
 
 <section class="w-full pt-8" style="background: #f8fbff;">

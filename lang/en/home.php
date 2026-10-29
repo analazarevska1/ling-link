@@ -11,6 +11,7 @@ return [
     // Admin hours banner
     'admin_hours_title'    => 'Administrative office hours',
     'admin_hours_schedule' => 'Monday – Thursday from 2:00 PM to 9:00 PM',
+    'transaction' => "Bank Account: 300000001485688, Komercijalna Banka",
 
     // Choose course section
     'choose_course' => 'Choose a course',
