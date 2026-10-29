@@ -62,7 +62,7 @@
                     </button>
 
                 </div>
-
+               
             </div>
 
             {{-- ── ALL COURSES PANEL ── --}}
@@ -230,7 +230,7 @@
                     <div id="modalMeta" class="text-sm mb-6"
                         style="font-family: 'Montserrat', sans-serif; line-height: 1.8;"></div>
                     <p id="modalDescription" class="text-white text-sm leading-relaxed"
-                        style="font-family: 'Montserrat', sans-serif; opacity: 0.9; white-space: pre-line;"></p>
+                        style="font-family: 'Montserrat', sans-serif; opacity: 0.9;"></p>
                 </div>
 
                 <div class="flex flex-col justify-start w-full md:w-[55%]" style="padding: 40px 36px;">
@@ -310,10 +310,6 @@
         border-color: #194077 !important;
     }
 
-    .course-card[data-course] {
-        cursor: pointer;
-    }
-
     /* ── Mobile carousel ── */
     @media (max-width: 767px) {
         .course-card {
@@ -354,15 +350,15 @@
 </style>
 
 <script>
-    var language       = @json($language);
+    var language       = "{{ $language }}";
     var categories     = @json($categories);
-    var showingText    = @json(__('courses.showing'));
-    var resultText     = @json(__('courses.result'));
-    var resultsText    = @json(__('courses.results'));
-    var metaDuration   = @json(__('courses.meta_duration'));
-    var metaHours      = @json(__('courses.meta_hours'));
-    var metaHoursLabel = @json(__('courses.meta_hours_label'));
-    var metaClasses    = @json(__('courses.meta_classes'));
+    var showingText    = "{{ __('courses.showing') }}";
+    var resultText     = "{{ __('courses.result') }}";
+    var resultsText    = "{{ __('courses.results') }}";
+    var metaDuration   = "{{ __('courses.meta_duration') }}";
+    var metaHours      = "{{ __('courses.meta_hours') }}";
+    var metaHoursLabel = "{{ __('courses.meta_hours_label') }}";
+    var metaClasses    = "{{ __('courses.meta_classes') }}";
 
     function makeCarousel(trackId, prevId, nextId) {
         var track   = document.getElementById(trackId);
@@ -460,7 +456,7 @@
             });
         });
 
-        fetch('/courses/' + language + '/filter?category=' + encodeURIComponent(category))
+        fetch('/courses/' + language + '/filter?category=' + category)
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 var track = document.getElementById('carouselTrack');
@@ -468,8 +464,7 @@
                 track.style.width     = '';
                 track.innerHTML       = data.html;
 
-                /* FIX: the counter has a different id depending on which layout is shown */
-                var el = document.getElementById('resultCountRec') || document.getElementById('resultCount');
+                var el = document.getElementById('resultCountRec');
                 if (el) el.innerText = showingText + ' ' + data.total + ' ' +
                     (data.total == 1 ? resultText : resultsText);
 
@@ -505,26 +500,15 @@
         }
     }
 
-    /* FIX: takes one course object (from the card's data-course attribute)
-       instead of many string arguments, so apostrophes / quotes / line breaks
-       typed in the admin panel can no longer break the JavaScript. */
-    function openPrijavaModal(course) {
-        course = course || {};
-
-        document.getElementById('modalTitle').textContent       = course.title || '';
-        document.getElementById('modalSubtitle').textContent    = course.subtitle || '';
-        document.getElementById('modalDescription').textContent = course.description || '';
-
-        /* Hide the hours line when the client left hours empty */
-        var meta = metaDuration + '<br>';
-        if (course.hours) {
-            meta += metaHours + ' <strong>' + course.hours + ' ' + metaHoursLabel + '</strong><br>';
-        }
-        meta += metaClasses;
-        document.getElementById('modalMeta').innerHTML = '<p>' + meta + '</p>';
-
-        document.getElementById('prijavaForm').action = '/prijavi-se/' + course.id;
-
+    function openPrijavaModal(title, subtitle, description, duration, hours, courseId) {
+        document.getElementById('modalTitle').textContent       = title;
+        document.getElementById('modalSubtitle').textContent    = subtitle;
+        document.getElementById('modalDescription').textContent = description;
+        document.getElementById('modalMeta').innerHTML =
+            '<p>' + metaDuration + '<br>' +
+            metaHours + ' <strong>' + hours + ' ' + metaHoursLabel + '</strong><br>' +
+            metaClasses + '</p>';
+        document.getElementById('prijavaForm').action = '/prijavi-se/' + courseId;
         var modal = document.getElementById('prijavaModal');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
@@ -537,21 +521,6 @@
         modal.classList.remove('flex');
         document.body.style.overflow = '';
     }
-
-    /* FIX: one click listener for every card, including cards loaded later by filterCourses() */
-    document.addEventListener('click', function(e) {
-        var card = e.target.closest('.course-card[data-course]');
-        if (!card) return;
-        try {
-            openPrijavaModal(JSON.parse(card.dataset.course));
-        } catch (err) {
-            console.error('Could not read course data for card:', card, err);
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closePrijavaModal();
-    });
 
     document.getElementById('prijavaModal').addEventListener('click', function(e) {
         if (e.target == this) closePrijavaModal();
