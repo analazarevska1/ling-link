@@ -221,8 +221,9 @@
             <div class="bg-white rounded-2xl shadow-2xl relative flex overflow-hidden"
                 style="width: 760px; max-width: 95vw; max-height: 90vh;">
 
+                {{-- Left blue panel: scrolls when the text is long --}}
                 <div id="modalCourseInfo" class="hidden md:flex flex-col justify-start text-white"
-                    style="background: #194077; width: 45%; padding: 40px 32px; min-height: 480px;">
+                    style="background: #194077; width: 45%; padding: 40px 32px; min-height: 480px; max-height: 90vh; overflow-y: auto;">
                     <h2 id="modalTitle" class="font-extrabold uppercase leading-tight mb-2"
                         style="font-size: 1.1rem; font-family: 'Jost', sans-serif; letter-spacing: 1px;"></h2>
                     <h3 id="modalSubtitle" class="font-extrabold uppercase leading-tight mb-6"
@@ -233,7 +234,9 @@
                         style="font-family: 'Montserrat', sans-serif; opacity: 0.9; white-space: pre-line;"></p>
                 </div>
 
-                <div class="flex flex-col justify-start w-full md:w-[55%]" style="padding: 40px 36px;">
+                {{-- Right form column: scrolls on short screens --}}
+                <div class="flex flex-col justify-start w-full md:w-[55%]"
+                    style="padding: 40px 36px; max-height: 90vh; overflow-y: auto;">
                     <button onclick="closePrijavaModal()"
                         class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 font-bold text-2xl"
                         style="background: none; border: none; cursor: pointer; line-height: 1;">&times;</button>
