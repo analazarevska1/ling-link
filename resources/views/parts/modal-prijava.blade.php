@@ -6,10 +6,11 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
 
+    
     <!-- Left: Info (Desktop Only) -->
-    <div class="hidden md:flex flex-col justify-center p-10 text-white overflow-hidden" style="width: 430px; background: #194077; min-height: 500px;">
-      <h2 class="font-black text-3xl uppercase mb-6 shrink-0" style="font-family: 'Jost', sans-serif;">{{ $title }}</h2>
-      <div class="overflow-y-auto min-h-0 pr-2" style="font-family: 'Montserrat', sans-serif; font-size: 14px;">
+    <div class="hidden md:flex flex-col justify-center p-10 text-white" style="width: 430px; background: #194077; min-height: 500px;">
+      <h2 class="font-black text-3xl uppercase mb-6" style="font-family: 'Jost', sans-serif;">{{ $title }}</h2>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 14px; max-height: 50vh; overflow-y: auto; padding-right: 8px;">
         {!! $description !!}
       </div>
     </div>
