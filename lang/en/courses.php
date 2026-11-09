@@ -27,6 +27,7 @@ return [
     'meta_duration'      => 'Lasts one academic year',
     'meta_hours'         => 'Includes a total of',
     'meta_hours_label'   => 'hours.',
+    'meta_duration_label' => 'Duration:',
     'meta_classes'       => 'Classes are held twice a week.',
     'hours'              => 'hours',
 ];

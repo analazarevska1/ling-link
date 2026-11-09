@@ -21,10 +21,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white">
             <p class="font-bold text-base md:text-lg leading-snug mb-2">{{ __('about.card_1_title') }}</p>
             <p class="card-desc text-sm leading-relaxed mb-4">{{ __('about.card_1_desc') }}</p>
-            <div class="read-more flex items-center gap-3">
-                <span class="bg-white/90 text-gray-900 text-sm font-semibold px-5 py-2 rounded-full">{{ __('about.read_more') }}</span>
-                <span class="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center text-gray-900 font-bold">→</span>
-            </div>
+            
         </div>
     </div>
 
@@ -35,10 +32,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white">
             <p class="font-bold text-base md:text-lg leading-snug mb-2">{{ __('about.card_2_title') }}</p>
             <p class="card-desc text-sm leading-relaxed mb-4">{{ __('about.card_2_desc') }}</p>
-            <div class="read-more flex items-center gap-3">
-                <span class="bg-white/90 text-gray-900 text-sm font-semibold px-5 py-2 rounded-full">{{ __('about.read_more') }}</span>
-                <span class="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center text-gray-900 font-bold">→</span>
-            </div>
+            
         </div>
     </div>
 
@@ -49,10 +43,7 @@
         <div class="absolute bottom-0 left-0 right-0 p-5 md:p-7 text-white">
             <p class="font-bold text-base md:text-lg leading-snug mb-2">{{ __('about.card_3_title') }}</p>
             <p class="card-desc text-sm leading-relaxed mb-4">{{ __('about.card_3_desc') }}</p>
-            <div class="read-more flex items-center gap-3">
-                <span class="bg-white/90 text-gray-900 text-sm font-semibold px-5 py-2 rounded-full">{{ __('about.read_more') }}</span>
-                <span class="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center text-gray-900 font-bold">→</span>
-            </div>
+            
         </div>
     </div>
 

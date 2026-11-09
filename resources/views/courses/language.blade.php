@@ -362,10 +362,10 @@
     var showingText    = @json(__('courses.showing'));
     var resultText     = @json(__('courses.result'));
     var resultsText    = @json(__('courses.results'));
-    var metaDuration   = @json(__('courses.meta_duration'));
+    var metaDurationLabel = @json(__('courses.meta_duration_label'));
     var metaHours      = @json(__('courses.meta_hours'));
     var metaHoursLabel = @json(__('courses.meta_hours_label'));
-    var metaClasses    = @json(__('courses.meta_classes'));
+    
 
     function makeCarousel(trackId, prevId, nextId) {
         var track   = document.getElementById(trackId);
@@ -511,28 +511,45 @@
     /* FIX: takes one course object (from the card's data-course attribute)
        instead of many string arguments, so apostrophes / quotes / line breaks
        typed in the admin panel can no longer break the JavaScript. */
-    function openPrijavaModal(course) {
-        course = course || {};
+       function openPrijavaModal(course) {
+            course = course || {};
 
-        document.getElementById('modalTitle').textContent       = course.title || '';
-        document.getElementById('modalSubtitle').textContent    = course.subtitle || '';
-        document.getElementById('modalDescription').textContent = course.description || '';
+            document.getElementById('modalTitle').textContent       = course.title || '';
+            document.getElementById('modalSubtitle').textContent    = course.subtitle || '';
+            document.getElementById('modalDescription').textContent = course.description || '';
 
-        /* Hide the hours line when the client left hours empty */
-        var meta = metaDuration + '<br>';
-        if (course.hours) {
-            meta += metaHours + ' <strong>' + course.hours + ' ' + metaHoursLabel + '</strong><br>';
+            /* Прикажи само она што е внесено во админ панелот */
+            var metaEl = document.getElementById('modalMeta');
+            metaEl.innerHTML = '';
+
+            if (course.duration) {
+                var p1 = document.createElement('p');
+                p1.append(metaDurationLabel + ' ');
+                var d = document.createElement('strong');
+                d.textContent = course.duration;
+                p1.appendChild(d);
+                metaEl.appendChild(p1);
+            }
+
+            if (course.hours) {
+                var p2 = document.createElement('p');
+                p2.append(metaHours + ' ');
+                var h = document.createElement('strong');
+                h.textContent = course.hours + ' ' + metaHoursLabel;
+                p2.appendChild(h);
+                metaEl.appendChild(p2);
+            }
+
+            /* Ако нема ништо, сокриј го целиот блок за да нема празно место */
+            metaEl.style.display = metaEl.children.length ? '' : 'none';
+
+            document.getElementById('prijavaForm').action = '/prijavi-se/' + course.id;
+
+            var modal = document.getElementById('prijavaModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
         }
-        meta += metaClasses;
-        document.getElementById('modalMeta').innerHTML = '<p>' + meta + '</p>';
-
-        document.getElementById('prijavaForm').action = '/prijavi-se/' + course.id;
-
-        var modal = document.getElementById('prijavaModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-    }
 
     function closePrijavaModal() {
         var modal = document.getElementById('prijavaModal');

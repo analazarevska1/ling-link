@@ -25,6 +25,7 @@ return [
     'message_placeholder'=> 'пр. "Сакам да се пријавам за активно и пасивно."',
     'submit'             => 'Пријави се',
     'meta_duration'      => 'Траат една учебна година',
+    'meta_duration_label' => 'Времетраење:',
     'meta_hours'         => 'Вклучуваат вкупно',
     'meta_hours_label'   => 'часа.',
     'meta_classes'       => 'Наставата се одвива два пати неделно.',
